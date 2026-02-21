@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elementos de estructura</title>
+  </head>
+  <body>
+    <!-- Ejercicio 8 -->
+    <header
+      style="
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <h1>Página web sobre Front-end</h1>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+        width="100"
+      />
+    </header>
+    <nav>
+      <h2>Menú de navegación</h2>
+      <ul>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">JavaScript</a></li>
+        <li><a href="#">TypeScript</a></li>
+        <li><a href="#">React</a></li>
+      </ul>
+    </nav>
+
+    <aside>
+      <h3>Recursos Externos</h3>
+      <p>A continuación se listan sitios oficiales para ampliar información:</p>
+      <ul>
+        <li>
+          <a href="https://developer.mozilla.org/es/docs/Web/HTML"
+            >Documentación de MDN (Mozilla Developer Network)</a
+          >
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/"
+            >W3Schools - Tutoriales de HTML y CSS</a
+          >
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/es/docs/Web/JavaScript"
+            >Sitio oficial de JavaScript (ECMA)</a
+          >
+        </li>
+        <li>
+          <a href="https://www.typescriptlang.org/"
+            >Documentación de TypeScript</a
+          >
+        </li>
+      </ul>
+    </aside>
+
+    <main>
+      <!-- Ejercicio 1 -->
+      <h1 id="inicio">Encabezado principal</h1>
+      <section id="sec-1">
+        <h2>Historia del HTML</h2>
+        <p>
+          Tim ideó el lenguaje
+          <strong>HyperText Markup Language (HTML)</strong> en el CERN para
+          compartir datos científicos de forma eficiente. Gracias a
+          <em>Tim</em>, el
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          se convirtió rápidamente en el estándar de la red primitiva. La visión
+          de <em>Tim</em> permitió que el
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          conectara servidores de todo el mundo de manera sencilla. Sin el
+          ingenio de <em>Tim</em>, el
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          no habría revolucionado la comunicación digital como lo hizo. Creó
+          etiquetas como <code>&lt;div&gt;</code>. Como dijo él mismo:
+          <!-- Ejercicio 5.1 Citas en linea -->
+          <q cite="https://www.w3.org/People/Berners-Lee/"
+            >El poder de la Web está en su universalidad.</q
+          >
+        </p>
+        <video controls autoplay loop width="250">
+          <source src="video.mp4" type="video/mp4" />
+          <source src="video.ogg" type="video/ogg" />
+          <!-- Si el primer video no carga -->
+          <p>Tu navegador no soporta el elemento de video.</p>
+        </video>
+        <a target="_blank" href="https://www.w3.org/People/Berners-Lee/">
+          <img
+            src="https://imgs.search.brave.com/1Upt824AeMSX42vl4xvs4Nqenq-cyXPGPUW22T9wflE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/cGFibG95Z2xlc2lh/cy5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMTIvMDgvdGlt/LWJlcm5lcnMtbGVl/LTQ1MHgzMjcuanBn"
+            width="100"
+          />
+        </a>
+        <br />
+        <a href="#inicio">Volver al inicio</a>
+        <a href="#sec-1">Inicio de seccion</a>
+      </section>
+      <br />
+      <section id="sec-2">
+        <h2>Contribuciones de Tim Berners-Lee al HTML</h2>
+        <p>
+          El primer navegador creado por <em>Tim</em> permitía visualizar
+          documentos en
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          con total facilidad. <em>Tim</em> insistió en que el
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          debía ser un estándar abierto y gratuito para todos los usuarios. Al
+          publicar las primeras etiquetas de
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong
+          >, <em>Tim</em> sentó las bases de la navegación moderna. Muchos
+          reconocen a <em>Tim</em> como el padre del
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          por su incansable trabajo técnico inicial.
+        </p>
+        <a href="#inicio">Volver al inicio</a>
+        <a href="#sec-2">Inicio de seccion</a>
+      </section>
+      <br />
+      <section id="sec-3">
+        <h2>Impacto de Tim Berners-Lee en la evolución del HTML</h2>
+        <p>
+          Con la creación del W3C, <em>Tim</em> buscó proteger la integridad del
+          código
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          frente a intereses comerciales. <em>Tim</em> sabía que si el
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          se fragmentaba, la web perdería su esencia universal. Por eso,
+          <em>Tim</em> lideró la evolución del
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          hacia versiones más estables y potentes. La comunidad global sigue hoy
+          las directrices de <em>Tim</em> para mantener el
+          <strong><abbr title="HyperText Markup Language">HTML</abbr></strong>
+          como un bien público.
+        </p>
+        <!-- Ejercicio 5.2 Citas en bloque -->
+        <blockquote cite="https://en.wikipedia.org/wiki/Tim_Berners-Lee">
+          <p>
+            "El HTML es un lenguaje de marcado que Tim Berners-Lee creó para
+            compartir información en la web. Su visión era una red abierta y
+            accesible para todos, y el HTML se convirtió en la piedra angular de
+            esa visión."
+          </p>
+          <cite>
+            Fuente:
+            <a href="https://en.wikipedia.org/wiki/Tim_Berners-Lee"
+              >https://en.wikipedia.org/wiki/Tim_Berners-Lee</a
+            >
+          </cite>
+        </blockquote>
+        <a href="#inicio">Volver al inicio</a>
+        <a href="#sec-3">Inicio de seccion</a>
+      </section>
+      <br />
+      <!-- Ejercicio 2 -->
+      <section id="sec-4">
+        <h2>Ejemplo de un documento HTML básico</h2>
+        <pre>
+	&lt;html&gt;
+		&lt;head&gt;
+			&lt;meta charset="utf-8"&gt;
+			&lt;meta name="author" content="JMAP"&gt;
+			&lt;title&gt;Primer documento HTML 5&lt;/title&gt;
+		&lt;/head&gt;
+		&lt;body&gt;
+			&lt;h1&gt;Hola Mundo&lt;/h1&gt;
+		&lt;/body&gt;
+	&lt;/html&gt;
+		</pre
+        >
+        <a href="#inicio">Volver al inicio</a>
+        <a href="#sec-4">Inicio de seccion</a>
+      </section>
+      <br />
+      <!-- Ejercicio 3 -->
+      <section id="sec-5">
+        <h2>Características Principales de HTML</h2>
+
+        <h3>Versiones de HTML en orden cronológico</h3>
+        <ol>
+          <li>HTML 1.0 (1991)</li>
+          <li>HTML 2.0 (1995)</li>
+          <li>HTML 3.2 (1997)</li>
+          <li>HTML 4.01 (1999)</li>
+          <li>XHTML 1.0 (2000)</li>
+          <li>HTML5 (2014)</li>
+        </ol>
+
+        <h3>Ventajas de HTML5</h3>
+        <ul>
+          <li>Soporte nativo para audio y video sin plugins</li>
+          <li>Nuevos elementos semánticos (header, nav, footer, article)</li>
+          <li>
+            APIs avanzadas (geolocalización, almacenamiento local, canvas)
+          </li>
+          <li>Mejor compatibilidad con dispositivos móviles</li>
+          <li>Formularios mejorados con nuevos tipos de input</li>
+          <li>Mayor rendimiento y velocidad de carga</li>
+        </ul>
+        <!-- Ejercicio 4 -->
+        <h3>Elementos HTML organizados por categorías</h3>
+        <dl>
+          <dt>Elementos de estructura</dt>
+          <dd>html - Raíz del documento</dd>
+          <dd>head - Metadatos del documento</dd>
+          <dt>Elementos de texto</dt>
+          <dd>h1, h2, h3 - Encabezados</dd>
+          <dd>p - Párrafos</dd>
+          <dt>Elementos multimedia</dt>
+          <dd>img - Imágenes</dd>
+          <dd>audio - Audio</dd>
+          <dd>video - Video</dd>
+          <dt>Elementos interactivos</dt>
+          <dd>a - Enlaces</dd>
+          <dd>button - Botones</dd>
+        </dl>
+      </section>
+      <br />
+      <a href="#inicio">Volver al inicio</a>
+      <a href="#sec-5">Inicio de seccion</a>
+      <section id="sec-6">
+        <h3>Tabla con versiones de HTML</h3>
+        <table border="1" cellpadding="3" cellspacing="6">
+          <caption>
+            Versiones de HTML
+          </caption>
+          <thead>
+            <tr>
+              <th>Versión</th>
+              <th>Año de lanzamiento</th>
+              <th>Características principales</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>HTML 1.0</td>
+              <td>1991</td>
+              <td>Primera versión, soporte básico de texto e imágenes</td>
+            </tr>
+            <tr>
+              <td>HTML 2.0</td>
+              <td>1995</td>
+              <td rowspan="2">Formularios, tablas, soporte para scripts</td>
+            </tr>
+            <tr>
+              <td colspan="2">HTML 3.2</td>
+              <td>???</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h3>Uso de iframe</h3>
+        <iframe
+          width="425"
+          height="350"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=6.0247135162353525%2C46.22569040015228%2C6.057586669921876%2C46.24201729061515&amp;layer=mapnik"
+          style="border: 1px solid black"
+        ></iframe
+        ><br /><small
+          ><a href="https://www.openstreetmap.org/?#map=15/46.23385/6.04115"
+            >Ver el mapa más grande</a
+          ></small
+        >
+      </section>
+	  <section>
+		<h3>Uso de tablas para organizar datos</h3>
+		<table  cellpadding="10" cellspacing="5">
+  			<caption>TABLA PERIÓDICA DE LOS ELEMENTOS</caption>
+			<thead>
+				<tr>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+					<th>8</th>
+					<th>9</th>
+					<th>10</th>
+					<th>11</th>
+					<th>12</th>
+					<th>13</th>
+					<th>14</th>
+					<th>15</th>
+					<th>16</th>
+					<th>17</th>
+					<th>18</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>H</td>
+					<td colspan="16"></td>
+					<td>He</td>
+				</tr>
+				<tr>
+					<td>Li</td>
+					<td>Be</td>
+					<td colspan="10"></td>
+					<td>B</td>
+					<td>C</td>
+					<td>N</td>
+					<td>O</td>
+					<td>F</td>
+					<td>Ne</td>
+				</tr>
+				<tr>
+					<td>Na</td>
+					<td>Mg</td>
+					<td colspan="10"></td>
+					<td>Al</td>
+					<td>Si</td>
+					<td>P</td>
+					<td>S</td>
+					<td>Cl</td>
+					<td>Ar</td>
+				</tr>
+				<tr>
+					<td>K</td>
+					<td>Ca</td>
+					<td>Sc</td>
+					<td>Ti</td>
+					<td>V</td>
+					<td>Cr</td>
+					<td>Mn</td>
+					<td>Fe</td>
+					<td>Co</td>
+					<td>Ni</td>
+					<td>Cu</td>
+					<td>Zn</td>
+					<td>Ga</td>
+					<td>Ge</td>
+					<td>As</td>
+					<td>Se</td>
+					<td>Br</td>
+					<td>Kr</td>
+				</tr>
+				<tr>
+					<td>Rb</td>
+					<td>Sr</td>
+					<td>Y</td>
+					<td>Zr</td>
+					<td>Nb</td>
+					<td>Mo</td>
+					<td>Tc</td>
+					<td>Ru</td>
+					<td>Rh</td>
+					<td>Pd</td>
+					<td>Ag</td>
+					<td>Cd</td>
+					<td>In</td>
+					<td>Sn</td>
+					<td>Sb</td>
+					<td>Te</td>
+					<td>I</td>
+					<td>Xe</td>
+				</tr>
+				<tr>
+					<td>Cs</td>
+					<td>Ba</td>
+					<td>La</td>
+					<td>Hf</td>
+					<td>Ta</td>
+					<td>W</td>
+					<td>Re</td>
+					<td>Os</td>
+					<td>Ir</td>
+					<td>Pt</td>
+					<td>Au</td>
+					<td>Hg</td>
+					<td>Tl</td>
+					<td>Pb</td>
+					<td>Bi</td>
+					<td>Po</td>
+					<td>At</td>
+					<td>Rn</td>
+				</tr>
+				<tr>
+					<td>Fr</td>
+					<td>Ra</td>
+					<td>Ac</td>
+					<td>Rf</td>
+					<td>Db</td>
+					<td>Sg</td>
+					<td>Bh</td>
+					<td>Hs</td>
+					<td>Mt</td>
+					<td>Ds</td>
+					<td>Rg</td>
+					<td>Cn</td>
+					<td>Nh</td>
+					<td>Fl</td>
+					<td>Mc</td>
+					<td>Lv</td>
+					<td>Ts</td>
+					<td>Og</td>
+				</tr>
+
+			</tbody>
+		</table>
+	  </section>
+    </main>
+
+    <footer>
+      Creado por Javier Urbaneja Benítez - Ingeniería de Software UMA
+    </footer>
+  </body>
+</html>
