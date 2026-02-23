@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de ejemplo</title>
+</head>
+<body>
+<h1>Fomulario de ejemplo</h1>
+<form action="" method="get">
+    <fieldset>
+        <legend>Datos de entrada</legend>
+        <p>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" size="10" id="nombre" placeholder="Paco"/>
+        </p>
+        <p>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" size="50" id="apellidos" placeholder="Pérez Díaz"/>
+        </p>
+        <p>
+            <label for="edad">Edad:</label>
+            <input type="text" name="edad" size="2" id="edad" placeholder="20"/>
+        </p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Titulación</legend>
+        <p>
+            <input type="radio" name="titulacion" id="soft" value="soft"/>
+            <label for="soft">Software</label>
+        </p>
+        <p>
+            <input type="radio" name="titulacion" id="inf" value="inf"/>
+            <label for="inf">Informática</label>
+        </p>
+        <p>
+            <input type="radio" name="titulacion" id="salud" value="salud"/>
+            <label for="salud">Salud</label>
+        </p>
+        <p>
+            <input type="radio" name="titulacion" id="ciber" value="ciber"/>
+            <label for="ciber">Ciberseguridad + IA</label>
+        </p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Aficiones</legend>
+        <p>
+            <input type="checkbox" name="aficiones" value="deporte" id="deporte"/>
+            <label for="deporte">Deporte</label>
+        </p>
+        <p>
+            <input type="checkbox" name="aficiones" value="cine" id="cine"/>
+            <label for="cine">Cine</label>
+        </p>
+        <p>
+            <input type="checkbox" name="aficiones" value="tv" id="tv"/>
+            <label for="tv">TV</label>
+        </p>
+        <p>
+            <input type="checkbox" name="aficiones" value="redes" id="redes"/>
+            <label for="redes">Redes Sociales</label>
+        </p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Curso</legend>
+        <select name="curso">
+            <option value="primero">Primero</option>
+            <option value="segundo">Segundo</option>
+            <option value="tercero">Tercero</option>
+            <option value="cuarto">Cuarto</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <legend>Sobre mi:</legend>
+        <textarea name="sobre" rows="20" cols="50" placeholder="Escriba aquí..."></textarea>
+    </fieldset>
+
+    <button type="submit" >Enviar</button>
+
+</form>
+</body>
+</html>
