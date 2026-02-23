@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Formulario de opinión</title>
+  <link href="style.css" rel="stylesheet" />
+  <script defer src="index.js"></script>
+</head>
+
+<body>
+  <h1>¡Estamos encantados de oír tu opinión!</h1>
+
+  <p>
+    Te damos las gracias por visitar <a href="#">nuestra casa rural</a> y nos encantaría oír tu opinión
+    sobre ella. Por favor, rellena las siguientes secciones. No es necesario que nos
+    proporciones tu nombre o datos de contacto, pero si lo haces, entrarás en un
+    <a href="#">sorteo</a> donde tendrás la oportunidad de ganar divertidos premios.
+  </p>
+  <img src="https://mdn.github.io/shared-assets/images/examples/learn/woodland-strip.jpg" alt="">
+  <form>
+
+
+    <section class="form-section">
+      <h2>Instalaciones</h2>
+      <fieldset>
+        <legend>¿Cómo te pareció la habitación?</legend>
+        <p class="separator">
+          <input type="radio" name="size" id="size_1" checked />
+          <label for="size_1">Demasiado pequeña</label>
+        </p>
+        <p class="separator">
+          <input type="radio" name="size" id="size_2">
+          <label for="size_2">Demasiado grande</label>
+        </p>
+        <p class="separator">
+          <input type="radio" name="size" id="size_3" />
+          <label for="size_3">Justo lo que esperaba </label>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>¿Qué te pareció la cama?</legend>
+        <p class="separator">
+          <input type="radio" name="bed" id="bed_1" checked />
+          <label for="bed_1">Demasiado dura</label>
+        </p>
+        <p class="separator">
+          <input type="radio" name="bed" id="bed_2">
+          <label for="bed_2">Demasiado blanda</label>
+        </p>
+        <p class="separator">
+          <input type="radio" name="bed" id="bed_3" />
+          <label for="bed_3">Justo lo que esperaba</label>
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Describe las instalaciones en general (puedes elegir varias opciones)</legend>
+        <p class="separator">
+          <input type="checkbox" name="inst" id="inst_1">
+          <label for="inst_1"> Cómodas</label>
+        </p>
+        <p class="separator">
+          <input type="checkbox" name="inst" id="inst_2">
+          <label for="inst_2">Lujosas</label>
+        </p>
+        <p class="separator">
+          <input type="checkbox" name="inst" id="inst_3">
+          <label for="inst_3">De alta tecnología</label>
+        </p>
+        <p class="separator">
+          <input type="checkbox" name="inst" id="inst_4">
+          <label for="inst_4">Coquetas</label>
+        </p>
+        <p class="separator">
+          <input type="checkbox" name="inst" id="inst_5">
+          <label for="inst_5">Majestuosas</label>
+        </p>
+
+      </fieldset>
+    </section>
+
+
+    <section class="form-section">
+      <h2>Sobre los anfitriones</h2>
+
+      <label for="empleado">¿Cuál es tu empleado favorito?</label>
+      <select name="empleado" id="empleado">
+        <optgroup label="Selecciona un empleado">
+          <option id="empleado_1">El mayordomo</option>
+          <option id="empleado_2">La cocinera</option>
+          <option id="empleado_3">La ama de llaves</option>
+          <option id="empleado_4">El jardinero</option>
+        </optgroup>
+      </select>
+
+      <fieldset>
+        <label for="saludo">¿Qué saludo prefieres?</label>
+        <select name="saludo" id="saludo">
+          <optgroup label="Selecciona un saludo">
+            <option id="saludo_1">Reverencia</option>
+            <option id="saludo_2">Abrazo</option>
+            <option id="saludo_3">Chocar los cinco</option>
+            <option id="saludo_4">Saludo militar</option>
+          </optgroup>
+        </select>
+      </fieldset>
+    </section>
+
+
+    <section class="form-section">
+      <h2>¿Alguna sugerencia adicional?</h2>
+      <label for="comm">Danos tus comentarios</label>
+      <br><textarea name="commentaries" id="comm" cols="20" rows="20"></textarea>
+    </section>
+
+    <section class="form-section">
+      <h2>Tus detalles</h2>
+      <p class="separator">
+        <label for="det_1">Nombre:</label>
+        <input type="text" name="details" id="det_1">
+      </p>
+      <p class="separator">
+        <label for="det_2">Correo electrónico:</label>
+        <input type="email" name="details" id="det_2">
+      </p>
+      <p class="separator">
+        <label for="det_3">Teléfono:</label>
+        <input type="tel" name="details" id="det_3">
+      </p>
+    </section>
+
+
+    <section class="form-section">
+      <button type="submit" id="send">Enviar</button>
+    </section>
+
+  </form>
+</body>
+
+</html>

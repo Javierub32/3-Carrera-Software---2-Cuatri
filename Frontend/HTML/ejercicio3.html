@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="utf-8" />
+  <title>Formulario de opinión</title>
+  <link href="ejercicio-formulario-retroalimentacion-estilo.css" rel="stylesheet" />
+  <script defer src="index.js"></script>
+</head>
+<body>
+    <h1>¡Ven a la conferencia universitaria!</h1>
+    <p>Rellena el formulario para realizar la inscripción a la conferencia</p>
+
+    <form action="">
+        <fieldset class="form-section">
+            <legend>Datos personales</legend>
+            <p class="separator">
+                <label for="name">Nombre completo</label>
+                <input type="text" minlength="3" name="name" id="name" placeholder="Paco Pérez" required>
+            </p>
+            <p class="separator">
+                <label for="email">Correo electrónico</label>
+                <input type="email" name="email" id="email" placeholder="correo@example.com" required>
+            </p>
+            <p class="separator">
+                <label for="tel">Teléfono</label>
+                <input type="tel" name="tel" id="tel" placeholder="952000000" pattern="[0-9]{9}">
+            </p>
+            <p class="separator">
+                <label for="b_date">Fecha de nacimiento</label>
+                <input type="date" name="b_date" id="b_date">
+            </p>
+            <p class="separator">
+                <label for="personal_web"> Sitio web personal o perfil académico</label>
+                <input type="url" name="personal_web" id="personal_web" placeholder="https://webpersonal.com" >
+            </p>
+        </fieldset>
+
+        <fieldset class="form-section">
+            <legend>Información académica</legend>
+            <p class="separator">
+                <label for="exp">Años de experiencia en investigación</label>
+                <input type="number" name="experience" id="exp" min="0" max="50" placeholder="-">
+            </p>
+            <p class="separator">
+                <label for="conocimiento">Nivel de conocimiento en el tema</label>
+                <input type="range" name="conocimiento" id="conocimiento" min="0" max="10" step="1" value="5">
+                <output for="conocimiento"></output>
+            </p>
+           
+            <p class="separator">
+                <label for="uni">Universidad de procedencia</label>
+                <select name="university" id="uni">
+                    <option value="none">---</option>
+                    <option value="mlg">Universidad de Málaga</option>
+                    <option value="gra">Universidad de Granada</option>
+                    <option value="sev">Universidad de Sevilla</option>
+                    <option value="mad">Universidad de Madrid</option>
+                    <option value="vlc">Universidad de Valencia</option>
+                </select>
+            </p>
+                
+            <p class="separator">
+                <label for="field">Campo de investigación</label>
+                <input
+                type="text"
+                id="field"
+                name="field"
+                list="list-field" placeholder="Introduzca un campo"/>
+                <datalist id="list-field">
+                    <option>Ciberseguridad y Criptografía</option>
+                    <option>Computación Cuántica</option>
+                    <option>Visión por Computador</option>
+                    <option>Internet de las cosas</option>
+                    <option>Desarrollo de Software Ágil y DevOps</option>
+                </datalist>
+            </p>
+        </fieldset>
+
+        <fieldset class="form-section">
+            <legend>Preferencias de asistencia</legend>
+            <fieldset>
+                <legend>Talleres de interés</legend>
+                <p class="separator">
+                    <input type="checkbox" name="talleres" id="hack" value="hack">
+                    <label for="hack">Hacking Ético en Entornos web</label>
+                </p>
+                <p class="separator">
+                    <input type="checkbox" name="talleres" id="docker" value="docker">
+                    <label for="docker">Despliege con Docker</label>
+                </p>
+                <p class="separator">
+                    <input type="checkbox" name="talleres" id="unity" value="unity">
+                    <label for="unity">Desarrollo de Videojuegos con Unity</label>
+                </p>
+                <p class="separator">
+                    <input type="checkbox" name="talleres" id="data" value="data">
+                    <label for="data">Análisis de Datos con Python</label>
+                </p>
+            </fieldset>
+
+            <fieldset>
+                <legend>Modalidad de asistencia</legend>
+                <p class="separator">
+                    <input type="radio" name="asistencia" id="presencial" value="presencial">
+                    <label for="presencial">Presencial</label>
+                </p>
+                <p class="separator">
+                    <input type="radio" name="asistencia" id="virtual" value="virtual">
+                    <label for="virtual">Virtual</label>
+                </p>
+                <p class="separator">
+                    <input type="radio" name="asistencia" id="hibrido" value="hibrido">
+                    <label for="hibrido">Híbrido</label>
+                </p>
+            </fieldset>
+
+            <p class="separator">
+                <label for="color">Color preferido para la identificación de credencial</label>
+                <input type="color" name="color" id="color" value="#0000ff">
+            </p>
+        </fieldset>
+
+        <fieldset class="form-section">
+            <legend>Logística</legend>
+            <p class="separator">
+                <label for="llegada">Fecha y hora de llegada estimada</label>
+                <input type="datetime-local" name="llegada" id="llegada">
+            </p>
+            <fieldset>
+                <legend>Hora preferida para sesiones</legend>
+                <p class="separator">
+                    <label for="manana">Mañana</label>
+                    <input type="time" name="hora_m" id="manana">
+                </p>
+                <p class="separator">
+                    <label for="tarde">Tarde</label>
+                    <input type="time" name="hora_t" id="tarde">
+                </p>
+            </fieldset>
+            <p class="separator">
+                <label for="cv">Subir CV académico</label>
+                <input type="file" name="cv" id="cv" accept=".pdf">
+            </p>
+            <p class="separator">
+                <label for="disponibilidad">Mes de disponibilidad para futuras ediciones</label>
+                <input type="month" name="disponibilidad" id="disponibilidad">
+            </p>
+        </fieldset>
+
+        <fieldset class="form-section">
+            <legend>Información adicional</legend>
+            <p class="separator">
+                <label for="resumen">Resumen de investigación actual </label>
+                <textarea name="resumen" id="resumen" placeholder="Escriba aquí los detalles..." maxlength="500"></textarea>
+            </p>
+
+            <p class="separator">
+                <label for="search">Busca palabras clave de interés</label>
+                <input type="search" name="search" id="search" placeholder="Buscar...">
+            </p>
+            
+            <input type="hidden" name="session_id" value="ID-987654321-ABC">
+        </fieldset>
+
+        <p class="separator">
+            <button type="submit">Enviar formulario</button>
+            <button type="reset">Reiniciar formulario</button>
+        </p>
+    
+    </form>
+</body>  
+</html>
