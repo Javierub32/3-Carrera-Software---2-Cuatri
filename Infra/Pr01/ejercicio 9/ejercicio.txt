@@ -1,0 +1,33 @@
+1.  docker build -t writer .
+
+2.  docker run --rm writer  -> Te da error de permisos
+
+3.  Añadimos la flag "-u" en el comando de inicio del contenedor para que python muestre los logs (opcional)
+	CMD ["python", "-u", "writer_app.py"]
+
+4.1 En la segunda linea del Dockerfile cambiamos "chmod 755" por "chmod 777" para tener permisos de escritura (menos seguro)
+
+4.2 Creamos el grupo y el usuario "appuser"
+	RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+4.3 Creamos el directorio de logs y cambiamos el propietario de la carpeta a este nuevo usuario
+	RUN mkdir -p /app/logs && chown -R appuser:appuser /app
+
+4.4 Cambiamos al usuario sin permisos root
+	USER appuser
+
+5. docker run --rm writer -> Hayamos seguido un paso u otro, ahora deberían salir los logs (ponemos el --rm porque solo queremos tener el contenedor creado
+							 mientras lo tengamos encendido, luego se borra solo)
+
+
+-------------------------------
+
+Comandos:
+
+mkdir -p /app/logs ---> Crea las carpetas intermedias si no existen (si no existe /app lo crea al crear /logs)
+
+chown -R appuser:appuser /app ---> Cambia el propietario de todo lo contenido en la carpeta de forma recursiva (-R) al usuario appuser del grupo appuser
+								   Explicación: Solo los root (administradores) y propietarios de un archivo pueden editarlo, el resto de usuarios solo pueden leer.
+
+
+

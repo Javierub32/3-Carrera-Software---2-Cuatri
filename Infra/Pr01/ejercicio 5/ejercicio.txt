@@ -1,0 +1,5 @@
+1.  docker build -t mi-app-java:1.0 .  -> Creamos la imagen, hay que tener cuidado en el Dockerfile al poner el target que hay en el Pom.xml
+
+2.  docker run -d -p 8080:8080 --name servidor_java mi-app-java:1.0
+
+3.  Accedemos a http://localhost:8080/api/hello

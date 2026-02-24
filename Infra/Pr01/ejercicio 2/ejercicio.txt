@@ -1,12 +1,29 @@
-Ejercicio 2:
+1.  docker run -it ubuntu:24.04 bash
 
-1. docker run -it ubuntu:24.04 bash
-2. apt update  -> apt install -y curl
+2.  apt update  ---> apt install -y curl
+
 3.  curl  https://pokeapi.co/api/v2/pokemon/snivy
-4. exit -> Salir del contenedor
-5. docker run ubuntu:24.04 date -> Ejecuto date sin entrar en modo interactivo (bash)
-6. docker run -d --name ubuntu_fondo ubuntu:24.04 sleep 300 -> Ejecuto el servidor en segundo plano y lo mantengo activo durante 300 segundos, cuando el proceso principal acabe el contenedor se apaga, así que tengo 300 segundos para poder usar ubuntu hasta que se me cierre.
-7. docker exec -it ubuntu_fondo bash -> Accedo a bash para poder 
-8. 
-9. docker run === docker create + docker start -> si hago docker run con un sleep 300, ese contenedor siempre va a durar 300s.
-10. por ello, el  docker run ubuntu:24.04 date deberiamos haberlo hecho con --rm para que se borre el contenedor conforme lo creamos, porque lo creamos unicamente para ejecutar un único comando.
+
+4.  exit -> Salir del contenedor
+
+5.  docker run ubuntu:24.04 date -> Ejecuto date sin entrar en modo interactivo (bash)
+
+6.  docker run -d --name ubuntu_fondo ubuntu:24.04 sleep 300 -> Ejecuto el servidor en segundo plano y lo mantengo activo durante 300 segundos, cuando el proceso principal acabe el contenedor se apaga, así que tengo 300 segundos para poder usar ubuntu hasta que se me cierre.
+
+7. docker exec -it ubuntu_fondo bash -> Accedo a bash para poder usar el contenedor
+
+--------------------------------
+
+Comandos:
+
+Docker run -it -> Ejecuta un contenedor en modo interactivo, permitiéndote acceder a la terminal del contenedor.
+				  -i (Mantiene la terminal abierta) y -t (Asigna una terminal al contenedor).
+
+Docker run -d -> Ejecuta un contenedor en segundo plano (detached mode).
+
+docker run === docker create + docker start -> Crea un contenedor a partir de una imagen y luego lo inicia. Si el proceso principal del contenedor termina, el contenedor se detiene automáticamente.
+
+Al hacer docker run con un sleep 300, se le asigna sleep 300 como proceso principal y siempre que ese proceso esté activo el contenedor estará activo, en nginx el proceso principal es el servidor, por eso no se cierra el contenedor. 
+
+Por ello, el  docker run ubuntu:24.04 date deberiamos haberlo hecho con --rm para que se borre el contenedor conforme lo creamos, porque lo creamos unicamente para ejecutar un único comando.
+

@@ -1,0 +1,12 @@
+1.  docker build -t mi-app-flask:v1 .  -> Creo una imagen con mi Dockerfile y le pongo el nombre que quiera
+
+2.  docker run -d -p 5000:5000 --name mi_flask mi-app-flask:v1 -> Creamos un contenedor a partir de mi imagen custom
+
+3.  Accedemos a http://127.0.0.1:5000/
+
+
+--------------------------------
+
+Comandos:
+
+docker build -t nombre_imagen:tag . ---> Construye una imagen a partir del Dockerfile en el directorio actual, con el nombre y tag especificados

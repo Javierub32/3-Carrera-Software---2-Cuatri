@@ -13,4 +13,5 @@ RUN mvn clean package -DskipTests
 
 EXPOSE 8080
 
+# Cuidado con poner el target que hay en el pom.xml, si no coincide el nombre del .jar no se ejecutará
 CMD ["java", "-jar", "target/docker-java-app-1.0.0.jar"]

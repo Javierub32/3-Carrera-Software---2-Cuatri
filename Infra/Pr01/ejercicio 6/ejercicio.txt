@@ -1,0 +1,27 @@
+1. docker run -d --name nginx-server-1 -p 8080:80 --memory="128m" nginx
+
+2. docker run -d --name nginx-server-2 -p 8081:80 --memory="256m" --cpus="0.5" nginx
+
+3. docker run --name test-memoria --memory=100m --memory-swap=100m busybox sh -c 'i=0; a=x; while true; do a=$a$a; i=$((i+1)); echo Iter $i; done' -> Si hacemos docker ps -a vemos como se cerró con un exit(137), por lo que lo mató el sistema porque no le quedaban recursos.
+
+4. docker run --rm --cpus=0.5 busybox sh -c "while true; do :; done"  -> Si te metes en otra terminal con docker stats podemos ver como consume toda la cpu que le hemos dado.
+
+5. Docker stats
+
+6. docker run -d --name test-restart --restart=always busybox sh -c "sleep 5 && exit 1"
+
+7. Docker ps -> Mirar cuanto tiempo lleva encendido
+
+8. docker inspect nginx-server-1 | grep -i Memory  -> Vemos cuanta memoria le asignamos al contenedor
+8. docker inspect nginx-server-2 | grep -i NanoCpus  -> Vemos cuanta memoria le asignamos al contenedor
+
+
+------------------------------------
+
+Comandos:
+
+Docker stats ---> Muestra el uso de recursos de los contenedores en tiempo real
+
+Docker inspect <nombre_contenedor> | grep -i Memory ---> Muestra la cantidad de memoria asignada al contenedor
+
+Docker inspect <nombre_contenedor> | grep -i NanoCpus ---> Muestra la cantidad de CPU asignada al contenedor 

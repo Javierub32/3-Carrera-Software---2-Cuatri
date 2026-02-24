@@ -1,31 +1,28 @@
-# ==========================================
 # ETAPA 1: Construcción (Builder)
-# ==========================================
-# Usamos la imagen pesada que tiene Maven y el JDK
+# Usamos la imagen tiene Maven y el JDK (más pesada, pero necesaria para compilar)
 FROM maven:3.9-eclipse-temurin-17 AS builder
 
-# Definimos el directorio de trabajo
 WORKDIR /app
 
-# Descargamos dependencias (aprovechando la caché)
 COPY pom.xml .
+
+# Descargamos las dependencias sin compilar el proyecto, para aprovechar la caché de Docker
+# Si cambiamos el código pero no el pom.xml, Docker usará la caché de esta capa y no descargá de dependencias
 RUN mvn dependency:go-offline
 
-# Copiamos el código y compilamos el .jar
 COPY src ./src
+
+# Compilamos el proyecto, generando el .jar en la carpeta target/
 RUN mvn clean package -DskipTests
 
-# ==========================================
+
 # ETAPA 2: Ejecución (Runtime)
-# ==========================================
-# Usamos una imagen ultra-ligera (Alpine Linux) que SOLO tiene el JRE (Java Runtime Environment)
+# Usamos una imagen que SOLO tiene el JRE (más ligera, pero no sirve para compilar)
 FROM eclipse-temurin:17-jre-alpine
 
-# Directorio de trabajo en la nueva imagen limpia
 WORKDIR /app
 
 # Copiamos SOLO el archivo .jar desde la etapa anterior ("builder")
-# y lo renombramos a "app.jar" para que sea más fácil de ejecutar
 COPY --from=builder /app/target/*.jar app.jar
 
 # Exponemos el puerto

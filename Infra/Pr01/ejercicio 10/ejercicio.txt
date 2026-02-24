@@ -1,0 +1,9 @@
+1. Eliminamos el COPY . .  -> Hay partes de la aplicacion que se modifican con menos frecuencia, hay que ponerlas 
+							  en capas separadas para que no se tengan que volver a construir cada vez que se
+							  modifique el código (mejor caché)
+
+2. COPY requirements.txt . -> Solo copiamos el requirements.txt para instalar las dependencias, así si modificamos el código no se vuelven a instalar las dependencias
+
+3. RUN pip install -r requirements.txt 
+
+4. COPY . . -> Ahora sí copiamos el código, pero al estar en una capa separada, si modificamos el código no se vuelven a instalar las dependencias

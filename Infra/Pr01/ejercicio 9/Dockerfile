@@ -1,13 +1,15 @@
 FROM python:3.9-slim
 
-# Crear directorio como root
-RUN mkdir -p /app/logs && chmod 755 /app/logs
-
 WORKDIR /app
-
 COPY writer_app.py .
 
-# Cambiar a usuario no-root para seguridad
-USER nobody
+# Creamos un usuario no privilegiado 'appuser' y un grupo 'appuser'
+RUN groupadd -r appuser && useradd -r -g appuser appuser
 
-CMD ["python", "writer_app.py"]
+# Creamos el directorio de logs y le damos permisos al usuario 'appuser'
+RUN mkdir -p /app/logs && chown -R appuser:appuser /app
+
+# Cambiamos al usuario 'appuser'
+USER appuser
+
+CMD ["python", "-u", "writer_app.py"]

@@ -1,0 +1,5 @@
+1.  docker build -t mi-api-node:1.0 .  -> Creamos imagen con Dockerfile
+
+2.  docker run -d -p 3000:3000 --name servidor_node mi-api-node:1.0
+
+3.  Accedemos a http://localhost:3000/api/info para entrar a nuestro servidor

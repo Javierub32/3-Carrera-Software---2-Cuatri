@@ -1,0 +1,19 @@
+1.  docker build -t dockerfile_error .
+
+2.  arreglamos el nombre del "COPY appp.py ." a "COPY app.py ."
+
+3.  RUN mkdir data
+    COPY config.json data/config.json -> Metemos el archivo donde se espera
+
+4   El requirements no se incluye pero tampoco es necesario con el código del app.py:
+	COPY requirements.txt .
+	RUN pip install -r requirements.txt
+
+5. Ejecutamos docker run --rm dockerfile_error
+
+
+--------------------------------
+
+Comandos:
+
+COPY origen destino ---> Copia un archivo de la ruta actual al contenedor
