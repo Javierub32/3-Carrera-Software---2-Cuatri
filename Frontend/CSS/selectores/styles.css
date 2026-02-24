@@ -1,0 +1,119 @@
+/* --- Selectores fundamentales --- */
+
+/* Todos los párrafos con tamaño de letra 0.95rem */
+p {
+    font-size: 0.95rem;
+}
+
+/* Clase .destacado: fondo y borde izquierdo */
+.destacado {
+    background: #fff3cd;
+    border-left: 4px solid #f0ad4e;
+}
+
+/* ID titular: color y tamaño de letra */
+#titular {
+    color: #1a237e;
+    font-size: 2rem;
+}
+
+/* Atributo data-nuevo: fondo */
+[data-nuevo] {
+    background: #d4edda;
+}
+
+/* Enlaces que contienen "wikipedia": color y borde inferior */
+a[href*="wikipedia"] {
+    color: #006400;
+    border-bottom: 1px dashed green;
+}
+
+/* Enlaces que terminan en .pdf: color */
+a[href$=".pdf"] {
+    color: #b71c1c;
+}
+
+/* --- Pseudoclases y pseudoelementos --- */
+
+/* Primer elemento de cualquier lista en negrita */
+li:first-child {
+    font-weight: bold;
+}
+
+/* Último elemento de cualquier lista en gris y cursiva */
+li:last-child {
+    color: #777;
+    font-style: italic;
+}
+
+/* Filas pares de la tabla con fondo azul claro */
+tr:nth-child(even) {
+    background: #e3f2fd;
+}
+
+/* Párrafos que NO tienen la clase .destacado: borde y padding izquierdo */
+p:not(.destacado) {
+    border-left: 3px solid #ccc;
+    padding-left: 0.6rem;
+}
+
+/* Primera línea de .intro-texto: negrita y color azul oscuro */
+.intro-texto::first-line {
+    font-weight: bold;
+    color: #1a237e;
+}
+
+/* Primera letra de .capitular (Drop Cap) */
+.capitular::first-letter {
+    font-size: 3em;
+    float: left;
+    line-height: 0.8;
+    /* Se usa margin-right para separar la letra del texto, ya que margin-left no está en la lista permitida */
+    margin-right: 4px; 
+}
+
+/* Hover en celdas de la tabla: fondo amarillo claro */
+td:hover, th:hover {
+    background: #fff9c4;
+}
+
+/* --- Combinadores --- */
+
+/* Elementos em dentro de .cita: color púrpura y estilo normal */
+.cita em {
+    color: #6a1b9a;
+    font-style: normal;
+}
+
+/* Hijos directos de .lista-compacta: marcador personalizado */
+.lista-compacta > li {
+    list-style-type: "→ ";
+}
+
+/* Párrafo inmediatamente posterior a un h2: color gris y cursiva */
+h2 + p {
+    color: #555;
+    font-style: italic;
+}
+
+/* Párrafos hermanos posteriores a un h3: padding izquierdo */
+h3 ~ p {
+    padding-left: 1rem;
+}
+
+/* Elemento con ambas clases (.etiqueta y .urgente): fondo rojo y texto blanco */
+.etiqueta.urgente {
+    background: #f44336;
+    color: white;
+}
+
+/* h2 y h3: tipografía y borde inferior */
+h2, h3 {
+    font-family: Georgia, serif;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Hijos directos de .tarjeta: margen inferior */
+.tarjeta > * {
+    margin-bottom: 0.5rem;
+}
