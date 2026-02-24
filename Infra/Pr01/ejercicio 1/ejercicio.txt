@@ -1,0 +1,12 @@
+Ejercicio 1:
+1. docker run -d --name web-demo -p 8080:80 nginx
+	1. -d (detached) -> En segundo plano
+	2. **-p 8080:80** (publish) -> Mapea los puertos de tu computadora (host) al contenedor (donde Ngix escucha)
+	3. nginx -> Imagen que descarga
+2. Docker ps -> Vemos si está corriendo
+3. Entramos a http://localhost:8080
+4. docker logs web-demo -> Vemos los logs del contenedor
+5. docker stop web-demo -> Parar contenedor
+6. docker start mi-app -> Empezar contenedor
+7. docker rm web-demo -> Borrar contenedor
+8. docker ps -> Vemos si sigue corriendose
