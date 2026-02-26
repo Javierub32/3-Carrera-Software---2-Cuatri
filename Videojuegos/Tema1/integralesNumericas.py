@@ -2,17 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def regla_rectangulo_grafica(funcion, a, b, n):
-    """
-    Calcula la integral numérica usando la regla del rectángulo (Punto Medio)
-    y genera una gráfica similar a la diapositiva.
-    
-    Parámetros:
-    funcion: La función matemática a integrar (como lambda o def)
-    a: Inicio del intervalo
-    b: Fin del intervalo
-    n: Número de subintervalos (rectángulos)
-    """
-    
     # 1. CÁLCULO NUMÉRICO
     # Ancho de cada subintervalo (Delta x)
     dx = (b - a) / n
@@ -139,16 +128,14 @@ def regla_trapecio_grafica(funcion, a, b, n):
 # --- EJECUCIÓN DEL PROGRAMA ---
 
 # Definimos una función de prueba.
-# Usaré una parábola invertida similar a la imagen: f(x) = -(x-3)^2 + 10
 def mi_funcion(x):
     return -(x - 3)**3 + 20
 
 # Parámetros definidos por el usuario
 a = 0   # Inicio
 b = 5   # Fin
-n = 10000   # Número de rectángulos (prueba cambiando esto a 4, 10, 50)
+n = 10   # Número de rectángulos
 
-# Llamamos a la función
 regla_rectangulo_grafica(mi_funcion, a, b, n)
 
 regla_trapecio_grafica(mi_funcion, a, b, n)

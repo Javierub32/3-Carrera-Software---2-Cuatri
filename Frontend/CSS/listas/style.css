@@ -1,0 +1,50 @@
+/*
+Es robusta porque tiene Arial y Helvetica que son específicas si está instaladas y si no lo están usan sans-serif que están instaladas en todos lados
+*/
+* {
+	font-family: Arial, Helvetica, sans-serif ;
+}
+
+/*
+
+ELEMENTO RAÍZ (html):
+Por defecto, los navegadores establecen font-size: 16px en el elemento <html>.
+Este valor es el "tamaño base" de todo el documento.
+
+CÓMO AFECTA EL CAMBIO DEL TAMAÑO BASE:
+
+1. VALORES EN px (PÍXELES):
+   - NO se ven afectados por el tamaño base
+   - 25px siempre será 25px, sin importar el font-size del html
+   - Ejemplo: h2 con font-size: 25px será siempre 25px
+
+2. VALORES EN rem (ROOT EM):
+   - SÍ se ven afectados por el tamaño base del html
+   - 1rem = tamaño del font-size del elemento <html>
+   - Si html tiene 16px (por defecto): 2rem = 32px
+   - Si cambias html a 20px: 2rem = 40px (aumenta un 25%)
+   - Si cambias html a 12px: 2rem = 24px (disminuye un 25%)
+   - Ejemplo: h1 con font-size: 2rem escalará proporcionalmente
+
+3. VALORES EN em:
+   - Se ven afectados por el font-size del ELEMENTO PADRE, no del html
+   - Si no hay padre con font-size definido, hereda del body, que hereda del html
+   - 1em = tamaño del font-size del elemento padre
+   - Ejemplo: h3 con font-size: 1em depende de su contexto
+
+VENTAJA DE USAR rem:
+Si un usuario cambia el tamaño de fuente en su navegador (por accesibilidad), todos los elementos con rem se ajustarán automáticamente, mientras que los px permanecerán fijos. Esto hace que rem sea más accesible.
+
+*/
+
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size:25px;
+}
+
+h3 {
+	font-size: 1em;
+}
