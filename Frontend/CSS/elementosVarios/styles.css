@@ -1,3 +1,4 @@
+/* --- FONDOS Y BORDES --- */
 .valoresYColores p:nth-of-type(1) {
 	color: red;
 }
@@ -15,7 +16,7 @@
 }
 
 .valoresYColores div:nth-of-type(1) {
-	background-color: rgba(0, 0, 255, 0.5);
+	background-color: rgba(0, 0, 255, 0.2);
 	height: 200px;
 	width: 200px;
 }
@@ -25,3 +26,255 @@
 	height: 200px;
 	width: 200px;
 }
+
+.valoresYColores p:nth-of-type(5) {
+	font-size: 12px;
+}
+.valoresYColores p:nth-of-type(6) {
+	font-size: 1em; /* Equivale a 16px porque es el tamaño base*/
+}
+.valoresYColores p:nth-of-type(7) {
+	font-size: 14pt;
+}
+.valoresYColores p:nth-of-type(8) {
+	font-size: 0.8cm;
+}
+
+.fondosYBordes div {
+	margin-top: 10px;
+	height: 200px;
+	width: 350px;
+	background-color: green;
+}
+
+.fondosYBordes div:nth-of-type(1) {
+	background-image: url(gato.webp);
+	background-size: 100px 100px;
+	background-repeat: repeat-x;
+
+}
+
+.fondosYBordes div:nth-of-type(2) {
+	background-image: url(gato.webp);
+	background-size: 100px 100px;
+	background-repeat: no-repeat;
+	background-position: center right ;
+}
+
+
+.fondosYBordes div:nth-of-type(3) {
+	border: black 5px solid;
+}
+
+.fondosYBordes div:nth-of-type(4) {
+	border: black 5px dashed;
+}
+
+.fondosYBordes div:nth-of-type(5) {
+	border: black 5px dotted;
+}
+
+.fondosYBordes div:nth-of-type(6) {
+	border: black 5px double;
+}
+
+
+.fondosYBordes div:nth-of-type(7) {
+	border-radius: 10px;
+}
+
+.fondosYBordes div:nth-of-type(8) {
+	border-radius: 50px;
+}
+
+.fondosYBordes div:nth-of-type(9) {
+	border-radius: 50em;
+}
+
+
+/* --- TAMAÑO Y DESBORDAMIENTO --- */
+.tamanoYDesbordamiento div:nth-of-type(-n+4) {
+	width: 100px;
+	height: 50px;
+	border: 1px solid black;
+	margin-bottom: 10px;
+	white-space: nowrap; /* Para forzar el desbordamiento de texto */
+}
+
+.tamanoYDesbordamiento div:nth-of-type(1) {
+	overflow: visible;
+}
+
+.tamanoYDesbordamiento div:nth-of-type(2) {
+	overflow: hidden;
+}
+
+.tamanoYDesbordamiento div:nth-of-type(3) {
+	overflow: scroll;
+}
+
+.tamanoYDesbordamiento div:nth-of-type(4) {
+	overflow: auto;
+}
+
+.tamanoYDesbordamiento .contenedor-estrecho {
+	width:100% ;
+	border: 2px solid blue;
+	margin: 20px 0;
+	background-color: #ddd;
+}
+
+.tamanoYDesbordamiento .contenedor-estrecho img:nth-of-type(1) {
+	width: 100%; /* Forzará a la imagen a ser del tamaño necesario */
+}
+
+.tamanoYDesbordamiento .contenedor-estrecho img:nth-of-type(2) {
+	max-width: 100%; /* Se adapta hasta su tamaño maximo */
+}
+
+.tamanoYDesbordamiento .min-height-box {
+	min-height: 50px;
+	width: 200px;
+	background-color: lightsalmon;
+	margin-bottom: 10px;
+}
+
+.tamanoYDesbordamiento div:last-of-type {
+	width: 50vw;
+	height: 30vh;
+	border: 2px solid black;
+}
+
+
+/* --- MODELO DE CAJAS --- */
+.modeloDeCajas div:nth-of-type(1),
+.modeloDeCajas div:nth-of-type(2) {
+	width: 200px;
+	height: 100px;
+	padding: 20px;
+	border: 10px solid black;
+	background-color: lightblue;
+	margin-bottom: 20px;
+}
+
+.modeloDeCajas div:nth-of-type(1) {
+	box-sizing: content-box; /* Ancho total = 200 + 40(p) + 20(b) = 260px */
+}
+
+.modeloDeCajas div:nth-of-type(2) {
+	box-sizing: border-box; /* Ancho total = 200px (contenido se ciñe al width) */
+}
+
+.modeloDeCajas section {
+	background-color: #ccc;
+	height: 50px;
+	margin: 20px 0; /* Los márgenes verticales de 20px se fusionarán en uno solo de 20px */
+}
+
+.modeloDeCajas div:nth-of-type(3) {
+	width: 200px;
+	margin-top: 10px;
+	margin-left: 50px;
+	padding-top: 20px;
+	padding-left: 5px;
+	border: 1px solid black;
+}
+
+.modeloDeCajas div:nth-of-type(4) {
+	border: 1px solid red;
+	margin: 20px;
+	padding: 20px; 
+	display: inline-block;
+}
+
+
+
+/* --- DISPLAY Y POSICIONAMIENTO --- */
+.displayYPosicionamiento span {
+	display: inline-block; 
+	width: 100px;
+	padding: 10px;
+	background-color: lightgreen;
+	margin: 5px;
+}
+
+.displayYPosicionamiento nav ul {
+	list-style: none;
+	padding: 0;
+}
+
+.displayYPosicionamiento nav li {
+	display: inline-block;
+	background-color: #333;
+}
+
+.displayYPosicionamiento nav a {
+	display: inline-block; /* Para que el padding sea clicable */
+	text-decoration: none;
+	color: white;
+	padding: 15px 20px;
+}
+
+.displayYPosicionamiento .caja-relativa {
+	width: 100px;
+	height: 100px;
+	background-color: teal;
+	position: relative;
+	top: 20px;
+	left: 30px;
+	margin-bottom: 50px;
+}
+
+.displayYPosicionamiento .contenedor-padre {
+	position: relative; /* Contexto para el absoluto */
+	width: 300px;
+	height: 200px;
+	border: 2px solid black;
+	background-color: #eee;
+}
+
+.displayYPosicionamiento .caja-absoluta {
+	width: 80px;
+	height: 80px;
+	background-color: tomato;
+	position: absolute;
+	top: 20px;
+	left: 30px; 
+}
+
+.displayYPosicionamiento .header-fijo {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: navy;
+	color: white;
+	padding: 15px;
+	text-align: center;
+	z-index: 1000;
+}
+
+
+/* --- FUNCIONES Y !IMPORTANT --- */
+.funcionesYImportant div:nth-of-type(1) {
+	background-color: pink;
+	height: 50px;
+	width: calc(100% - 40px); 
+	margin-bottom: 10px;
+}
+
+.funcionesYImportant div:nth-of-type(2) {
+	background-color: plum;
+	height: 50px;
+	width: calc(50vw - 2em);
+}
+
+.funcionesYImportant p {
+	color: blue; 
+}
+
+.funcionesYImportant p {
+	color: red !important; /* Ganará esta aunque esté antes o tenga menos especificidad */
+}
+
+
