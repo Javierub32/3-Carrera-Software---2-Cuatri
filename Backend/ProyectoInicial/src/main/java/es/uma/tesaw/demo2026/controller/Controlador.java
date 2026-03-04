@@ -31,4 +31,32 @@ public class Controlador {
         return "prueba.jsp";
     }
 
+    @PostMapping("/calculadora")
+    public String doCalcular(@RequestParam("op01") Double operador1,
+                             @RequestParam("op02") Double operador2,
+                             @RequestParam("op03") String operador3,
+                             Model model) {
+        Double solucion = 0.0;
+
+        switch (operador3) {
+            case "+":
+                solucion = operador1 + operador2;
+                break;
+            case "-":
+                solucion = operador1 - operador2;
+                break;
+            case "*":
+                solucion = operador1 * operador2;
+                break;
+            case "/":
+                solucion = operador1 / operador2;
+                break;
+            default:
+                solucion = -1.0;
+                break;
+        }
+        model.addAttribute("solucion", solucion);
+
+        return "calculadora.jsp";
+    }
 }
