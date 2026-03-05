@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<body>
+    <button id="btnMultiple">Haz clic aquí</button>
+
+	<form id="formularioUsuario">
+        <input type="text" id="nombre" placeholder="Nombre completo">
+        <input type="text" id="correo" placeholder="Correo electrónico">
+        <button type="submit">Enviar datos</button>
+    </form>
+
+    <script>
+		const boton = document.getElementById('btnMultiple');
+		let contadorInterno = 0;
+
+		// Manejador 1: Hora actual
+		boton.addEventListener('click', () => {
+			const hora = new Date().toLocaleTimeString();
+			alert(`Manejador 1: La hora actual es ${hora}`);
+		});
+
+		// Manejador 2: Coordenadas del ratón
+		boton.addEventListener('click', (evento) => {
+			console.log("Manejador 2 (Consola):");
+			console.log(`Coordenadas: X=${evento.clientX}, Y=${evento.clientY}`);
+		});
+
+		// Manejador 3: Contador interno
+		boton.addEventListener('click', () => {
+			contadorInterno++;
+			alert(`Manejador 3: Has pulsado el botón ${contadorInterno} veces.`);
+		});
+	</script>
+
+    <script>
+		const formulario = document.getElementById('formularioUsuario');
+
+		formulario.addEventListener('submit', (e) => {
+			// Obtenemos los valores de los campos
+			const nombre = document.getElementById('nombre').value.trim();
+			const correo = document.getElementById('correo').value.trim();
+
+			// Validación: ¿Campos vacíos?
+			if (nombre === "" || correo === "") {
+				e.preventDefault(); // Detenemos el envío
+				alert("Error: Todos los campos son obligatorios.");
+				return; // Salimos de la función
+			}
+
+			// Validación: ¿Contiene @?
+			if (!correo.includes('@')) {
+				e.preventDefault(); // Detenemos el envío
+				alert("Error: El correo electrónico no es válido (falta el carácter @).");
+				return;
+			}
+
+			// Si el código llega aquí, la validación es correcta
+			// Usamos una cadena de plantilla para mostrar los datos
+			alert(`¡Validación correcta!
+				Nombre: ${nombre}
+				Correo: ${correo}`
+			);
+			
+			// Nota: Como no hemos llamado a e.preventDefault() en este punto final, 
+			// el formulario se enviaría después de cerrar el alert.
+		});
+
+	</script>
+</body>
+</body>
+</html>

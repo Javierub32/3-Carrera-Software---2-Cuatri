@@ -296,3 +296,81 @@ console.log(saludos);
 
 
 // Ejercicio 21:
+const biblioteca = {
+    libro1: {
+        titulo: "El Quijote",
+        autor: "Miguel de Cervantes",
+        año: 1605,
+        disponible: true
+    },
+    libro2: {
+        titulo: "1984",
+        autor: "George Orwell",
+        año: 1949,
+        disponible: false
+    },
+    libro3: {
+        titulo: "El Hobbit",
+        autor: "J.R.R. Tolkien",
+        año: 1937,
+        disponible: true
+    }
+};
+
+console.log("Título del segundo libro:", biblioteca.libro2.titulo);
+
+const propAutor = "autor";
+const tercerLibro = "libro3";
+console.log("Autor del tercer libro:", biblioteca[tercerLibro][propAutor]);
+
+
+// Ejercicio 22:
+const calculadora = {};
+
+calculadora.marca = "Casio";
+calculadora.modelo = "FX-991";
+calculadora.sumar = (a, b) => a + b;
+calculadora.restar = (a, b) => a - b;
+calculadora.multiplicar = (a, b) => a * b;
+calculadora.dividir = (a, b) => {
+    return b === 0 ? "Error: División por cero" : a / b;
+};
+
+console.log(`Marca: ${calculadora.marca}`);
+console.log(`Suma (5+3): ${calculadora.sumar(5, 3)}`);
+console.log(`Resta (10-4): ${calculadora.restar(10, 4)}`);
+console.log(`Multiplicación (2*6): ${calculadora.multiplicar(2, 6)}`);
+console.log(`División (10/2): ${calculadora.dividir(10, 2)}`);
+console.log(`División por cero: ${calculadora.dividir(10, 0)}`);
+
+
+// Ejercicio 23:
+function Estudiante(nombre, apellido, curso) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.curso = curso;
+
+    this.nombreCompleto = function() {
+        return `${this.nombre} ${this.apellido}`;
+    };
+
+    this.presentacion = function() {
+        console.log(`Hola, soy ${this.nombreCompleto()} y estoy en el curso de ${this.curso}.`);
+    };
+}
+
+const est1 = new Estudiante("Juan", "Pérez", "Desarrollo Web");
+const est2 = new Estudiante("María", "García", "Diseño UI");
+const est3 = new Estudiante("Luis", "López", "Ciberseguridad");
+
+est1.presentacion();
+est2.presentacion();
+est3.presentacion();
+
+console.log("\n--- Comprobación de tipos ---");
+console.log(`typeof est1: ${typeof est1}`); // "object"
+console.log(`¿est1 es instancia de Estudiante?: ${est1 instanceof Estudiante}`); // true
+console.log(`¿est1 es instancia de Object?: ${est1 instanceof Object}`); // true (todos heredan de Object)
+
+
+// Ejercicio 24:
