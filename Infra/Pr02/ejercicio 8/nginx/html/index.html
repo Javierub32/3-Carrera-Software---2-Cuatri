@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Blog</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .post { border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        button { padding: 10px 20px; margin: 10px 0; cursor: pointer; }
+        input, textarea { width: 100%; padding: 8px; margin: 5px 0; }
+        #source { color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <h1>Mi Blog con Docker</h1>
+    
+    <div id="source"></div>
+    
+    <div>
+        <h2>Crear Nuevo Post</h2>
+        <input type="text" id="title" placeholder="Título">
+        <textarea id="content" rows="4" placeholder="Contenido"></textarea>
+        <button onclick="createPost()">Crear Post</button>
+    </div>
+    
+    <div>
+        <h2>Posts</h2>
+        <button onclick="loadPosts()">Recargar Posts</button>
+        <div id="posts"></div>
+    </div>
+
+    <script>
+        async function loadPosts() {
+            try {
+                // Llamar al backend a través del mismo puerto (8080)
+                const response = await fetch('/api/posts');
+                const data = await response.json();
+                
+                document.getElementById('source').textContent = 
+                    `Datos desde: ${data.source}`;
+                
+                const postsDiv = document.getElementById('posts');
+                postsDiv.innerHTML = data.posts.map(post => `
+                    <div class="post">
+                        <h3>${post.title}</h3>
+                        <p>${post.content}</p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                document.getElementById('posts').innerHTML = 
+                    `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        }
+        
+        async function createPost() {
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            
+            try {
+                await fetch('/api/posts', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({title, content})
+                });
+                
+                document.getElementById('title').value = '';
+                document.getElementById('content').value = '';
+                
+                loadPosts();
+            } catch (error) {
+                alert('Error al crear post: ' + error.message);
+            }
+        }
+        
+        // Cargar posts al inicio
+        loadPosts();
+    </script>
+</body>
+</html>

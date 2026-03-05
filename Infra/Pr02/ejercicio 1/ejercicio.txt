@@ -1,0 +1,13 @@
+1.  docker compose up -d --> Inicia los servicios (crea los contenedores si no existen) y los pone en segundo plano (-d)
+
+2.  docker compose logs -f -> Inspecciona los logs
+
+3.  Accedemos a la BD en localhost:8080 con estas credenciales:
+		Sistema: PostgreSQL
+		Servidor: db
+		Usuario: postgres (Es el usuario por defecto de la imagen oficial).
+		Contraseña: secretpassword (La que definiste en el archivo).
+		Base de datos: postgres (La base de datos que se crea por defecto).
+
+4.  Vemos en los logs que se ven las peticiones que hacemos
+

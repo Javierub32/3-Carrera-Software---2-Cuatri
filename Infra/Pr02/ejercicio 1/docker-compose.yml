@@ -1,0 +1,14 @@
+services:
+  db:
+    container_name: baseDeDatos_postgres
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: secretpassword
+
+  web:
+    container_name: interfazGrafica_adminer 
+    image: adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
