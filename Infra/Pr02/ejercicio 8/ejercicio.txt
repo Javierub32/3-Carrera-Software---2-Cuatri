@@ -1,0 +1,9 @@
+1.  docker compose up -d --build
+
+2.  Accedemos a localhost:8080 y accedemos a nuestro Frontend (nginx)
+
+3.  docker compose down -> Borramos los contenedores
+
+4.  docker compose up -d --build -> Volvemos a levantar los contenedores
+
+5.  Accedemos a localhost:8080 y vemos que sigue el Frontend y los datos.

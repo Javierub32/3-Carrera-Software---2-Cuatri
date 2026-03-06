@@ -1,0 +1,47 @@
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/html:/usr/share/nginx/html:ro
+    networks:
+      - public_net
+      - application_net
+
+  backend:
+    build: ./backend
+    depends_on:
+      - database
+      - redis
+    networks:
+      - application_net
+      - database_net
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_data:/data
+    networks:
+      - application_net
+
+  database:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: blogdb
+      POSTGRES_USER: bloguser
+      POSTGRES_PASSWORD: blogpass
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - database_net
+
+networks:
+  public_net:
+  application_net:
+  database_net:
+
+volumes:
+  pg_data:
+  redis_data:
