@@ -1,0 +1,26 @@
+services:
+  database:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: miapp
+      POSTGRES_USER: usuario
+      POSTGRES_PASSWORD: password
+
+  backend:
+    build: ./backend
+    depends_on:
+      - database
+
+  frontend:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+    # Ruta del PC : Ruta del contenedor : Permisos
+    # /usr/share/nginx/html/index.html es la ruta donde nginx tiene su HelloWorld al crearlo por primera vez.
+    # Como los contenedores son inmutables, al hacer esto podemos modificar lo que muestra nginx sin tener
+    # que crear un nuevo contenedor con cada cambio que hagamos.
+      - ./frontend/index.html:/usr/share/nginx/html/index.html:ro
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - backend

@@ -1,0 +1,13 @@
+services:
+  redis:
+    container_name: cache_redis
+    image: redis:alpine
+
+  web:
+    container_name: server_python
+    build: .
+    ports:
+      - "5000:5000" 
+      # Abre el puerto 5000 (izquierda) en mi PC y todo lo que entre por ahí mandaselo al puerto 5000 del contenedor (derecha). El numero de la derecha debe ser 5000 porque es el puerto que escucha el servidor de Python.
+    depends_on:
+      - redis

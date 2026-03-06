@@ -1,0 +1,32 @@
+services:
+  database:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    networks:
+      - backend_net
+
+  api:
+    build: ./api
+    networks:
+      - frontend_net
+      - backend_net
+    depends_on:
+      - database
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - frontend_net
+    depends_on:
+      - api
+
+networks:
+  frontend_net:
+  backend_net:

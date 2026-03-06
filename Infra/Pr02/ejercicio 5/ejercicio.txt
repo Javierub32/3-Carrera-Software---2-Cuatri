@@ -1,0 +1,23 @@
+1.  docker compose up -d --build
+
+2.  docker compose exec db psql -U postgres -d testdb -> Nos conectamos a la BD.
+
+3.  CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nombre VARCHAR(100)); -> Creamos tabla de prueba.
+
+4.  INSERT INTO usuarios (nombre) VALUES ('Juan'), ('María'), ('Pedro'); -> Insertamos datos de prueba.
+
+5.  SELECT * FROM usuarios; -> Verificamos que los datos se han insertado correctamente. 
+
+6.  \q -> Salimos de la consola de PostgreSQL.
+
+7.  docker compose down -> Detiene y elimina los contenedores y las redes.
+
+8.  docker compose up -d --build -> Volvemos a levantar el contenedor para verificar que los datos persisten.
+
+9.  docker compose exec db psql -U postgres -d testdb -> Nos conectamos nuevamente a la BD.
+
+10. SELECT * FROM usuarios; -> Verificamos que los datos siguen ahí aunque hayamos borrado el contenedor.
+
+11. \q -> Salimos de la consola de PostgreSQL.
+
+12. docker compose down -v -> Detiene y elimina los contenedores, las redes y los VOLUMENES.

@@ -1,0 +1,16 @@
+services:
+  redis:
+    container_name: cache_redis
+    image: redis:alpine
+
+  web:
+    container_name: server_python
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - APP_NAME=${APP_NAME}
+      - APP_VERSION=${APP_VERSION}

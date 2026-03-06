@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_persistente
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: testdb
+    volumes:
+      # Mapeamos el volumen a la ruta donde postgre guarda sus datos
+      - pg_data:/var/lib/postgresql/data   
+
+volumes:
+  pg_data:

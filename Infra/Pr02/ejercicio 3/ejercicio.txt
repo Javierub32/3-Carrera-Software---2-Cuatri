@@ -1,0 +1,19 @@
+1.  docker compose up -d --build -> Nos aseguramos que el contenedor se construya con los cambios realizados
+									en el Dockerfile (--build) y se ejecute en segundo plano (-d).
+
+2.  docker compose logs -f -> Nos permite ver los logs del contenedor en tiempo real.
+
+3.  Accedemos a localhost:5000 -> Verificamos que la app se está ejecutando y que cada vez que recargamos, 
+								  se muestra una petición HTTPS en los logs.
+
+4.1 docker compose stop -> Detiene el contenedor sin eliminarlo, lo que permite reiniciarlo más tarde si es necesario.
+
+4.2 docker compose down -> Detiene y elimina los contenedores y las redes.
+
+
+-----------------------
+
+COMANDOS:
+
+- docker compose -p miProyecto up -d -> Le pone el nombre "miProyecto" al proyecto, si no lo pones, 
+										le asigna el nombre del directorio actual.
