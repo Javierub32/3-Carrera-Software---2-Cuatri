@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Relacion 2</title>
+	
+</head>
+<body>
+	<div id="div1">
+		<label for="ej1_size">Selecciona tamaño de la tabla</label>
+		<input type="number" name="Tamaño" id="ej1_size">
+		<br>
+		<button id="ej1_boton">Crear</button>
+		<div id="ej1_lista"></div>
+	</div>
+
+	<hr>
+
+	<div id="div2">
+		<div class="semaforoContainer">
+			<div class="semaforo" id="rojo"></div>
+			<div class="semaforo" id="amarillo"></div>
+			<div class="semaforo" id="verde"></div>
+		</div>
+		<div style="display: flex; flex-direction: row;">
+			<button id="ej2-rojo">Rojo</button>
+			<button id="ej2-amarillo">Amarillo</button>
+			<button id="ej2-verde">Verde</button>
+		</div>
+	</div>
+
+	<hr>
+
+	<div id="div3">
+		<ul id="lista">
+			<li>Elemento 1</li>
+			<li>Elemento 2</li>
+			<li>Elemento 3</li>
+		</ul>
+
+		<button id="boton">Añadir elemento</button>
+	</div>
+
+	<hr>
+
+	<div id="div4">
+		<table id="tabla">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Edad</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody id="cuerpo-tabla"></tbody>
+		</table>
+
+		<div id="formulario">
+			<input id="campo-nombre"   type="text"   placeholder="Nombre" />
+			<input id="campo-apellido" type="text"   placeholder="Apellido" />
+			<input id="campo-edad"     type="number" placeholder="Edad" />
+			<button id="btn-añadir-fila">Añadir fila</button>
+		</div>
+		<p id="contador">Total de filas: 0</p>
+	</div>
+
+	<script src="script.js" ></script>
+</body>
+
+<style>
+	#div2 {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.semaforoContainer {
+		border: 2px solid gray;
+		width: 200px;
+		border-radius: 20px;
+		margin-bottom: 20px;
+	}
+	.semaforo {
+		width: 100px;
+		height: 100px;
+		border-radius: 100%;
+		background-color: gray;
+		margin: 20px auto;
+	}
+
+	.semaforo.rojo {
+		background-color: red;
+	}
+
+	.semaforo.amarillo {
+		background-color: yellow;
+	}
+
+	.semaforo.verde {
+		background-color: green;
+	}
+</style>
+</html>
