@@ -4,25 +4,54 @@ import math
 import tkinter as tk
 from tkinter import messagebox
 
+class DampedPendulum:
+    def __init__(self, espacio, cuerpo, punto_suspension, longitud, coeficiente_friccion):
+        self.espacio = espacio
+        self.body = cuerpo
+        self.punto_suspension = punto_suspension
+        self.longitud = longitud
+        self.b = coeficiente_friccion
+
+        self.joint = pymunk.PinJoint(espacio.static_body, cuerpo, punto_suspension, (0, 0))
+        self.espacio.add(self.joint)
+
+        # Esta función se ejecutará automáticamente en cada paso de la simulación
+        self.body.velocity_func = self._update_damping
+
+    def _update_damping(self, body, gravity, damping, dt):
+        """
+        Función interna que aplica la fuerza de rozamiento F = -b * v
+        pymunk llama a esta función automáticamente en cada step.
+        """
+        # Aplicamos la gravedad estándar primero
+        pymunk.Body.update_velocity(body, gravity, damping, dt)
+        
+        # Aplicamos la fuerza de rozamiento (amortiguamiento)
+        fuerza_friccion = -self.b * body.velocity
+        body.apply_force_at_world_point(fuerza_friccion, body.position)
+
+    def draw(self, pantalla):
+        """Método helper para dibujar el péndulo"""
+        pos = (int(self.body.position.x), int(self.body.position.y))
+        pygame.draw.line(pantalla, (150, 150, 150), self.punto_suspension, pos, 2)
+        pygame.draw.circle(pantalla, (50, 100, 255), pos, 40)
+        pygame.draw.circle(pantalla, (0, 0, 0), pos, 40, 2)
+
 def run_simulation(angulo_grados=70, gravedad=900, damping=0.3):
-    # Iniciamos pygame
     pygame.init()
-    pygame.display.set_caption("Simulación de un Péndulo Amortiguado")
     pantalla = pygame.display.set_mode((800, 600))
     clock = pygame.time.Clock()
     
-	# Creamos el espacio de simulación
     espacio = pymunk.Space()
     espacio.gravity = (0, gravedad)
     
-    # Configuramos la esfera y el hilo
+    # Preparar cuerpo
     mass = 1.0
     radius = 40
     longitud_hilo = 350
-    angulo_inicial = math.radians(angulo_grados)
     posicion_hilo = (400, 100)
+    angulo_inicial = math.radians(angulo_grados)
     
-	# Creamos el cuerpo (física) y la forma (colisión) de la esfera
     moment = pymunk.moment_for_circle(mass, 0, radius)
     body = pymunk.Body(mass, moment)
     body.position = (
@@ -32,42 +61,25 @@ def run_simulation(angulo_grados=70, gravedad=900, damping=0.3):
     shape = pymunk.Circle(body, radius)
     espacio.add(body, shape)
 
-    # Unimos la esfera al soporte con un PinJoint (hilo inextensible)
-    joint = pymunk.PinJoint(espacio.static_body, body, posicion_hilo, (0, 0))
-    espacio.add(joint)
+    pendulo = DampedPendulum(espacio, body, posicion_hilo, longitud_hilo, damping)
 
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: running = False
 
-        # Aplicamos amortiguacion (F = -b * v)
-        v = body.velocity
-        f_amortiguacion = -damping * v
-        body.apply_force_at_world_point(f_amortiguacion, body.position)
-
-		# Dibujamos la escena
         pantalla.fill((255, 255, 255))
-
-        # Dibujar Soporte
         pygame.draw.line(pantalla, (0, 0, 0), (350, 100), (450, 100), 5)
         
-        # Dibujar Hilo
-        pos = (int(body.position.x), int(body.position.y))
-        pygame.draw.line(pantalla, (150, 150, 150), posicion_hilo, pos, 2)
+        # Dibujamos el péndulo usando su método encapsulado
+        pendulo.draw(pantalla)
 
-        # Dibujar Esfera
-        pygame.draw.circle(pantalla, (50, 100, 255), pos, radius) # Esfera rellena
-        pygame.draw.circle(pantalla, (0, 0, 0), pos, radius, 2)   # Borde
-
-		# Refrescamos la pantalla para mostrar los cambios
-        pygame.display.flip()
-        
-		# Avanzamos la simulación 1 frame y limitamos a 60FPS
         espacio.step(1.0 / 60.0)
+        pygame.display.flip()
         clock.tick(60)
 
     pygame.quit()
+    
 
 def crear_formulario():
     """Crea un formulario para configurar los parámetros del péndulo"""

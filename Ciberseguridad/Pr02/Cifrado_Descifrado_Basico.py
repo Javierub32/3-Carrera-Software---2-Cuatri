@@ -56,56 +56,56 @@ data2 = "Hola amigos de la seguridad".encode("utf-8")
     
 
 print("Datos originales:", data.decode("utf-8", "ignore"))
-print("Cifrado DES:", cifradoDes(data, key, IV, BLOCK_SIZE_DES))
+print("Cifrado DES:", cifradoDes(data, key, IV, BLOCK_SIZE_DES).hex())
 print("Descifrado DES:", desCifradoDes(cifradoDes(data, key, IV, BLOCK_SIZE_DES), key, IV, BLOCK_SIZE_DES))
 
 print("\n")
 
 print("Datos originales:", data2.decode("utf-8", "ignore"))
-print("Cifrado DES:", cifradoDes(data2, key, IV, BLOCK_SIZE_DES))
+print("Cifrado DES:", cifradoDes(data2, key, IV, BLOCK_SIZE_DES).hex())
 print("Descifrado DES:", desCifradoDes(cifradoDes(data2, key, IV, BLOCK_SIZE_DES), key, IV, BLOCK_SIZE_DES))
 
 print("\n")
 
 print("Datos originales:", data.decode("utf-8", "ignore"))
-print("Cifrado AES:", cifradoAes(data, key_aes, IV_aes, BLOCK_SIZE_AES))
+print("Cifrado AES:", cifradoAes(data, key_aes, IV_aes, BLOCK_SIZE_AES).hex())
 print("Descifrado AES:", desCifradoAes(cifradoAes(data, key_aes, IV_aes, BLOCK_SIZE_AES), key_aes, IV_aes, BLOCK_SIZE_AES))
 
 
 # Ejercicio 2
 def cifradoAesCustom(data, key, mode):
 	"""Cifra datos usando AES con diferentes modos de operación"""
-	
+
+	# ECB no requiere IV
 	if mode == "ECB":
-		# ECB no requiere IV
 		cipher = AES.new(key, AES.MODE_ECB)
 		ciphertext = cipher.encrypt(pad(data, AES.block_size))
 		return ciphertext, None, None
 	
+	# CTR requiere nonce (tamaño de bloque / 2 = 8 bytes)
 	elif mode == "CTR":
-		# CTR requiere nonce (tamaño de bloque / 2 = 8 bytes)
-		nonce = get_random_bytes(8)
+		nonce = get_random_bytes(AES.block_size//2)
 		cipher = AES.new(key, AES.MODE_CTR, nonce=nonce)
 		ciphertext = cipher.encrypt(data)  # CTR no requiere padding
 		return ciphertext, nonce, None
 	
+	# OFB requiere IV aleatorio
 	elif mode == "OFB":
-		# OFB requiere IV aleatorio
 		iv = get_random_bytes(AES.block_size)
 		cipher = AES.new(key, AES.MODE_OFB, iv=iv)
 		ciphertext = cipher.encrypt(data)  # OFB no requiere padding
 		return ciphertext, iv, None
 	
+	# CFB requiere IV aleatorio
 	elif mode == "CFB":
-		# CFB requiere IV aleatorio
 		iv = get_random_bytes(AES.block_size)
 		cipher = AES.new(key, AES.MODE_CFB, iv=iv)
 		ciphertext = cipher.encrypt(data)  # CFB no requiere padding
 		return ciphertext, iv, None
-	
+
+	# GCM requiere nonce (tamaño de bloque = 16 bytes) y mac_len
 	elif mode == "GCM":
-		# GCM requiere nonce (tamaño de bloque = 16 bytes) y mac_len
-		nonce = get_random_bytes(16)
+		nonce = get_random_bytes(AES.block_size)
 		cipher = AES.new(key, AES.MODE_GCM, nonce=nonce, mac_len=16)
 		ciphertext, tag = cipher.encrypt_and_digest(data)  # GCM no requiere padding
 		return ciphertext, nonce, tag
@@ -150,9 +150,7 @@ def desCifradoAesCustom(ciphertext, key, mode, param, tag=None):
 		return None
 
 # Probar todos los modos
-print("\n" + "="*60)
 print("EJERCICIO 2: Cifrado AES con diferentes modos de operación")
-print("="*60)
 
 mensaje = "Hola Amigos de Seguridad".encode("utf-8")
 print(f"\nMensaje original: {mensaje.decode('utf-8')}\n")
@@ -162,7 +160,7 @@ modos = ["ECB", "CTR", "OFB", "CFB", "GCM"]
 for modo in modos:
 	print(f"--- Modo {modo} ---")
 	ciphertext, param, tag = cifradoAesCustom(mensaje, key_aes, modo)
-	print(f"Cifrado: {ciphertext.hex()[:60]}...")
+	print(f"Cifrado: {ciphertext.hex()}")
 	
 	descifrado = desCifradoAesCustom(ciphertext, key_aes, modo, param, tag)
 	print(f"Descifrado: {descifrado}")
