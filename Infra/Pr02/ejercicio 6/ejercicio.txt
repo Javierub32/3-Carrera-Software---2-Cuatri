@@ -1,5 +1,8 @@
-docker compose up -d --build
+1.  docker compose up -d --build
 
-docker compose exec nginx ping database
+2.  docker compose exec nginx ping database -> Nos va a decir que no encuentra
+											   database porque no están en la misma red
 
-docker compose exec nginx ping api
+3.  docker compose exec nginx ping api -> Devuelve el ping correctamente porque el 
+										  frontend se puede contectar con el backend(api)
+

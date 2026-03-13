@@ -1,0 +1,9 @@
+1.  docker compose up -d --build
+
+2.  Accedemos a localhost:8080 y accedemos Wordpress
+
+3.  docker compose down -> Borramos los contenedores
+
+4.  docker compose up -d --build -> Volvemos a levantar los contenedores
+
+5.  Accedemos a localhost:8080 y vemos que el sitio de Wordpress sigue ahí, ya que lo hemos guardado en un volumen.
