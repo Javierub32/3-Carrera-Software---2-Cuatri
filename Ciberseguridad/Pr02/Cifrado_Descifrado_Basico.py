@@ -54,6 +54,7 @@ def desCifradoAes(data, key, IV, BLOCK_SIZE_AES):
 data = "Hola amigas de la seguridad".encode("utf-8") # Datos a cifrar
 data2 = "Hola amigos de la seguridad".encode("utf-8")
     
+print("Ejercicio 1: Cifrado y Descifrado con DES y AES\n")
 
 print("Datos originales:", data.decode("utf-8", "ignore"))
 print("Cifrado DES:", cifradoDes(data, key, IV, BLOCK_SIZE_DES).hex())
@@ -150,7 +151,7 @@ def desCifradoAesCustom(ciphertext, key, mode, param, tag=None):
 		return None
 
 # Probar todos los modos
-print("EJERCICIO 2: Cifrado AES con diferentes modos de operación")
+print("\nEJERCICIO 2: Cifrado AES con diferentes modos de operación")
 
 mensaje = "Hola Amigos de Seguridad".encode("utf-8")
 print(f"\nMensaje original: {mensaje.decode('utf-8')}\n")

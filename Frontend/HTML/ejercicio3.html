@@ -42,9 +42,11 @@
                 <input type="number" name="experience" id="exp" min="0" max="50" placeholder="-">
             </p>
             <p class="separator">
-                <label for="conocimiento">Nivel de conocimiento en el tema</label>
-                <input type="range" name="conocimiento" id="conocimiento" min="0" max="10" step="1" value="5">
-                <output for="conocimiento"></output>
+				<label for="conocimiento">Nivel de conocimiento en el tema:</label>
+				<input type="range" name="conocimiento" id="conocimiento" min="0" max="10" step="1" value="5" 
+					oninput="resultado.value = conocimiento.value">
+
+				<output id="resultado">5</output>
             </p>
            
             <p class="separator">
