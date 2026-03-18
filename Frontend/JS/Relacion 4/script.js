@@ -241,40 +241,342 @@ function ejercicio6() {
 	}
 }
 
-ejercicio6();
+//ejercicio6();
 
 
 // Ejercicio 7:
-function ejercicio7() { }
+function ejercicio7() {
+	class Figura {
+		color;
+		figura = "figura";
 
-ejercicio7();
+		constructor(color, figura) {
+			this.color = color;
+			this.figura = figura;
+		}
+
+		describir() {
+			console.log(this.figura, "de color", this.color);
+		}
+
+		area() {
+			throw new Error("área no implementada")
+		}
+	}
+
+	class Circulo extends Figura {
+		radio;
+
+		constructor(color, radio) {
+			super(color, "Circulo")
+			this.radio = radio
+		}
+
+		describir() {
+			super.describir();
+			console.log("Radio:", this.radio);
+		}
+
+		area() {
+			return Math.PI * (this.radio * this.radio);
+		}
+	}
+
+	class Rectangulo extends Figura {
+		base;
+		altura;
+
+		constructor(color, base, altura) {
+			super(color, "Rectangulo");
+			this.base = base;
+			this.altura = altura;
+		}
+
+		describir() {
+			super.describir();
+			console.log(`Base: ${this.base}, Altura: ${this.altura}`);
+		}
+
+		area() {
+			return this.base * this.altura;
+		}
+	}
+
+	class Triangulo extends Figura {
+		base;
+		altura;
+
+		constructor(color, base, altura) {
+			super(color, "Triangulo");
+			this.base = base;
+			this.altura = altura;
+		}
+
+		describir() {
+			super.describir();
+			console.log(`Base: ${this.base}, Altura: ${this.altura}`);
+		}
+
+		area() {
+			return (this.base * this.altura) / 2;
+		}
+	}
+
+	// Uso
+	const figuras = [
+		new Circulo("Rojo", 5),
+		new Rectangulo("Azul", 10, 5),
+		new Triangulo("Verde", 8, 4)
+	];
+
+	let areaTotal = 0;
+	figuras.forEach(f => {
+		f.describir();
+		areaTotal += f.area();
+		console.log(`Área: ${f.area().toFixed(2)}\n`);
+	});
+
+	console.log(`Área total de todas las figuras: ${areaTotal.toFixed(2)}`);
+}
+
+//ejercicio7();
 
 
 //	Ejercicio 8:
-function ejercicio8() { }
+function ejercicio8() {
+	class Empleado {
+		nombre;
+		salario;
 
-ejercicio8();
+		constructor(nombre, salario) {
+			this.nombre = nombre;
+			this.salario = salario;
+		}
+
+		presentacion() {
+			return `Empleado: ${this.nombre}, Salario: ${this.salario}`;
+		}
+	}
+
+	class Gestor extends Empleado {
+		departamento;
+
+		constructor(nombre, salario, departamento) {
+			super(nombre, salario);
+			this.departamento = departamento;
+			this.equipo = [];
+		}
+
+		presentacion() {
+			return `${super.presentacion()}, Departamento: ${this.departamento}, Equipo: ${this.equipo.length} personas`;
+		}
+	}
+
+	class Director extends Gestor {
+		presupuesto;
+
+		constructor(nombre, salario, departamento, presupuesto) {
+			super(nombre, salario, departamento);
+			this.presupuesto = presupuesto;
+		}
+
+		presentacion() {
+			return `${super.presentacion()}, Presupuesto: ${this.presupuesto}`;
+		}
+	}
+
+	// Instancias
+	const emp = new Empleado("Ana", 30000);
+	const gest = new Gestor("Luis", 50000, "Ventas");
+	const dir = new Director("Marta", 80000, "Dirección General", 1000000);
+
+	gest.equipo.push(emp);
+
+	console.log(emp.presentacion());
+	console.log(gest.presentacion());
+	console.log(dir.presentacion());
+
+	console.log("\n");
+
+	console.log("¿Director es Director?:", dir instanceof Director); // true
+	console.log("¿Director es Gestor?:", dir instanceof Gestor);     // true
+	console.log("¿Director es Empleado?:", dir instanceof Empleado); // true
+	console.log("¿Gestor es Empleado?:", gest instanceof Empleado);   // true
+}
+
+//ejercicio8();
 
 
 //	Ejercicio 9:
-function ejercicio9() { }
+function ejercicio9() {
+	class Temperatura {
+		#celsius;
 
-ejercicio9();
+		constructor(celsius) {
+			this.celsius = celsius;
+		}
+
+		get celsius() {
+			return this.#celsius;
+		}
+
+		set celsius(valor) {
+			if (valor < -273.15) {
+				throw new Error("La temperatura no puede ser inferior al cero absoluto (-273.15 °C)");
+			}
+			this.#celsius = valor;
+		}
+
+		get fahrenheit() {
+			return (this.#celsius * 9) / 5 + 32;
+		}
+
+		get kelvin() {
+			return this.#celsius + 273.15;
+		}
+	}
+
+	const temp1 = new Temperatura(25);
+	console.log(`Temp1: ${temp1.celsius}°C, ${temp1.fahrenheit}°F, ${temp1.kelvin}K`);
+
+	temp1.celsius = 0; // Accede al setter de forma automática
+	console.log(`Temp1 actualizada: ${temp1.celsius}°C, ${temp1.fahrenheit}°F, ${temp1.kelvin}K`);
+
+	try {
+		temp1.celsius = -300; // Esto debería lanzar un error
+	} catch (e) {
+		console.error("Error capturado:", e.message);
+	}
+
+	// Verificamos la encapsulacion
+	// console.log(temp1.#celsius); // -> Esto produce un SyntaxError
+}
+
+//ejercicio9();
 
 
 // Ejercicio 10:
-function ejercicio10() { }
+function ejercicio10() {
+	class Contrasena {
+		#hash;
 
-ejercicio10();
+		constructor(texto) {
+			this.#hash = this.#calcularHash(texto);
+		}
+
+		#calcularHash(texto) {
+			let suma = 0;
+			for (let i = 0; i < texto.length; i++) {
+				suma += texto.charCodeAt(i);
+			}
+			return suma.toString(16); // Representación hexadecimal
+		}
+
+		verificar(texto) {
+			return this.#calcularHash(texto) === this.#hash;
+		}
+
+		mostrarHash() {
+			return this.#hash;
+		}
+	}
+
+	const psw = new Contrasena("contrasena");
+
+	console.log("Hash generado:", psw.mostrarHash());
+	console.log("¿Es 'contrasena' la contraseña?:", psw.verificar("contrasena")); // true
+	console.log("¿Es '123' la contraseña?:", psw.verificar("12345"));           // false
+}
+
+//ejercicio10();
 
 
 //	Ejercicio 11:
-function ejercicio11() { }
+function ejercicio11() {
+	class Producto {
+		static #contador = 0; // Propiedad estática privada compartida
 
-ejercicio11();
+		constructor(nombre, precio) {
+			Producto.#contador++;
+			this.id = Producto.#contador;
+			this.nombre = nombre;
+			this.precio = precio;
+		}
+
+		static crearConDescuento(nombre, precio, porcentaje) {
+			const precioFinal = precio - (precio * porcentaje / 100);
+			return new Producto(nombre, precioFinal);
+		}
+
+		static totalCreados() {
+			return Producto.#contador;
+		}
+	}
+
+	const p1 = new Producto("Laptop", 1000);
+	const p2 = Producto.crearConDescuento("Mouse", 50, 10);
+
+	console.log(`Producto 1: ${p1.nombre}, ID: ${p1.id}, Precio: ${p1.precio}`);
+	console.log(`Producto 2: ${p2.nombre}, ID: ${p2.id}, Precio: ${p2.precio}`);
+	console.log(`Total de productos creados: ${Producto.totalCreados()}`); // Debe ser 2
+}
+
+//ejercicio11();
 
 
 //	Ejercicio 12:
-function ejercicio12() { }
+function ejercicio12() {
+	class Validador {
+		static VERSION = "1.0";
+
+		constructor() {
+			throw new Error("La clase Validador es una clase utilitaria y no debe ser instanciada.");
+		}
+
+		static esEmail(texto) {
+			const partes = texto.split("@");
+			return partes.length === 2 && partes[1].includes(".");
+		}
+
+		static esContrasenaFuerte(texto) {
+			const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+			return regex.test(texto);
+		}
+
+		static esEnteroPositivo(valor) {
+			return Number.isInteger(valor) && valor > 0;
+		}
+
+		static esFecha(texto) {
+			const regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+			const match = texto.match(regex);
+			if (!match) return false;
+
+			const [_, d, m, a] = match.map(Number);
+			const fecha = new Date(a, m - 1, d);
+
+			return fecha.getFullYear() === a && fecha.getMonth() === m - 1 && fecha.getDate() === d;
+		}
+	}
+
+	console.log("Email (validar@test.com):", Validador.esEmail("validar@test.com")); // true
+	console.log("Email (invalido):", Validador.esEmail("invalido@com")); // false
+
+	console.log("Contraseña (Pass1234):", Validador.esContrasenaFuerte("Pass1234")); // true
+	console.log("Contraseña (corta):", Validador.esContrasenaFuerte("Ab1")); // false
+
+	console.log("Entero (10):", Validador.esEnteroPositivo(10)); // true
+	console.log("Entero (-5):", Validador.esEnteroPositivo(-5)); // false
+
+	console.log("Fecha (31/01/2024):", Validador.esFecha("31/01/2024")); // true
+	console.log("Fecha (31/02/2024):", Validador.esFecha("31/02/2024")); // false (no existe)
+
+	// Verificación de error al instanciar
+	try {
+		new Validador();
+	} catch (e) {
+		console.log("\nError:", e.message);
+	}
+}
 
 ejercicio12();
