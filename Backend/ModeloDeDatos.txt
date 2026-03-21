@@ -1,0 +1,141 @@
+Table rol {
+  id integer [primary key]
+  nombre varchar // Administrador, Coordinador, Capitan, etc.
+}
+
+Table zona {
+  id integer [primary key]
+  nombre varchar // Axarquía, Málaga Capital, Costa Occidental
+}
+
+Table municipio {
+  id integer [primary key]
+  nombre varchar // Rincón de la Victoria, Cártama, Málaga, Mijas
+  id_zona integer
+}
+
+Table localidad {
+  id integer [primary key]
+  nombre varchar // Cártama estación, Churriana, Torre del Mar
+  id_municipio integer
+}
+
+
+Table usuario {
+  id integer [primary key]
+  id_rol integer
+  usuario varchar 
+  contraseña varchar
+  nombre varchar 
+  telefono varchar
+  email varchar
+  entidad varchar // UMA, Bancosol
+  zona_asignada varchar // Para los coordinadores, en otro caso NULL
+  // Datos exclusivos de capitanes
+  id_localidad integer 
+  cp integer  
+  distrito varchar 
+}
+
+Table campaña {
+  id integer [primary key]
+  tipo varchar // Primavera, Gran Recogida
+  año integer
+}
+
+Table cadena {
+  id integer [primary key]
+  codigo varchar // 3-4 dígitos: CARR, MERC, ECI
+  nombre varchar
+}
+
+Table cadena_campaña {
+  id integer [primary key]
+  id_cadena integer
+  id_campaña integer
+  participa boolean
+}
+
+Table tienda {
+  id integer [primary key]
+  id_cadena integer
+  nombre varchar
+  lineales integer 
+  id_localidad varchar
+  cp varchar // Podriamos meter el cp fuese el identificador pero es más usable con la localidad
+  distrito varchar // Opcional
+  domicilio varchar
+}
+
+Table tienda_campaña {
+  id integer [primary key]
+  id_tienda integer
+  id_campaña integer
+  id_coordinador integer 
+  id_capitan integer 
+}
+
+Table colaborador {
+  id integer [primary key]
+  codigo varchar // A (Bancosol), B (No ligados a bancosol pero tochos), C(Familias o voluntarios sueltos permanentes), D (Familias o voluntarios sueltos temporales) + 4 digitos 
+  nombre varchar 
+  contacto_principal varchar
+  // Datos físicos
+  domicilio varchar
+  cp varchar
+  localidad_sede integer
+
+  // Datos de operativa
+  colabora_en integer
+
+  temporal boolean
+  id_coordinador integer // Coordinador que valida/gestiona esta entidad
+  observaciones varchar
+}
+
+// Un colaborador puede tener hasta 3 contactos distintos (Pág. 4)
+Table contacto_colaborador {
+  id integer [primary key]
+  id_colaborador integer
+  nombre varchar
+  email varchar
+  telefono varchar
+  es_principal boolean 
+}
+
+Table asignacion_turno {
+  id integer [primary key]
+  id_tienda_campaña integer
+  id_colaborador integer
+  turno varchar  // Mañana tarde, sabado mañana, ...
+  hora_inicio time
+  hora_fin time 
+  num_voluntarios integer
+  observaciones varchar
+}
+
+
+
+Ref: usuario.id_rol < rol.id
+
+Ref: cadena_campaña.id_cadena < cadena.id
+Ref: cadena_campaña.id_campaña < campaña.id
+
+Ref: tienda.id_cadena < cadena.id
+Ref: tienda.id_localidad < localidad.id
+
+Ref: tienda_campaña.id_tienda < tienda.id
+Ref: tienda_campaña.id_campaña < campaña.id
+Ref: tienda_campaña.id_coordinador < usuario.id
+Ref: tienda_campaña.id_capitan < usuario.id
+
+Ref: colaborador.id_coordinador < usuario.id
+Ref: colaborador.localidad_sede < localidad.id
+Ref: colaborador.colabora_en < localidad.id
+Ref: contacto_colaborador.id_colaborador < colaborador.id
+
+Ref: asignacion_turno.id_tienda_campaña < tienda_campaña.id
+Ref: asignacion_turno.id_colaborador < colaborador.id
+
+Ref: municipio.id_zona < zona.id
+Ref: localidad.id_municipio < municipio.id

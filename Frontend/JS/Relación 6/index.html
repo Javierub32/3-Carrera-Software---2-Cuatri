@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="ej1">
+		<button id="ej1-tema">Cambiar tema!!!</button>
+	</div>
+	<script>
+		tema = localStorage.getItem("tema");
+		document.querySelector("#ej1-tema").addEventListener("click", function() {
+			temaFinal = tema == "oscuro" ? "claro" : "oscuro";
+			localStorage.setItem("tema", temaFinal);
+		});
+
+		if 
+	</script>
+</body>
+</html>
