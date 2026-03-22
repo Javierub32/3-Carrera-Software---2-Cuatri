@@ -1,0 +1,19 @@
+1.	kubectl create deployment test-deploy --image=nginx --replicas=2
+
+2.	kubectl scale deployment test-deploy --replicas=4
+
+3.	kubectl set image deployment/test-deploy nginx=nginx:alpine -> Actualizamos la imagen del deploy
+	kubectl rollout status deployment/test-deploy -> Verificamos que el deploy se ha actualizado correctamente.
+
+4.	kubectl expose deployment test-deploy --port=80 --type=ClusterIP
+
+5.	kubectl delete service test-deploy
+
+6.	kubectl delete deployment test-deploy
+
+
+-----
+
+Comandos utiles:
+
+-	kubectl set image deployment/<nombre> <contenedor>=<nuevaimagen>

@@ -1,0 +1,22 @@
+1.	kubectl create deployment api-app --image=nginx --replicas=2 
+	kubectl label deployment api-app app=api-app -> Se hace automáticamente pero lo hacemos manual.
+	kubectl get deployments --show-labels
+
+2.	kubectl expose deployment api-app --port=80 --name=api-app -> Servicio ClusterIP en el puerto 80.
+
+3.	kubectl get endpoints api-app -> Vemos 2 IPs distintas, por lo que tenemos 2 endpoints disponibles.
+
+4.	kubectl edit service api-app -> Editamos app: por app:otroNombre -> Editamos el selector del servicio.
+
+5.	kubectl get endpoints api-app -> Vemos que no hay endpoints disponibles porque el selector del 
+									 servicio ya no coincide con las etiquetas de los pods.
+
+6.	kubectl run test --image=busybox --rm -it --restart=Never -- wget -qO- http://api-app -> Vemos que no hay 
+												respuesta porque el servicio no tiene endpoints disponibles.
+
+7.	kubectl edit service api-app -> Volvemos a editar el servicio para que el selector vuelva a ser app:api-app.
+
+8.	kubectl run test --image=busybox --rm -it --restart=Never -- wget -qO- http://api-app -> Ahora devuelve cosas.
+
+9.	kubectl delete deployment api-app
+	kubectl delete service api-app -> Eliminamos el deployment y el servicio.

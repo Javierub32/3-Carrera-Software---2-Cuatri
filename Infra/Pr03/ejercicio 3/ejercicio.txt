@@ -1,0 +1,25 @@
+1.	kubectl create deployment nginx-deployment --image=nginx:1.24 --replicas=3 
+
+2.	kubectl get deployments -> Vemos los deployments en el cluster, con su número de réplicas y estado.
+
+3.	kubectl get pods -> Verificamos que se crearon 3 pods
+
+4.	kubectl describe deployment nginx-deployment -> Vemos información detallada del deployment.
+
+5.	kubectl scale deployment nginx-deployment --replicas=5 -> Escalamos el número de réplicas a 5.
+
+6.	kubectl get pods -> Verificamos que ahora hay 5 pods.
+
+7.	kubectl delete deployment nginx-deployment -> Eliminamos el deployment, Kubernetes se encargará de 
+												  eliminar los pods asociados.
+
+--------
+
+Comandos útiles:
+
+Crear		->	kubectl create deployment [nombre] --image=[imagen] --replicas=[n]
+Listar		->	kubectl get deployments
+Ver Pods	->	kubectl get pods
+Detalles	->	kubectl describe deployment [nombre]
+Escalar		->	kubectl scale deployment [nombre] --replicas=[n]
+Eliminar	->	kubectl delete deployment [nombre]

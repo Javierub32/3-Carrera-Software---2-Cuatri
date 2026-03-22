@@ -1,0 +1,20 @@
+1.	kubectl create namespace myapp
+
+2.	kubectl create deployment postgres-db --image=postgres:15 --replicas=1 -n myapp
+	kubectl set env deployment/postgres-db POSTGRES_PASSWORD=secret -n myapp
+
+3.	kubectl expose deployment postgres-db --port=5432 --type=ClusterIP -n myapp
+
+4.	kubectl create deployment api-backend --image=nginx --replicas=3 -n myapp
+
+5.	kubectl expose deployment api-backend --port=80 -n myapp
+
+6.	kubectl create deployment web-frontend --image=nginx --replicas=2 -n myapp
+
+7.	kubectl expose deployment web-frontend --port=80 --type=NodePort -n myapp
+
+8.	kubectl get all -n myapp
+
+9.	kubectl scale deployment api-backend --replicas=5 -n myapp
+
+10.	kubectl delete namespace myapp

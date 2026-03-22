@@ -1,0 +1,14 @@
+1.	kubectl run frontend-pod --image=nginx:alpine --labels="app=frontend,env=dev"
+	kubectl run backend-pod --image=nginx:alpine --labels="app=backend,env=dev"
+	kubectl run db-pod --image=nginx:alpine --labels="app=database,env=prod"
+
+2.	kubectl get pods -l env=dev -> Mostramos los pods con la etiqueta env=dev.
+
+3.	kubectl get pods -l 'env!=prod'  -> Mostramos los pods que no tienen la etiqueta env=prod.
+
+4.	kubectl label pod backend-pod team=platform
+	kubectl get pods --show-labels -> Vemos que el pod ahora tiene la etiqueta team=platform.
+
+5.	kubectl delete pods -l env=dev -> Borramos los pods con la etiqueta env=dev.
+
+6.	kubectl delete pod db-pod / kubectl delete pods --all -> Eliminamos los pod restantes.

@@ -1,0 +1,13 @@
+1.	kubectl create namespace desarrollo -> Creamos un namespace para meter nuestros pods, servicios, etc...
+
+2.	kubectl run app-dev --image=nginx -n desarrollo -> Creamos un pod en el namespace desarrollo
+
+3.	kubectl get pods -n desarrollo -> Listamos los pods en el namespace desarrollo
+
+4.	kubectl create namespace produccion -> Creamos otro namespace.
+
+5.	kubectl run app-prod --image=nginx -n produccion -> Creamos un pod en el namespace produccion
+
+6.	kubectl get pods -A -> Listamos los pods en todos los namespaces y vemos que tenemos un pod en cada namespace.
+
+7.	kubectl delete namespace desarrollo produccion -> Eliminamos los namespaces y sus pods.

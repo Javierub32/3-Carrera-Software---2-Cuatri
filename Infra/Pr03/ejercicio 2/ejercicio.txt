@@ -1,0 +1,9 @@
+1.	kubectl run redis-pod --image=redis:alpine --port=6379 -> --port permite exponer un puerto.
+
+2.	kubectl run webapp --image=nginx --labels="app=frontend,tier=web" -> --labels permite añadir etiquetas.
+
+3.	kubectl run postgres-pod --image=postgres:15 --env="POSTGRES_PASSWORD=secret" -> --env mete las variables de entorno.
+
+4.	kubectl get pods -l app=frontend -> Muestra los pods que tienen la etiqueta app=frontend.
+
+5.	kubectl delete pod redis-pod webapp postgres-pod -> Elimina todos los pods.

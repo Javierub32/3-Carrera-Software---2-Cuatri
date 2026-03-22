@@ -1,0 +1,15 @@
+1.	kubectl run broken-pod --image=nginx:pene -> Creamos un pod con una imagen que no existe
+
+2.	kubectl get pods -> Vemos que el pod se queda en "ImagePullBackOff" porque no puede descargar la imagen.
+
+3.	kubectl describe pod broken-pod -> Vemos los eventos del pod para tener más detalles.
+
+4.	kubectl run crash-pod --image=busybox -- /bin/sh -c "exit 1"
+
+5.	kubectl get pods -> Vemos que se queda en "CrashLoopBackOff" porque el contenedor se cierra inmediatamente.
+
+6.	kubectl run working-pod --image=nginx -> Creamos un pod con una imagen que sí existe y funciona correctamente.
+
+7.	kubectl get pods -> Vemos que el pod se queda en "Running" porque el contenedor funciona.
+
+8.	kubectl delete pods --all -> Eliminamos los pods.

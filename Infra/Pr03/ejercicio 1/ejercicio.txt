@@ -1,0 +1,15 @@
+1.	kubectl run nginx-pod --image=nginx:alpine  -> Crea un pod con nombre nginx-pod 
+												   usando la imagen nginx:alpine 
+
+2.	kubectl get pods -> Muestra la lista de pods en el cluster, de primeras sale con STATUS
+						ContainerCreating porque el pod se está creando, luego pasa a Running.
+
+3.	kubectl describe pod nginx-pod -> Muestra información detallada del pod, incluyendo eventos,
+									  estado de los contenedores, etc.
+
+4.	kubectl logs nginx-pod -> Muestra los logs del contenedor en el pod nginx-pod, útil para depurar.
+
+5.	kubectl exec nginx-pod -- nginx -v -> Ejecuta el comando que hay detrás del -- dentro
+										  del contenedor del pod nginx-pod.
+
+6. kubectl delete pod nginx-pod -> Elimina el pod nginx-pod del cluster.

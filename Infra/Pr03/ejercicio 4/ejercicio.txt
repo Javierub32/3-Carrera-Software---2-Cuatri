@@ -1,0 +1,18 @@
+1.	kubectl create deployment web-app --image=nginx:latest --replicas=3
+
+2.	kubectl expose deployment web-app --type=ClusterIP --port=80 --name=web-service -> Creamos un servicio de tipo 
+													ClusterIP para exponer el deployment web-app en el puerto 80.
+
+3. kubectl get services -> Verificamos que el servicio se ha creado y vemos su IP y puerto.
+
+4. kubectl create deployment api-app --image=httpd --replicas=2
+
+5. kubectl expose deployment api-app --type=NodePort --port=80 --name=api-service
+
+6. kubectl get service api-service -> Comprobamos el puerto asignado al api-service.
+
+7. kubectl run busybox --image=busybox -it --rm --restart=Never -- wget -qO- web-service -> Probamos la 
+									conectividad al servicio web-service desde un pod temporal de busybox.
+
+8. kubectl delete deployment web-app api-app
+   kubectl delete service web-service api-service  -> Eliminamos los deployments y servicios creados.
