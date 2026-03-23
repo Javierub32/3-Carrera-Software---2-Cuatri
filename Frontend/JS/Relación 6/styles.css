@@ -4,6 +4,10 @@ body > div{
 	margin-bottom: 10px;
 }
 
+h1 {
+	padding-left: 10px;
+}
+
 #ej3-notas div {
 	background-color: white;
 	padding: 20px;
