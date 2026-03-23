@@ -1,22 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<div id="ej1">
-		<button id="ej1-tema">Cambiar tema!!!</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="ej1">
+      <h1>Ejercicio 1</h1>
+      <button id="ej1-tema">Cambiar tema!!!</button>
 	</div>
-	<script>
-		tema = localStorage.getItem("tema");
-		document.querySelector("#ej1-tema").addEventListener("click", function() {
-			temaFinal = tema == "oscuro" ? "claro" : "oscuro";
-			localStorage.setItem("tema", temaFinal);
-		});
+	<div id="ej2">
+		<h1>Ejercicio 2</h1>
+		<div style="display: flex; gap: 50px; justify-content: center; margin-bottom: 20px;">
+			<div id="ej2-1" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+				<h3>Item 1</h3>
+				<img src="gato.webp" style="width: 250px;">
+				<button class="btn-carrito">Comprar michi</button>
+			</div>
+			<div id="ej2-2" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+				<h3>Item 2</h3>
+				<img src="gato.webp" style="width: 250px;">
+				<button class="btn-carrito">Comprar michi</button>
+			</div>
+			<div id="ej2-3" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+				<h3>Item 3</h3>
+				<img src="gato.webp" style="width: 250px;">
+				<button class="btn-carrito">Comprar michi</button>
+			</div>
+		</div>
+	</div>
+	<div>
+		<h1>Ejercicio 3</h1>
+		<div style="padding: 20px;">
+			<label for="ej3-titulo">Titulo:</label>
+			<input type="text" id="ej3-titulo" />
 
-		if 
-	</script>
-</body>
+			<label for="ej3-descripcion">Nota:</label>
+			<input type="text" id="ej3-descripcion" />
+
+			<button id="ej3-guardar">Guardar nota</button>
+		</div>
+		<div style="padding: 20px;">
+			<h2>Notas guardadas:</h2>
+			<div id="ej3-notas" style="display: flex; gap: 50px;"></div>
+		</div>
+	</div>
+    <script src="script.js"></script>
+  </body>
 </html>

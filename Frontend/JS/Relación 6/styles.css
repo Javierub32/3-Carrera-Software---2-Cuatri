@@ -1,0 +1,10 @@
+body > div{
+	background-color: rgb(184, 184, 184);
+	border: 1px solid black;
+	margin-bottom: 10px;
+}
+
+#ej3-notas div {
+	background-color: white;
+	padding: 20px;
+}
