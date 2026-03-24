@@ -39,8 +39,15 @@ Table usuario {
 
 Table campaña {
   id integer [primary key]
-  tipo varchar // Primavera, Gran Recogida
-  año integer
+  id_tipo integer // Primavera, Gran Recogida
+  nombre varchar
+  fecha_inicio time
+  fecha_fin time
+}
+
+Table tipoCampaña {
+  id integer [primary key]
+  nombre varchar
 }
 
 Table cadena {
@@ -110,6 +117,7 @@ Table asignacion_turno {
   turno varchar  // Mañana tarde, sabado mañana, ...
   hora_inicio time
   hora_fin time 
+  lineal integer
   num_voluntarios integer
   observaciones varchar
 }
@@ -139,3 +147,6 @@ Ref: asignacion_turno.id_colaborador < colaborador.id
 
 Ref: municipio.id_zona < zona.id
 Ref: localidad.id_municipio < municipio.id
+
+Ref: usuario.id_localidad < localidad.id
+Ref: campaña.id_tipo < tipoCampaña.id
