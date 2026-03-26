@@ -1,0 +1,19 @@
+#kubectl create service clusterip web-app --tcp=80:80 --dry-run=client -o 
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web-app
+  name: web-app
+spec:
+  ports:
+  - name: 80-80
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: web-app
+  type: ClusterIP
+status:
+  loadBalancer: {}
