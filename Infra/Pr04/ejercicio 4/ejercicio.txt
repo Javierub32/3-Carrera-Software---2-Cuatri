@@ -1,0 +1,22 @@
+1.	kubectl apply -f postgres-pvc.yaml
+
+2.	kubectl get pvc -n ej4    -> Debe aparecer como 'Bound'
+	kubectl get pods -n ej4   -> El pod debe estar 'Running'
+
+3.	kubectl exec -it postgres-deployment-55fc5d677f-xsjr7 -n ej4  -- psql -U postgres -d testdb -> Accedemos
+																		 a la BD y metemos algunos datos.
+
+4.	CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nombre VARCHAR(100));
+	INSERT INTO usuarios (nombre) VALUES ('Juan'), ('María');
+	SELECT * FROM usuarios;
+	\q
+
+5.	kubectl delete pod postgres-deployment-55fc5d677f-xsjr7 -n ej4  -> Borramos el pod y esperamos a
+											que el deploy se encargue de crear otro.
+
+6.	kubectl get pods -n ej4  
+
+7.	kubectl exec -it postgres-deployment-55fc5d677f-5zhkb -n ej4  -- psql -U postgres -d testdb
+
+8.	SELECT FROM usuarios;  -> Los datos permanecen intactos aunque hayamos borrado el pod.
+	\q

@@ -1,11 +1,11 @@
-#kubectl create service clusterip web-app --tcp=80:80 --dry-run=client -o 
+# kubectl create service clusterip web-app --tcp=80:80 -n ej2 --dry-run=client -o  yaml
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     app: web-app
   name: web-app
+  namespace: ej2
 spec:
   ports:
   - name: 80-80

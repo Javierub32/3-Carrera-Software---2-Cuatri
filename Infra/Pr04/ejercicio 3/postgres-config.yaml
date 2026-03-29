@@ -1,0 +1,9 @@
+# kubectl create configmap postgres-config -n ej3 --from-literal=POSTGRES_DB=mydb --from-literal=POSTGRES_USER=myuser --dry-run=client -o yaml > postgres-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: ej3
+data:
+  POSTGRES_DB: mydb
+  POSTGRES_USER: myuser

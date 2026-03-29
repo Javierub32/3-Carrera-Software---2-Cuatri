@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: ej5  # Importante que el namespace sea el mismo que el del Deployment de Nginx
+                  # Si no, el deploy se queda frezzeado porque no encuentra el ConfigMap
+data:
+  default.conf: |
+    server {
+        listen 80;
+
+        location /api/ {
+            proxy_pass http://backend-service:5000/api/;
+            proxy_set_header Host $host;
+        }
+
+        location / {
+            return 200 'Frontend - Accede a /api/status para probar el backend\n';
+            add_header Content-Type text/plain;
+        }
+    }
+
+---
+# kubectl create deployment frontend --image=nginx:alpine --port=80 -n ej5 --dry-run=client -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: frontend
+  name: frontend
+  namespace: ej5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - name: config-volume        # Este nombre debe coincidir con el de abajo
+          mountPath: /etc/nginx/conf.d # Esta es la ruta donde Nginx busca la config
+      volumes:
+      - name: config-volume          # Este nombre debe coincidir con el de arriba
+        configMap:
+          name: nginx-config         # Este es el NOMBRE REAL de tu ConfigMap
+status: {}
+
+---
+# kubectl create service clusterip frontend-service --tcp=80:80 -n ej5 --dry-run=client -o yaml  
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: frontend-service
+  name: frontend-service
+  namespace: ej5
+spec:
+  ports:
+  - name: 80-80
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: frontend
+  type: ClusterIP
+status:
+  loadBalancer: {}

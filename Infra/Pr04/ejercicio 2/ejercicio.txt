@@ -1,0 +1,11 @@
+1.	kubectl apply -f deploy.yaml
+
+2.	kubectl apply -f servicio.yaml
+
+3.	kubectl get deploy -n ej2
+	kubectl get svc -n ej2  	-> Sacamos el ClusterIP
+
+4.	kubectl run test-pod --image=busybox --rm -it --restart=Never -n ej2 -- wget -O- web-app  -> Probamos 
+									la conectividad. Importante poner en qué namespace está.
+
+5.	kubectl delete namespace ej2 -> Limpiamos el namespace con todo lo que tiene dentro.

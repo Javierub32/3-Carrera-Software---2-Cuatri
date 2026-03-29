@@ -1,0 +1,17 @@
+# kubectl create service clusterip postgres-service --tcp=5432:5432 -n ej3 --dry-run=client -o yaml > postgres-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+  namespace: ej3
+spec:
+  ports:
+  - name: 5432-5432
+    port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    app: postgres
+  type: ClusterIP
+status:
+  loadBalancer: {}

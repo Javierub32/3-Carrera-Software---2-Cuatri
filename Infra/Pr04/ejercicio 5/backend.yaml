@@ -1,0 +1,47 @@
+# kubectl create deployment backend -n ej5 --image=backend:1 --dry-run=client -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backend
+  name: backend
+  namespace: ej5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - image: backend:1
+        name: backend
+        ports:
+        - containerPort: 5000
+        resources: {}
+status: {}
+
+---
+# kubectl create service clusterip backend-service --tcp=5000:5000 -n ej5 --dry-run=client -o yaml 
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: backend-service
+  name: backend-service
+  namespace: ej5
+spec:
+  ports:
+  - name: 5000-5000
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: backend
+  type: ClusterIP
+status:
+  loadBalancer: {}

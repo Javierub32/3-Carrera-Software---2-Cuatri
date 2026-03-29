@@ -1,0 +1,9 @@
+1.	kubectl apply -f . -> Aplicamos la configuración del Pod con los dos contenedores.
+
+2.	kubectl get pod web-sidecar -> Vemos que el Pod se ha creado correctamente y está en estado Running.
+
+3.	kubectl logs web-sidecar -c content-generator -> Vemos los logs del contenedor busybox para comprobar que está generando el contenido correctamente.
+
+4.	kubectl logs web-sidecar -c web-server -> Vemos los logs del contenedor nginx para comprobar que no hay errores.
+
+5.	kubectl exec -it web-sidecar -c web-server -- cat /usr/share/nginx/html/index.html -> Comprobamos que el contenido generado por el contenedor busybox se está sirviendo correctamente a través de nginx. Deberíamos ver la fecha actual que se actualiza cada 5 segundos.

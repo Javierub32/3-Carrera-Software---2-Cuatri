@@ -1,0 +1,9 @@
+1. kubectl apply -f . 
+
+2.	kubectl get pod memory-demo
+	NAME          READY   STATUS              RESTARTS   AGE
+	memory-demo   0/1     ContainerCreating   0          3s
+
+	kubectl get pod memory-demo
+	NAME          READY   STATUS      RESTARTS   AGE
+	memory-demo   0/1     OOMKilled   0          4s		-> No llega a estar ready, se mata automaticamente.

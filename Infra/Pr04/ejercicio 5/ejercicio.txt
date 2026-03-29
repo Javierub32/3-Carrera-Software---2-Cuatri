@@ -1,0 +1,14 @@
+# Hay que hacer docker build -t backend:1 . para crear la imagen del backend.
+
+1.	kubectl apply -f . -> Aplicamos todas las configuraciones
+
+2.	kubectl get all -n ej5  -> Que todo se está ejecutando correctamente
+
+3.	kubectl logs -l app=postgres -n ej5
+	kubectl logs -l app=backend -n ej5  -> Vemos que no haya ningún error ni en el backend ni en la BD.
+
+4.	kubectl run test-pod --image=busybox --rm -it --restart=Never -n ej5 -- wget -O- http://frontend-service
+										-> Vemos que el servicio funciona
+
+5.	kubectl run test-pod --image=busybox --rm -it --restart=Never -n ej5 -- wget -O- http://frontend-service/api/status
+										-> Vemos que el backend se comunica con la BD.

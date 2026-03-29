@@ -1,11 +1,11 @@
-#kubectl create deployment web-app --image=nginx:alpine --replicas=2 --dry-run=client -o yaml
+# kubectl create deployment web-app --image=nginx:alpine --replicas=2 -n ej2 --dry-run=client -o yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: web-app
   name: web-app
+  namespace: ej2
 spec:
   replicas: 2
   selector:
@@ -14,7 +14,6 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: web-app
     spec:
@@ -24,4 +23,3 @@ spec:
         resources: {}
 status: {}
 
-#kubectl apply -f web-app.yaml

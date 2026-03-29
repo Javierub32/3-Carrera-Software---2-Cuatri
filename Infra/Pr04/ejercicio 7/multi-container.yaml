@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: web-sidecar
+  name: web-sidecar
+spec:
+  # Volumen compartido a nivel de Pod
+  volumes:
+  - name: shared-data
+    emptyDir: {}
+  
+  containers:
+  # Contenedor con busybox
+  - name: content-generator
+    image: busybox
+    command: ["sh", "-c", "while true; do date > /shared/index.html; sleep 5; done"]
+    volumeMounts:
+    - name: shared-data
+      mountPath: /shared     # Este contenedor monta el volumen en /shared
+    resources: {}
+
+  # Contenedor Principal: Servidor Web 
+  - name: web-server
+    image: nginx:alpine
+    volumeMounts:
+    - name: shared-data
+      mountPath: /usr/share/nginx/html  # Nginx monta el volumen donde sirve sus archivos
+    resources: {}

@@ -1,0 +1,7 @@
+1.	kubectl apply -f .
+
+2.	kubectl get deploy -n ej3
+	kubectl logs deployment/postgres-deployment -n ej3
+
+3.	kubectl run psql-client --image=postgres:15 --rm -it --restart=Never -n ej3 -- psql -h postgres-service -U myuser -d mydb  
+										-> Metemos la contraseña "mypassword" (la que hay en el secret) y conseguimos entrar.
