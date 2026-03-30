@@ -1,0 +1,15 @@
+1.	kubectl apply -f init-container.yaml
+
+2.	kubectl get pods -w -> Vemos que el estado del pod es "Init:0/1" y luego "Running"
+
+	NAME                        READY   STATUS              RESTARTS   AGE
+	db-df49fdff9-cmstx          0/1     ContainerCreating   0          2s
+	frontend-766c8f8cc5-6rbh2   0/1     Init:0/1            0          1s
+	db-df49fdff9-cmstx          1/1     Running             0          4s
+	frontend-766c8f8cc5-6rbh2   0/1     Init:0/1            0          4s
+	frontend-766c8f8cc5-6rbh2   0/1     PodInitializing     0          7s
+	frontend-766c8f8cc5-6rbh2   1/1     Running             0          25s
+
+
+3.	kubectl logs deploy/frontend -c init-db-connection -n ej8 -> Vemos el mensaje "Waiting for DB..."
+					 hasta que el contenedor init termina y el contenedor principal empieza a correr.

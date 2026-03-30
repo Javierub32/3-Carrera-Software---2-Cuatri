@@ -1,0 +1,88 @@
+# kubectl create deployment db --image=postgres:15 --port=5432 -n ej8 --dry-run=client -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: db
+  name: db
+  namespace: ej8
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: db
+    spec:
+      containers:
+      - image: postgres:15
+        name: postgres
+        ports:
+        - containerPort: 5432
+        resources: {}
+        env:
+        - name: POSTGRES_PASSWORD
+          value: "secret123"
+status: {}
+
+---
+# kubectl create service clusterip db-service --tcp=5432:5432 -n ej8 --dry-run=client -o yaml
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: db-service
+  name: db-service
+  namespace: ej8
+spec:
+  ports:
+  - name: 5432-5432
+    port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    app: db
+  type: ClusterIP
+status:
+  loadBalancer: {}
+
+---
+# kubectl create deployment frontend --image=nginx --port=80 -n ej8 --dry-run=client -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: frontend
+  name: frontend
+  namespace: ej8
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: frontend
+    spec:
+      initContainers:
+      - name: init-db-connection
+        image: busybox
+        command: ["sh", "-c", "until nc -z db-service 5432; do echo 'Waiting for DB...'; sleep 2; done;"]
+        resources: {}
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
