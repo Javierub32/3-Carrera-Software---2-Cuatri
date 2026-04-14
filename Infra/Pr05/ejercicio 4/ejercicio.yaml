@@ -1,0 +1,49 @@
+# kubectl create deployment hpa-app --image=nginx:alpine --dry-run=client -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hpa-app
+  name: hpa-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hpa-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: hpa-app
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+        resources: 
+          requests:
+            cpu: "100m"
+status: {}
+
+---
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-app
+spec:
+  maxReplicas: 10
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 50
+        type: Utilization
+    type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hpa-app
+status:
+  currentMetrics: null
+  desiredReplicas: 0

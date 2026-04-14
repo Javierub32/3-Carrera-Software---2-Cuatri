@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: liveness-nginx
+  name: liveness-nginx
+  namespace: ej1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: liveness-nginx
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: liveness-nginx
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+        resources: {}
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10 # segundos antes de la primera comprobación
+          periodSeconds: 5 # cada cuántos segundos se comprueba
+          failureThreshold: 3 
+status: {}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: liveness-exec
+  name: liveness-exec
+  namespace: ej1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: liveness-exec
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: liveness-exec
+    spec:
+      containers:
+      - image: busybox
+        command: ["sh", "-c", "touch /tmp/healthy; sleep 30; rm /tmp/healthy; sleep 600"]
+        name: busybox
+        resources: {}
+        livenessProbe:
+          exec:
+            command: ["test", "-f", "/tmp/healthy"]
+          initialDelaySeconds: 10
+          periodSeconds: 5
+status: {}

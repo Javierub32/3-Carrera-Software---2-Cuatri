@@ -1,0 +1,56 @@
+# kubectl create deployment readiness-app --image=nginx:alpine --port=80 -n ej2 --dry-run=client -o yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: readiness-app
+  name: readiness-app
+  namespace: ej2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: readiness-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: readiness-app
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+        resources: {}
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 3
+        ports:
+          - containerPort: 80
+status: {}
+
+---
+
+#kubectl create service clusterip readiness-app --tcp=80:80 -n ej2 --dry-run=client -o yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: readiness-app
+  name: readiness-app
+  namespace: ej2
+spec:
+  ports:
+  - name: 80-80
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: readiness-app
+  type: ClusterIP
+status:
+  loadBalancer: {}
+
+  
