@@ -1,0 +1,1727 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+db/db.lck
+db/log/log.ctrl
+db/log/log19.dat
+db/log/logmirror.ctrl
+db/log/README_DO_NOT_TOUCH_FILES.txt
+db/README_DO_NOT_TOUCH_FILES.txt
+db/seg0/c10.dat
+db/seg0/c101.dat
+db/seg0/c111.dat
+db/seg0/c121.dat
+db/seg0/c130.dat
+db/seg0/c141.dat
+db/seg0/c150.dat
+db/seg0/c161.dat
+db/seg0/c171.dat
+db/seg0/c180.dat
+db/seg0/c191.dat
+db/seg0/c1a1.dat
+db/seg0/c1b1.dat
+db/seg0/c1c0.dat
+db/seg0/c1d1.dat
+db/seg0/c1e0.dat
+db/seg0/c1f1.dat
+db/seg0/c20.dat
+db/seg0/c200.dat
+db/seg0/c211.dat
+db/seg0/c221.dat
+db/seg0/c230.dat
+db/seg0/c241.dat
+db/seg0/c251.dat
+db/seg0/c260.dat
+db/seg0/c271.dat
+db/seg0/c281.dat
+db/seg0/c290.dat
+db/seg0/c2a1.dat
+db/seg0/c2b1.dat
+db/seg0/c2c1.dat
+db/seg0/c2d0.dat
+db/seg0/c2e1.dat
+db/seg0/c2f0.dat
+db/seg0/c300.dat
+db/seg0/c31.dat
+db/seg0/c311.dat
+db/seg0/c321.dat
+db/seg0/c331.dat
+db/seg0/c340.dat
+db/seg0/c351.dat
+db/seg0/c361.dat
+db/seg0/c371.dat
+db/seg0/c380.dat
+db/seg0/c391.dat
+db/seg0/c3a1.dat
+db/seg0/c3b1.dat
+db/seg0/c3c0.dat
+db/seg0/c3d1.dat
+db/seg0/c3e1.dat
+db/seg0/c3f1.dat
+db/seg0/c400.dat
+db/seg0/c41.dat
+db/seg0/c411.dat
+db/seg0/c421.dat
+db/seg0/c430.dat
+db/seg0/c441.dat
+db/seg0/c451.dat
+db/seg0/c461.dat
+db/seg0/c470.dat
+db/seg0/c481.dat
+db/seg0/c51.dat
+db/seg0/c60.dat
+db/seg0/c71.dat
+db/seg0/c81.dat
+db/seg0/c90.dat
+db/seg0/ca1.dat
+db/seg0/cb1.dat
+db/seg0/cc0.dat
+db/seg0/cd1.dat
+db/seg0/cd70.dat
+db/seg0/cd81.dat
+db/seg0/cd91.dat
+db/seg0/cda0.dat
+db/seg0/cdb1.dat
+db/seg0/cdc1.dat
+db/seg0/cdd0.dat
+db/seg0/cde1.dat
+db/seg0/cdf0.dat
+db/seg0/ce01.dat
+db/seg0/ce1.dat
+db/seg0/ce11.dat
+db/seg0/ce21.dat
+db/seg0/ce30.dat
+db/seg0/ce41.dat
+db/seg0/ce50.dat
+db/seg0/ce61.dat
+db/seg0/ce71.dat
+db/seg0/ce81.dat
+db/seg0/ce90.dat
+db/seg0/cea1.dat
+db/seg0/ceb1.dat
+db/seg0/cec1.dat
+db/seg0/ced0.dat
+db/seg0/cee1.dat
+db/seg0/cef0.dat
+db/seg0/cf0.dat
+db/seg0/cf01.dat
+db/seg0/cf11.dat
+db/seg0/cf21.dat
+db/seg0/cf30.dat
+db/seg0/cf41.dat
+db/seg0/cf51.dat
+db/seg0/cf61.dat
+db/seg0/README_DO_NOT_TOUCH_FILES.txt
+db/service.properties
+mvnw
+mvnw.cmd
+pom.xml
+src/main/java/es/tesaw/movies/controller/MoviesController.java
+src/main/java/es/tesaw/movies/dao/GenreRepository.java
+src/main/java/es/tesaw/movies/dao/MoviesRepository.java
+src/main/java/es/tesaw/movies/dao/SpokenLanguageRepository.java
+src/main/java/es/tesaw/movies/entity/GenreEntity.java
+src/main/java/es/tesaw/movies/entity/MovieCastEntity.java
+src/main/java/es/tesaw/movies/entity/MovieCrewEntity.java
+src/main/java/es/tesaw/movies/entity/MovieEntity.java
+src/main/java/es/tesaw/movies/entity/PersonEntity.java
+src/main/java/es/tesaw/movies/entity/ProductionCompanyEntity.java
+src/main/java/es/tesaw/movies/entity/SpokenLanguageEntity.java
+src/main/java/es/tesaw/movies/MoviesTesawApplication.java
+src/main/resources/application.properties
+src/main/resources/static/hola.html
+src/main/webapp/prueba.jsp
+src/main/webapp/WEB-INF/view/movie_edit.jsp
+src/main/webapp/WEB-INF/view/movies_table.jsp
+src/main/webapp/WEB-INF/view/movies.jsp
+src/test/java/es/tesaw/movies/MoviesTawApplicationTests.java
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+</file>
+
+<file path=".mvn/wrapper/maven-wrapper.properties">
+distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.4/apache-maven-3.8.4-bin.zip
+wrapperUrl=https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar
+</file>
+
+<file path="db/log/README_DO_NOT_TOUCH_FILES.txt">
+# *************************************************************************
+# ***              DO NOT TOUCH FILES IN THIS DIRECTORY!                ***
+# *** FILES IN THIS DIRECTORY ARE USED BY THE DERBY DATABASE RECOVERY   ***
+# *** SYSTEM. EDITING, ADDING, OR DELETING FILES IN THIS DIRECTORY      ***
+# *** WILL CAUSE THE DERBY RECOVERY SYSTEM TO FAIL, LEADING TO          ***
+# *** NON-RECOVERABLE CORRUPT DATABASES.                                ***
+# *************************************************************************
+</file>
+
+<file path="db/README_DO_NOT_TOUCH_FILES.txt">
+# *************************************************************************
+# ***              DO NOT TOUCH FILES IN THIS DIRECTORY!                ***
+# *** FILES IN THIS DIRECTORY AND SUBDIRECTORIES CONSTITUTE A DERBY     ***
+# *** DATABASE, WHICH INCLUDES THE DATA (USER AND SYSTEM) AND THE       ***
+# *** FILES NECESSARY FOR DATABASE RECOVERY.                            ***
+# *** EDITING, ADDING, OR DELETING ANY OF THESE FILES MAY CAUSE DATA    ***
+# *** CORRUPTION AND LEAVE THE DATABASE IN A NON-RECOVERABLE STATE.     ***
+# *************************************************************************
+</file>
+
+<file path="db/seg0/README_DO_NOT_TOUCH_FILES.txt">
+# *************************************************************************
+# ***              DO NOT TOUCH FILES IN THIS DIRECTORY!                ***
+# *** FILES IN THIS DIRECTORY ARE USED BY THE DERBY DATABASE TO STORE   *** 
+# *** USER AND SYSTEM DATA. EDITING, ADDING, OR DELETING FILES IN THIS  ***
+# *** DIRECTORY WILL CORRUPT THE ASSOCIATED DERBY DATABASE AND MAKE     ***
+# *** IT NON-RECOVERABLE.                                               ***
+# *************************************************************************
+</file>
+
+<file path="db/service.properties">
+#/Users/guzman/Documents/INTELLIJ IDEA/sampleTAW2022/db
+# ********************************************************************
+# ***                Please do NOT edit this file.                 ***
+# *** CHANGING THE CONTENT OF THIS FILE MAY CAUSE DATA CORRUPTION. ***
+# ********************************************************************
+#Wed May 11 10:07:57 UTC 2022
+SysconglomeratesIdentifier=32
+SyscolumnsIdentifier=144
+derby.serviceLocale=es_ES
+SystablesIdentifier=96
+SysconglomeratesIndex3Identifier=81
+derby.storage.propertiesId=16
+derby.serviceProtocol=org.apache.derby.database.Database
+SyscolumnsIndex1Identifier=161
+SysschemasIndex2Identifier=225
+SystablesIndex2Identifier=129
+SyscolumnsIndex2Identifier=177
+SysconglomeratesIndex2Identifier=65
+SysschemasIndex1Identifier=209
+SysschemasIdentifier=192
+SystablesIndex1Identifier=113
+SysconglomeratesIndex1Identifier=49
+#--- last line, don't put anything after this line ---
+</file>
+
+<file path="mvnw">
+#!/bin/sh
+# ----------------------------------------------------------------------------
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#    https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
+# Maven Start Up Batch script
+#
+# Required ENV vars:
+# ------------------
+#   JAVA_HOME - location of a JDK home dir
+#
+# Optional ENV vars
+# -----------------
+#   M2_HOME - location of maven2's installed home dir
+#   MAVEN_OPTS - parameters passed to the Java VM when running Maven
+#     e.g. to debug Maven itself, use
+#       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+#   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+# ----------------------------------------------------------------------------
+
+if [ -z "$MAVEN_SKIP_RC" ] ; then
+
+  if [ -f /usr/local/etc/mavenrc ] ; then
+    . /usr/local/etc/mavenrc
+  fi
+
+  if [ -f /etc/mavenrc ] ; then
+    . /etc/mavenrc
+  fi
+
+  if [ -f "$HOME/.mavenrc" ] ; then
+    . "$HOME/.mavenrc"
+  fi
+
+fi
+
+# OS specific support.  $var _must_ be set to either true or false.
+cygwin=false;
+darwin=false;
+mingw=false
+case "`uname`" in
+  CYGWIN*) cygwin=true ;;
+  MINGW*) mingw=true;;
+  Darwin*) darwin=true
+    # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
+    # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
+    if [ -z "$JAVA_HOME" ]; then
+      if [ -x "/usr/libexec/java_home" ]; then
+        export JAVA_HOME="`/usr/libexec/java_home`"
+      else
+        export JAVA_HOME="/Library/Java/Home"
+      fi
+    fi
+    ;;
+esac
+
+if [ -z "$JAVA_HOME" ] ; then
+  if [ -r /etc/gentoo-release ] ; then
+    JAVA_HOME=`java-config --jre-home`
+  fi
+fi
+
+if [ -z "$M2_HOME" ] ; then
+  ## resolve links - $0 may be a link to maven's home
+  PRG="$0"
+
+  # need this for relative symlinks
+  while [ -h "$PRG" ] ; do
+    ls=`ls -ld "$PRG"`
+    link=`expr "$ls" : '.*-> \(.*\)$'`
+    if expr "$link" : '/.*' > /dev/null; then
+      PRG="$link"
+    else
+      PRG="`dirname "$PRG"`/$link"
+    fi
+  done
+
+  saveddir=`pwd`
+
+  M2_HOME=`dirname "$PRG"`/..
+
+  # make it fully qualified
+  M2_HOME=`cd "$M2_HOME" && pwd`
+
+  cd "$saveddir"
+  # echo Using m2 at $M2_HOME
+fi
+
+# For Cygwin, ensure paths are in UNIX format before anything is touched
+if $cygwin ; then
+  [ -n "$M2_HOME" ] &&
+    M2_HOME=`cygpath --unix "$M2_HOME"`
+  [ -n "$JAVA_HOME" ] &&
+    JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
+  [ -n "$CLASSPATH" ] &&
+    CLASSPATH=`cygpath --path --unix "$CLASSPATH"`
+fi
+
+# For Mingw, ensure paths are in UNIX format before anything is touched
+if $mingw ; then
+  [ -n "$M2_HOME" ] &&
+    M2_HOME="`(cd "$M2_HOME"; pwd)`"
+  [ -n "$JAVA_HOME" ] &&
+    JAVA_HOME="`(cd "$JAVA_HOME"; pwd)`"
+fi
+
+if [ -z "$JAVA_HOME" ]; then
+  javaExecutable="`which javac`"
+  if [ -n "$javaExecutable" ] && ! [ "`expr \"$javaExecutable\" : '\([^ ]*\)'`" = "no" ]; then
+    # readlink(1) is not available as standard on Solaris 10.
+    readLink=`which readlink`
+    if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
+      if $darwin ; then
+        javaHome="`dirname \"$javaExecutable\"`"
+        javaExecutable="`cd \"$javaHome\" && pwd -P`/javac"
+      else
+        javaExecutable="`readlink -f \"$javaExecutable\"`"
+      fi
+      javaHome="`dirname \"$javaExecutable\"`"
+      javaHome=`expr "$javaHome" : '\(.*\)/bin'`
+      JAVA_HOME="$javaHome"
+      export JAVA_HOME
+    fi
+  fi
+fi
+
+if [ -z "$JAVACMD" ] ; then
+  if [ -n "$JAVA_HOME"  ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+      # IBM's JDK on AIX uses strange locations for the executables
+      JAVACMD="$JAVA_HOME/jre/sh/java"
+    else
+      JAVACMD="$JAVA_HOME/bin/java"
+    fi
+  else
+    JAVACMD="`\\unset -f command; \\command -v java`"
+  fi
+fi
+
+if [ ! -x "$JAVACMD" ] ; then
+  echo "Error: JAVA_HOME is not defined correctly." >&2
+  echo "  We cannot execute $JAVACMD" >&2
+  exit 1
+fi
+
+if [ -z "$JAVA_HOME" ] ; then
+  echo "Warning: JAVA_HOME environment variable is not set."
+fi
+
+CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
+
+# traverses directory structure from process work directory to filesystem root
+# first directory with .mvn subdirectory is considered project base directory
+find_maven_basedir() {
+
+  if [ -z "$1" ]
+  then
+    echo "Path not specified to find_maven_basedir"
+    return 1
+  fi
+
+  basedir="$1"
+  wdir="$1"
+  while [ "$wdir" != '/' ] ; do
+    if [ -d "$wdir"/.mvn ] ; then
+      basedir=$wdir
+      break
+    fi
+    # workaround for JBEAP-8937 (on Solaris 10/Sparc)
+    if [ -d "${wdir}" ]; then
+      wdir=`cd "$wdir/.."; pwd`
+    fi
+    # end of workaround
+  done
+  echo "${basedir}"
+}
+
+# concatenates all lines of a file
+concat_lines() {
+  if [ -f "$1" ]; then
+    echo "$(tr -s '\n' ' ' < "$1")"
+  fi
+}
+
+BASE_DIR=`find_maven_basedir "$(pwd)"`
+if [ -z "$BASE_DIR" ]; then
+  exit 1;
+fi
+
+##########################################################################################
+# Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
+# This allows using the maven wrapper in projects that prohibit checking in binary data.
+##########################################################################################
+if [ -r "$BASE_DIR/.mvn/wrapper/maven-wrapper.jar" ]; then
+    if [ "$MVNW_VERBOSE" = true ]; then
+      echo "Found .mvn/wrapper/maven-wrapper.jar"
+    fi
+else
+    if [ "$MVNW_VERBOSE" = true ]; then
+      echo "Couldn't find .mvn/wrapper/maven-wrapper.jar, downloading it ..."
+    fi
+    if [ -n "$MVNW_REPOURL" ]; then
+      jarUrl="$MVNW_REPOURL/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar"
+    else
+      jarUrl="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar"
+    fi
+    while IFS="=" read key value; do
+      case "$key" in (wrapperUrl) jarUrl="$value"; break ;;
+      esac
+    done < "$BASE_DIR/.mvn/wrapper/maven-wrapper.properties"
+    if [ "$MVNW_VERBOSE" = true ]; then
+      echo "Downloading from: $jarUrl"
+    fi
+    wrapperJarPath="$BASE_DIR/.mvn/wrapper/maven-wrapper.jar"
+    if $cygwin; then
+      wrapperJarPath=`cygpath --path --windows "$wrapperJarPath"`
+    fi
+
+    if command -v wget > /dev/null; then
+        if [ "$MVNW_VERBOSE" = true ]; then
+          echo "Found wget ... using wget"
+        fi
+        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
+            wget "$jarUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+        else
+            wget --http-user=$MVNW_USERNAME --http-password=$MVNW_PASSWORD "$jarUrl" -O "$wrapperJarPath" || rm -f "$wrapperJarPath"
+        fi
+    elif command -v curl > /dev/null; then
+        if [ "$MVNW_VERBOSE" = true ]; then
+          echo "Found curl ... using curl"
+        fi
+        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
+            curl -o "$wrapperJarPath" "$jarUrl" -f
+        else
+            curl --user $MVNW_USERNAME:$MVNW_PASSWORD -o "$wrapperJarPath" "$jarUrl" -f
+        fi
+
+    else
+        if [ "$MVNW_VERBOSE" = true ]; then
+          echo "Falling back to using Java to download"
+        fi
+        javaClass="$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.java"
+        # For Cygwin, switch paths to Windows format before running javac
+        if $cygwin; then
+          javaClass=`cygpath --path --windows "$javaClass"`
+        fi
+        if [ -e "$javaClass" ]; then
+            if [ ! -e "$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.class" ]; then
+                if [ "$MVNW_VERBOSE" = true ]; then
+                  echo " - Compiling MavenWrapperDownloader.java ..."
+                fi
+                # Compiling the Java class
+                ("$JAVA_HOME/bin/javac" "$javaClass")
+            fi
+            if [ -e "$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.class" ]; then
+                # Running the downloader
+                if [ "$MVNW_VERBOSE" = true ]; then
+                  echo " - Running MavenWrapperDownloader.java ..."
+                fi
+                ("$JAVA_HOME/bin/java" -cp .mvn/wrapper MavenWrapperDownloader "$MAVEN_PROJECTBASEDIR")
+            fi
+        fi
+    fi
+fi
+##########################################################################################
+# End of extension
+##########################################################################################
+
+export MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}
+if [ "$MVNW_VERBOSE" = true ]; then
+  echo $MAVEN_PROJECTBASEDIR
+fi
+MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
+
+# For Cygwin, switch paths to Windows format before running java
+if $cygwin; then
+  [ -n "$M2_HOME" ] &&
+    M2_HOME=`cygpath --path --windows "$M2_HOME"`
+  [ -n "$JAVA_HOME" ] &&
+    JAVA_HOME=`cygpath --path --windows "$JAVA_HOME"`
+  [ -n "$CLASSPATH" ] &&
+    CLASSPATH=`cygpath --path --windows "$CLASSPATH"`
+  [ -n "$MAVEN_PROJECTBASEDIR" ] &&
+    MAVEN_PROJECTBASEDIR=`cygpath --path --windows "$MAVEN_PROJECTBASEDIR"`
+fi
+
+# Provide a "standardized" way to retrieve the CLI args that will
+# work with both Windows and non-Windows executions.
+MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $@"
+export MAVEN_CMD_LINE_ARGS
+
+WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+
+exec "$JAVACMD" \
+  $MAVEN_OPTS \
+  $MAVEN_DEBUG_OPTS \
+  -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
+  "-Dmaven.home=${M2_HOME}" \
+  "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
+  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+</file>
+
+<file path="mvnw.cmd">
+@REM ----------------------------------------------------------------------------
+@REM Licensed to the Apache Software Foundation (ASF) under one
+@REM or more contributor license agreements.  See the NOTICE file
+@REM distributed with this work for additional information
+@REM regarding copyright ownership.  The ASF licenses this file
+@REM to you under the Apache License, Version 2.0 (the
+@REM "License"); you may not use this file except in compliance
+@REM with the License.  You may obtain a copy of the License at
+@REM
+@REM    https://www.apache.org/licenses/LICENSE-2.0
+@REM
+@REM Unless required by applicable law or agreed to in writing,
+@REM software distributed under the License is distributed on an
+@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+@REM KIND, either express or implied.  See the License for the
+@REM specific language governing permissions and limitations
+@REM under the License.
+@REM ----------------------------------------------------------------------------
+
+@REM ----------------------------------------------------------------------------
+@REM Maven Start Up Batch script
+@REM
+@REM Required ENV vars:
+@REM JAVA_HOME - location of a JDK home dir
+@REM
+@REM Optional ENV vars
+@REM M2_HOME - location of maven2's installed home dir
+@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
+@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending
+@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven
+@REM     e.g. to debug Maven itself, use
+@REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+@REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+@REM ----------------------------------------------------------------------------
+
+@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'
+@echo off
+@REM set title of command window
+title %0
+@REM enable echoing by setting MAVEN_BATCH_ECHO to 'on'
+@if "%MAVEN_BATCH_ECHO%" == "on"  echo %MAVEN_BATCH_ECHO%
+
+@REM set %HOME% to equivalent of $HOME
+if "%HOME%" == "" (set "HOME=%HOMEDRIVE%%HOMEPATH%")
+
+@REM Execute a user defined script before this one
+if not "%MAVEN_SKIP_RC%" == "" goto skipRcPre
+@REM check for pre script, once with legacy .bat ending and once with .cmd ending
+if exist "%USERPROFILE%\mavenrc_pre.bat" call "%USERPROFILE%\mavenrc_pre.bat" %*
+if exist "%USERPROFILE%\mavenrc_pre.cmd" call "%USERPROFILE%\mavenrc_pre.cmd" %*
+:skipRcPre
+
+@setlocal
+
+set ERROR_CODE=0
+
+@REM To isolate internal variables from possible post scripts, we use another setlocal
+@setlocal
+
+@REM ==== START VALIDATION ====
+if not "%JAVA_HOME%" == "" goto OkJHome
+
+echo.
+echo Error: JAVA_HOME not found in your environment. >&2
+echo Please set the JAVA_HOME variable in your environment to match the >&2
+echo location of your Java installation. >&2
+echo.
+goto error
+
+:OkJHome
+if exist "%JAVA_HOME%\bin\java.exe" goto init
+
+echo.
+echo Error: JAVA_HOME is set to an invalid directory. >&2
+echo JAVA_HOME = "%JAVA_HOME%" >&2
+echo Please set the JAVA_HOME variable in your environment to match the >&2
+echo location of your Java installation. >&2
+echo.
+goto error
+
+@REM ==== END VALIDATION ====
+
+:init
+
+@REM Find the project base dir, i.e. the directory that contains the folder ".mvn".
+@REM Fallback to current working directory if not found.
+
+set MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%
+IF NOT "%MAVEN_PROJECTBASEDIR%"=="" goto endDetectBaseDir
+
+set EXEC_DIR=%CD%
+set WDIR=%EXEC_DIR%
+:findBaseDir
+IF EXIST "%WDIR%"\.mvn goto baseDirFound
+cd ..
+IF "%WDIR%"=="%CD%" goto baseDirNotFound
+set WDIR=%CD%
+goto findBaseDir
+
+:baseDirFound
+set MAVEN_PROJECTBASEDIR=%WDIR%
+cd "%EXEC_DIR%"
+goto endDetectBaseDir
+
+:baseDirNotFound
+set MAVEN_PROJECTBASEDIR=%EXEC_DIR%
+cd "%EXEC_DIR%"
+
+:endDetectBaseDir
+
+IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
+
+@setlocal EnableExtensions EnableDelayedExpansion
+for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
+@endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%
+
+:endReadAdditionalConfig
+
+SET MAVEN_JAVA_EXE="%JAVA_HOME%\bin\java.exe"
+set WRAPPER_JAR="%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.jar"
+set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+
+set DOWNLOAD_URL="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar"
+
+FOR /F "usebackq tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.properties") DO (
+    IF "%%A"=="wrapperUrl" SET DOWNLOAD_URL=%%B
+)
+
+@REM Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
+@REM This allows using the maven wrapper in projects that prohibit checking in binary data.
+if exist %WRAPPER_JAR% (
+    if "%MVNW_VERBOSE%" == "true" (
+        echo Found %WRAPPER_JAR%
+    )
+) else (
+    if not "%MVNW_REPOURL%" == "" (
+        SET DOWNLOAD_URL="%MVNW_REPOURL%/org/apache/maven/wrapper/maven-wrapper/3.1.0/maven-wrapper-3.1.0.jar"
+    )
+    if "%MVNW_VERBOSE%" == "true" (
+        echo Couldn't find %WRAPPER_JAR%, downloading it ...
+        echo Downloading from: %DOWNLOAD_URL%
+    )
+
+    powershell -Command "&{"^
+		"$webclient = new-object System.Net.WebClient;"^
+		"if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {"^
+		"$webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');"^
+		"}"^
+		"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%DOWNLOAD_URL%', '%WRAPPER_JAR%')"^
+		"}"
+    if "%MVNW_VERBOSE%" == "true" (
+        echo Finished downloading %WRAPPER_JAR%
+    )
+)
+@REM End of extension
+
+@REM Provide a "standardized" way to retrieve the CLI args that will
+@REM work with both Windows and non-Windows executions.
+set MAVEN_CMD_LINE_ARGS=%*
+
+%MAVEN_JAVA_EXE% ^
+  %JVM_CONFIG_MAVEN_PROPS% ^
+  %MAVEN_OPTS% ^
+  %MAVEN_DEBUG_OPTS% ^
+  -classpath %WRAPPER_JAR% ^
+  "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" ^
+  %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*
+if ERRORLEVEL 1 goto error
+goto end
+
+:error
+set ERROR_CODE=1
+
+:end
+@endlocal & set ERROR_CODE=%ERROR_CODE%
+
+if not "%MAVEN_SKIP_RC%"=="" goto skipRcPost
+@REM check for post script, once with legacy .bat ending and once with .cmd ending
+if exist "%USERPROFILE%\mavenrc_post.bat" call "%USERPROFILE%\mavenrc_post.bat"
+if exist "%USERPROFILE%\mavenrc_post.cmd" call "%USERPROFILE%\mavenrc_post.cmd"
+:skipRcPost
+
+@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'
+if "%MAVEN_BATCH_PAUSE%"=="on" pause
+
+if "%MAVEN_TERMINATE_CMD%"=="on" exit %ERROR_CODE%
+
+cmd /C exit /B %ERROR_CODE%
+</file>
+
+<file path="pom.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.7</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>es.taw</groupId>
+    <artifactId>MoviesTESAW</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>moviesTESAW</name>
+    <description>MoviesTESAW</description>
+    <properties>
+        <java.version>11</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+</file>
+
+<file path="src/main/java/es/tesaw/movies/controller/MoviesController.java">
+package es.tesaw.movies.controller;
+
+import es.tesaw.movies.dao.GenreRepository;
+import es.tesaw.movies.dao.MoviesRepository;
+import es.tesaw.movies.dao.SpokenLanguageRepository;
+import es.tesaw.movies.entity.GenreEntity;
+import es.tesaw.movies.entity.MovieEntity;
+import es.tesaw.movies.entity.SpokenLanguageEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Controller
+public class MoviesController {
+
+    @Autowired
+    protected MoviesRepository moviesRepository;
+
+    @Autowired
+    protected SpokenLanguageRepository spokenLanguageRepository;
+
+    @Autowired
+    protected GenreRepository genreRepository;
+
+    @GetMapping("/")
+    public String doInit (Model model) {
+
+        List<MovieEntity> pelis = this.moviesRepository.findAll();
+        List<GenreEntity> generos = this.genreRepository.findAll();
+        model.addAttribute("pelis", pelis);
+        model.addAttribute("generos", generos);
+        return "movies";
+    }
+
+    @PostMapping("/filtrar")
+    public String doFiltrar (@RequestParam(value = "filtro", required = false) String filtro,
+                             @RequestParam(value = "generos", required = false) List<Integer> generosIds,
+                             @RequestParam(value = "ordenarPor", required = false) String ordenarPor,
+                             @RequestParam(value = "ascendente", required = false) Boolean ascendente,
+                             Model model) {
+        List<MovieEntity> lista;
+
+        if (filtro.isEmpty() && generosIds == null && ordenarPor == null && ascendente == null) {
+            lista = this.moviesRepository.findAll();
+        } else if (generosIds == null && ordenarPor == null && ascendente == null) {
+            System.out.println("HOLA2");
+            lista = this.moviesRepository.filtrarPorPalabra(filtro);
+        } else if (ordenarPor == null && ascendente == null) {
+            System.out.println("HOLAA3");
+            lista = this.moviesRepository.filtrarPorPalabraYGeneros(filtro, generosIds);
+        } else {
+            System.out.println("HOLAA4");
+            Sort sort;
+            if (ascendente) {
+                sort = Sort.by(Sort.Direction.ASC, ordenarPor);
+            } else {
+                sort = Sort.by(Sort.Direction.DESC, ordenarPor);
+            }
+            lista = this.moviesRepository.filtrarPorPalabraYGenerosYOrdenada(filtro, generosIds, sort);
+        }
+
+        model.addAttribute("pelis", lista);
+        return "movies_table";
+    }
+
+    protected String editarCrear (Integer id, Model model) {
+        MovieEntity pelicula = null;
+        if (id == null) {
+            pelicula = new MovieEntity();
+        } else {
+            pelicula = this.moviesRepository.findById(id).get();
+        }
+        model.addAttribute("pelicula", pelicula);
+
+        List<SpokenLanguageEntity> spokenLanguages = this.spokenLanguageRepository.findAll();
+        model.addAttribute("idiomas", spokenLanguages);
+
+        List<GenreEntity> genres = this.genreRepository.findAll();
+        model.addAttribute("generos", genres);
+
+        return "movie_edit";
+    }
+
+    @PostMapping("/anadir")
+    public String doAnadir(Model model) {
+      return this.editarCrear(null,model);
+    }
+
+    @GetMapping("/borrar")
+    public String doBorrar(@RequestParam("id") Integer id) {
+       MovieEntity pelicula = this.moviesRepository.findById(id).get();
+       pelicula.deleteGeneres();
+       pelicula.deleteProductionCompanies();
+       pelicula.deleteSpokenLanguages();
+       this.moviesRepository.delete(pelicula);
+       return "redirect:/";
+    }
+
+    @GetMapping("/editar")
+    public String doEditar (@RequestParam("id") Integer id, Model model) {
+        return this.editarCrear(id,model);
+    }
+
+   @PostMapping("/guardar")
+   public String doGuardar (@RequestParam(value = "id", required = false) Integer id,
+                            @RequestParam(value = "titulo", required = false) String titulo,
+                            @RequestParam(value = "sinopsis", required = false) String sinopsis,
+                            @RequestParam(value = "titulo_orig", required = false)  String originalTitle,
+                            @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate releaseDate,
+                            @RequestParam(value = "runtime", required = false) Float runtime,
+                            @RequestParam(value = "budget", required = false) Long budget,
+                            @RequestParam(value = "revenue", required = false) Long revenue,
+                            @RequestParam(value = "status", required = false) String status,
+                            @RequestParam(value = "tagline", required = false) String tagline,
+                            @RequestParam(value = "popularity", required = false) Float popularity,
+                            @RequestParam(value = "voteAverage", required = false) Float voteAverage,
+                            @RequestParam(value = "voteCount", required = false) Integer voteCount,
+                            @RequestParam(value = "homepage", required = false) String homepage,
+                            @RequestParam("idioma") Integer iddioma,
+                            @RequestParam(value = "generos", required = false) List<Integer> generosIDs) {
+        MovieEntity pelicula = null;
+        if (id == null) {
+            pelicula = new MovieEntity();
+        } else {
+            pelicula = this.moviesRepository.findById(id).get();
+        }
+
+        pelicula.setTitle(titulo);
+        pelicula.setOriginalTitle(originalTitle);
+        pelicula.setOverview(sinopsis);
+        pelicula.setReleaseDate(releaseDate);
+        pelicula.setRuntime(runtime);
+        pelicula.setBudget(budget);
+        pelicula.setRevenue(revenue);
+        pelicula.setStatus(status);
+        pelicula.setTagline(tagline);
+        pelicula.setPopularity(popularity);
+        pelicula.setVoteAverage(voteAverage);
+        pelicula.setVoteCount(voteCount);
+        pelicula.setHomepage(homepage);
+
+        SpokenLanguageEntity idioma = this.spokenLanguageRepository.findById(iddioma).get();
+        pelicula.setOriginalLanguage(idioma);
+
+        if (generosIDs != null) {
+            List<GenreEntity> genres = this.genreRepository.findAllById(generosIDs);
+            pelicula.setGenres(genres);
+        }
+
+        this.moviesRepository.save(pelicula);
+        return "redirect:/";
+   }
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/dao/GenreRepository.java">
+package es.tesaw.movies.dao;
+
+import es.tesaw.movies.entity.GenreEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GenreRepository extends JpaRepository<GenreEntity, Integer> {
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/dao/MoviesRepository.java">
+package es.tesaw.movies.dao;
+
+import es.tesaw.movies.entity.MovieEntity;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+
+public interface MoviesRepository extends JpaRepository<MovieEntity, Integer> {
+
+    @Query("select m from MovieEntity m where m.originalTitle like concat('%', :cadena, '%') or m.overview like concat('%', :cadena, '%')")
+    public List<MovieEntity> filtrarPorPalabra (@Param("cadena")String palabra);
+
+    @Query("select distinct m from MovieEntity m join m.genres g where " +
+            "g.id in (:generosId) and " +
+            "(m.originalTitle like concat('%', :cadena, '%') or m.overview like concat('%', :cadena, '%'))")
+    public List<MovieEntity> filtrarPorPalabraYGeneros (@Param("cadena")String palabra,
+                                                        @Param("generosId")List<Integer> generosId);
+
+    @Query("select distinct m from MovieEntity m join m.genres g where " +
+            "g.id in (:generosId) and " +
+            "(m.originalTitle like concat('%', :cadena, '%') or m.overview like concat('%', :cadena, '%'))")
+    public List<MovieEntity> filtrarPorPalabraYGenerosYOrdenada (@Param("cadena")String palabra,
+                                                        @Param("generosId")List<Integer> generosId,
+                                                         Sort sort);
+
+
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/dao/SpokenLanguageRepository.java">
+package es.tesaw.movies.dao;
+
+import es.tesaw.movies.entity.SpokenLanguageEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SpokenLanguageRepository extends JpaRepository<SpokenLanguageEntity, Integer> {
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/entity/GenreEntity.java">
+package es.tesaw.movies.entity;
+
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "GENRE")
+@Getter
+@Setter
+@NoArgsConstructor
+public class GenreEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String name;
+
+    @ManyToMany(mappedBy = "genres")
+    private List<MovieEntity> movies = new ArrayList<>();
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/entity/MovieCastEntity.java">
+package es.tesaw.movies.entity;
+
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "MOVIE_CAST")
+@Getter
+@Setter
+@NoArgsConstructor
+public class MovieCastEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private MovieEntity movie;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private PersonEntity person;
+
+    private String characterName;
+    private Integer castOrder;
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/entity/MovieCrewEntity.java">
+package es.tesaw.movies.entity;
+
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "MOVIE_CREW")
+@Getter
+@Setter
+@NoArgsConstructor
+public class MovieCrewEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private MovieEntity movie;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private PersonEntity person;
+
+    private String department;
+    private String job;
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/entity/MovieEntity.java">
+package es.tesaw.movies.entity;
+
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "MOVIE")
+@Getter
+@Setter
+@NoArgsConstructor
+public class MovieEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String title;
+    private String originalTitle;
+
+    @Column(length = 2014)
+    private String overview;
+
+    private LocalDate releaseDate;
+    private Float runtime;
+    private Long budget;
+    private Long revenue;
+    private String status;
+    private String tagline;
+    private Float popularity;
+    private Float voteAverage;
+    private Integer voteCount;
+    private String homepage;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "original_language_id")
+    private SpokenLanguageEntity originalLanguage;
+
+    @ManyToMany
+    @JoinTable(name = "MOVIE_GENRE",
+        joinColumns = @JoinColumn(name = "movie_id"),
+        inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<GenreEntity> genres = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "MOVIE_PRODUCTION_COMPANY",
+        joinColumns = @JoinColumn(name = "movie_id"),
+        inverseJoinColumns = @JoinColumn(name = "company_id"))
+    private List<ProductionCompanyEntity> productionCompanies = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "MOVIE_LANGUAGE",
+        joinColumns = @JoinColumn(name = "movie_id"),
+        inverseJoinColumns = @JoinColumn(name = "language_id"))
+    private List<SpokenLanguageEntity> spokenLanguages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovieCastEntity> cast = new ArrayList<>();
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MovieCrewEntity> crew = new ArrayList<>();
+
+    public void deleteGeneres() {
+        for (GenreEntity genre : this.genres) {
+            genre.getMovies().remove(this);
+        }
+        this.genres.clear();
+    }
+
+    public void deleteProductionCompanies() {
+        for (ProductionCompanyEntity company : this.productionCompanies) {
+            company.getMovies().remove(this);
+        }
+        this.productionCompanies.clear();
+    }
+
+    public void deleteSpokenLanguages() {
+        for (SpokenLanguageEntity spokenLanguage : this.spokenLanguages) {
+            spokenLanguage.getMovies().remove(this);
+        }
+        this.spokenLanguages.clear();
+    }
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/entity/PersonEntity.java">
+package es.tesaw.movies.entity;
+
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "PERSON")
+@Getter
+@Setter
+@NoArgsConstructor
+public class PersonEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String name;
+    private Integer gender;
+
+    @OneToMany(mappedBy = "person")
+    private List<MovieCastEntity> castMovies = new ArrayList<>();
+
+    @OneToMany(mappedBy = "person")
+    private List<MovieCrewEntity> crewMovies = new ArrayList<>();
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/entity/ProductionCompanyEntity.java">
+package es.tesaw.movies.entity;
+
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "PRODUCTION_COMPANY")
+@Getter
+@Setter
+@NoArgsConstructor
+public class ProductionCompanyEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String name;
+
+    @ManyToMany(mappedBy = "productionCompanies")
+    private List<MovieEntity> movies = new ArrayList<>();
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/entity/SpokenLanguageEntity.java">
+package es.tesaw.movies.entity;
+
+import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "SPOKEN_LANGUAGE")
+@Getter
+@Setter
+@NoArgsConstructor
+public class SpokenLanguageEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(unique = true, nullable = false)
+    private String iso;
+
+    private String name;
+
+    @OneToMany(mappedBy = "originalLanguage")
+    private List<MovieEntity> originalLanguageMovies = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "spokenLanguages")
+    private List<MovieEntity> movies = new ArrayList<>();
+}
+</file>
+
+<file path="src/main/java/es/tesaw/movies/MoviesTesawApplication.java">
+package es.tesaw.movies;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MoviesTesawApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MoviesTesawApplication.class, args);
+    }
+
+}
+</file>
+
+<file path="src/main/resources/application.properties">
+spring.mvc.view.prefix=/WEB-INF/view/
+spring.mvc.view.suffix=.jsp
+
+spring.datasource.url=jdbc:derby:db
+spring.datasource.username=sampleTAW
+spring.datasource.password=sampleTAW
+spring.datasource.driver-class-name=org.apache.derby.jdbc.EmbeddedDriver
+spring.datasource.generate-unique-name=true
+spring.jpa.properties.hibernate.default_schema=MOVIES
+
+spring.jpa.database-platform=org.hibernate.dialect.DerbyTenSevenDialect
+
+spring.jpa.show-sql=true
+
+#spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto=none
+</file>
+
+<file path="src/main/resources/static/hola.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hola HTML</h1>
+</body>
+</html>
+</file>
+
+<file path="src/main/webapp/prueba.jsp">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<h1>Esto es una página de prueba</h1>
+</body>
+</html>
+</file>
+
+<file path="src/main/webapp/WEB-INF/view/movie_edit.jsp">
+<%@ page import="es.tesaw.movies.entity.MovieEntity" %>
+<%@ page import="es.tesaw.movies.entity.SpokenLanguageEntity" %>
+<%@ page import="java.util.List" %>
+<%@ page import="es.tesaw.movies.entity.GenreEntity" %><%--
+  Created by IntelliJ IDEA.
+  User: guzman
+  Date: 18/3/26
+  Time: 12:09
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>(peli.getId()!=null?"Editar":"Crear") %> película</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<%
+    MovieEntity peli = (MovieEntity) request.getAttribute("pelicula");
+    List<SpokenLanguageEntity> idiomas = (List<SpokenLanguageEntity>) request.getAttribute("idiomas");
+    List<GenreEntity> generos = (List<GenreEntity>) request.getAttribute("generos");
+%>
+<body>
+<div class="container mt-5">
+    <h2 class="mb-4"><%= (peli.getId()!=null?"Editar":"Crear") %> Película</h2>
+
+<form action="/guardar" method="post">
+    <%
+        if (peli.getId() != null) {
+    %>
+    <input type="hidden" name="id" value="<%= peli.getId() %>">
+    <%
+        }
+    %>
+    <div class="mb-3">
+        <label class="form-label">Título:</label>
+        <input class="form-control" type="text" size="100" maxlength="100" name="titulo" value="<%= (peli.getId()!=null?peli.getTitle():"") %>"/><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Título original:</label>
+            <input class="form-control" type="text" name="titulo_orig" value="<%= (peli.getId()!=null?peli.getOriginalTitle():"") %>"/><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Idioma:</label>
+        <select name="idioma" class="form-control">
+            <%
+                for (SpokenLanguageEntity idioma: idiomas) {
+                    String selected = "";
+                    if (peli.getId()!= null && idioma.getId() == peli.getOriginalLanguage().getId())
+                        selected = "selected";
+            %>
+                    <option value="<%= idioma.getId() %>" <%= selected %> ><%= idioma.getName()%></option>
+            <%
+                }
+            %>
+        </select>
+        <br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Géneros: </label>
+        <%
+            for (GenreEntity genero: generos) {
+                String checked = "";
+                if (peli.getId()!= null && peli.getGenres().contains(genero))
+                    checked = "checked";
+        %>
+
+        <input type="checkbox" <%= checked %> name="generos" value="<%= genero.getId() %>"><%= genero.getName() %>
+
+        <%
+            }
+        %>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Sinopsis: </label>
+        <textarea class="form-control" rows="10" cols="50" name="sinopsis"><%= (peli.getId()!=null?peli.getOverview():"") %></textarea><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fecha de estreno: </label>
+        <input class="form-control" type="date" name="fecha" value="<%= (peli.getId()!=null?peli.getReleaseDate():"") %>"/><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Duración: </label>
+        <input class="form-control" type="text" name="runtime" value="<%= (peli.getId()!=null?peli.getRuntime():"") %>"/><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Presupuesto: </label>
+        <input class="form-control" type="number" name="budget" value="<%= (peli.getId()!=null?peli.getBudget():"") %>" /><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Ingresos: </label>
+        <input class="form-control" type="number" name="revenue" value="<%= (peli.getId()!=null?peli.getRevenue():"") %>" /><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Estado: </label>
+        <input class="form-control" type="number" name="status" value="<%=(peli.getId()!=null?peli.getStatus():"") %>" /><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tagline: </label>
+        <input class="form-control" type="text" size="100" maxlength="100" name="tagline" value="<%= (peli.getId()!=null?peli.getTagline():"") %>"/><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Popularidad: </label>
+        <input class="form-control" type="number" name="popularity" value="<%= (peli.getId()!=null?peli.getPopularity():"") %>" /><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Calificación promedio: </label>
+        <input class="form-control" type="number" name="voteAverage" value="<%= (peli.getId()!=null?peli.getVoteAverage():"") %>" /><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Número de votos: </label>
+        <input class="form-control" type="number" name="voteCount" value="<%= (peli.getId()!=null?peli.getVoteCount():"") %>" /><br/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Sitio web: </label>
+        <input class="form-control" type="text" size="100" maxlength="100" name="homepage" value="<%= (peli.getId()!=null?peli.getHomepage():"") %>"/><br/>
+    </div>
+
+    <button type="submit">Guardar</button>
+</form>
+</div>
+</body>
+</html>
+</file>
+
+<file path="src/main/webapp/WEB-INF/view/movies_table.jsp">
+<%@ page import="java.util.List" %>
+<%@ page import="es.tesaw.movies.entity.MovieEntity" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<MovieEntity> peliculas =  (List<MovieEntity>) request.getAttribute("pelis");
+%>
+
+<table class="table table-striped table-bordered table-hover align-middle">
+    <tr id="header">
+        <th data-column="title">TITLE</th>
+        <th data-column="budget">BUDGET</th>
+        <th data-column="rating">RATING</th>
+        <th data-column="duration">DURATION</th>
+        <th>PLOT</th>
+        <th>RELEASE DATE</th>
+        <th>LANGUAGE</th>
+        <th></th>
+        <th></th>
+    </tr>
+<%
+    for (MovieEntity peli: peliculas) {
+%>
+    <tr>
+        <td><%= peli.getTitle() %> </td>
+        <td><%= peli.getBudget() %> </td>
+        <td><%= peli.getVoteAverage() %> </td>
+        <td><%= peli.getRuntime() %> </td>
+        <td><%= peli.getOverview() %> </td>
+        <td><%= peli.getReleaseDate() %> </td>
+        <td><%= peli.getOriginalLanguage().getName() %> </td>
+        <td><a href="/editar?id=<%= peli.getId() %>"> Editar</a> </td>
+        <td><a href="/borrar?id=<%= peli.getId() %>"> Borrar</a> </td>
+    </tr>
+<%
+    }
+%>
+
+</table>
+</file>
+
+<file path="src/main/webapp/WEB-INF/view/movies.jsp">
+<%@ page import="es.tesaw.movies.entity.GenreEntity" %>
+<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Lista de películas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<%
+    List<GenreEntity> generos = (List<GenreEntity>) request.getAttribute("generos");
+%>
+
+<h1>Lista de películas</h1>
+
+<form id="form_filtrado">
+    <input type="text" name="filtro">
+    <%
+        for (GenreEntity genero: generos) {
+    %>
+    <input type="checkbox" name="generos" value="<%= genero.getId() %>"/> <%= genero.getName() %>
+    <%
+        }
+    %>
+    <input type="submit" value="Filtrar">
+</form>
+
+<div id="tabla">
+    <jsp:include page="movies_table.jsp"/>
+</div>
+
+<form method="POST" action="/anadir">
+    <button type="submit" class="btn btn-primary">Nueva película</button>
+</form>
+
+<script>
+    const header = document.querySelector("#header");
+    const columnasClickables = header.querySelectorAll("th[data-column]");
+
+    let columnaOrden = null;
+    let ordenAscendente = true;
+
+    document.getElementById("form_filtrado").addEventListener("submit", (e) => {
+        e.preventDefault()
+        columnaOrden = null;
+        ordenAscendente = true;
+        fetchPeliculas()
+    });
+
+
+
+    document.getElementById("tabla").addEventListener("click", (e) => {
+        // No podemos ponerle el listener a los th porque al hacer la petición,
+        // se reconstruye la tabla pero los listeners no.
+        e.preventDefault()
+        const column = e.target.closest("th[data-column]");
+        if (column) {
+            const ordenarPor = column.dataset.column;
+            if (columnaOrden === ordenarPor) {
+                ordenAscendente = !ordenAscendente;
+            } else {
+                    columnaOrden = ordenarPor;
+                    ordenAscendente = true;
+            }
+
+            fetchPeliculas();
+        }
+    })
+
+
+    function fetchPeliculas() {
+        const form = document.getElementById("form_filtrado");
+        const formData = new FormData(form);
+
+        const params = new URLSearchParams();
+        params.append("filtro", formData.get("filtro"));
+
+        const generos = formData.getAll("generos");
+        generos.forEach(genero => {
+            params.append("generos", genero);
+        });
+
+        if (columnaOrden) {
+            params.append("ordenarPor", columnaOrden);
+            params.append("ascendente", ordenAscendente);
+        }
+
+        console.log(formData.get("filtro"), generos, columnaOrden, ordenAscendente);
+
+        fetch("/filtrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: params.toString()
+        })
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById("tabla").innerHTML = html;
+            })
+            .catch(error => console.error("Error:", error));
+    }
+</script>
+
+</body>
+</html>
+</file>
+
+<file path="src/test/java/es/tesaw/movies/MoviesTawApplicationTests.java">
+package es.tesaw.movies;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class MoviesTawApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
+</file>
+
+</files>
