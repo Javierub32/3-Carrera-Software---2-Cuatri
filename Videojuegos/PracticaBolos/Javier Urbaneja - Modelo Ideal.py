@@ -13,7 +13,7 @@ def run_simulation(gravedad=900, v_inicial=0, coef_roz=0, masa=1, radio=40):
     pygame.display.set_caption("Simulación de Bolos (Apartado 2)")
     pantalla = pygame.display.set_mode((ANCHO, ALTO))
     clock = pygame.time.Clock()
-    
+	
     # Creamos el espacio de simulación
     espacio = pymunk.Space()
     espacio.gravity = (0, gravedad)

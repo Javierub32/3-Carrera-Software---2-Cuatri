@@ -51,3 +51,6 @@ const cargarTexto2 = async (url) => {
 }
 
 cargarTexto2("https://pokeapi.co/api/v2/pokemon?limit=151")
+
+
+// Ejercicio 3:
