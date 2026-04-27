@@ -2,7 +2,6 @@ import pygame
 import pymunk
 import pymunk.pygame_util
 import math
-
 # Configuración de la ventana
 WIDTH, HEIGHT = 1000, 600
 FPS = 60

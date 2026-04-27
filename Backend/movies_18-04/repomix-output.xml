@@ -43,7 +43,6 @@ The content is organized as follows:
 .gitignore
 .mvn/wrapper/maven-wrapper.jar
 .mvn/wrapper/maven-wrapper.properties
-db/db.lck
 db/log/log.ctrl
 db/log/log19.dat
 db/log/logmirror.ctrl
@@ -927,13 +926,18 @@ public class MoviesController {
         if (filtro.isEmpty() && generosIds == null && ordenarPor == null && ascendente == null) {
             lista = this.moviesRepository.findAll();
         } else if (generosIds == null && ordenarPor == null && ascendente == null) {
-            System.out.println("HOLA2");
             lista = this.moviesRepository.filtrarPorPalabra(filtro);
         } else if (ordenarPor == null && ascendente == null) {
-            System.out.println("HOLAA3");
             lista = this.moviesRepository.filtrarPorPalabraYGeneros(filtro, generosIds);
+        } else if (generosIds == null) {
+            Sort sort;
+            if (ascendente) {
+                sort = Sort.by(Sort.Direction.ASC, ordenarPor);
+            } else {
+                sort = Sort.by(Sort.Direction.DESC, ordenarPor);
+            }
+            lista = this.moviesRepository.filtrarPorPalabraYOrdenada(filtro, sort);
         } else {
-            System.out.println("HOLAA4");
             Sort sort;
             if (ascendente) {
                 sort = Sort.by(Sort.Direction.ASC, ordenarPor);
@@ -1075,7 +1079,9 @@ public interface MoviesRepository extends JpaRepository<MovieEntity, Integer> {
     public List<MovieEntity> filtrarPorPalabraYGenerosYOrdenada (@Param("cadena")String palabra,
                                                         @Param("generosId")List<Integer> generosId,
                                                          Sort sort);
-
+    @Query("select distinct m from MovieEntity m where " +
+            "(m.originalTitle like concat('%', :cadena, '%') or m.overview like concat('%', :cadena, '%'))")
+    public List<MovieEntity> filtrarPorPalabraYOrdenada (@Param("cadena")String palabra, Sort sort);
 
 }
 </file>
@@ -1570,8 +1576,8 @@ spring.jpa.hibernate.ddl-auto=none
     <tr id="header">
         <th data-column="title">TITLE</th>
         <th data-column="budget">BUDGET</th>
-        <th data-column="rating">RATING</th>
-        <th data-column="duration">DURATION</th>
+        <th data-column="voteAverage">RATING</th>
+        <th data-column="runtime">DURATION</th>
         <th>PLOT</th>
         <th>RELEASE DATE</th>
         <th>LANGUAGE</th>
@@ -1649,8 +1655,6 @@ spring.jpa.hibernate.ddl-auto=none
         fetchPeliculas()
     });
 
-
-
     document.getElementById("tabla").addEventListener("click", (e) => {
         // No podemos ponerle el listener a los th porque al hacer la petición,
         // se reconstruye la tabla pero los listeners no.
@@ -1686,8 +1690,6 @@ spring.jpa.hibernate.ddl-auto=none
             params.append("ordenarPor", columnaOrden);
             params.append("ascendente", ordenAscendente);
         }
-
-        console.log(formData.get("filtro"), generos, columnaOrden, ordenAscendente);
 
         fetch("/filtrar", {
             method: "POST",
