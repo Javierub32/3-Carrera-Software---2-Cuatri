@@ -120,6 +120,10 @@ console.log(`Subcadena desde posición 12 al final: ${cadena.slice(12)}`);
 // Ejercicio 9:
 const frase = "la programación en javascript es divertida";
 
+
+
+
+
 console.log(frase.toUpperCase());
 
 const titulo = frase

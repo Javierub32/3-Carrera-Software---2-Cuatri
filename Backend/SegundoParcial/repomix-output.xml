@@ -43,7 +43,6 @@ The content is organized as follows:
 .gitignore
 .mvn/wrapper/maven-wrapper.jar
 .mvn/wrapper/maven-wrapper.properties
-db/db.lck
 db/log/log.ctrl
 db/log/log14.dat
 db/log/logmirror.ctrl
@@ -927,7 +926,7 @@ public class MoviesController {
     }
 
     @GetMapping("/editarPelicula")
-    public String editarPelicula(@RequestParam("id") Integer id, @RequestParam("filtro") String filtro,Model model) {
+    public String editarPelicula(@RequestParam("id") Integer id, @RequestParam(value = "filtro", required = false) String filtro,Model model) {
         Movies movie = this.movieRepository.findById(id).get();
         List<SpokenLanguages> languages = this.spokenLanguagesRepository.findAll();
         List<SpokenLanguages> movieLanguages = movie.getSpokenLanguagesList();
@@ -1441,8 +1440,8 @@ spring.jpa.hibernate.ddl-auto=none
     Movies movie = (Movies) request.getAttribute("movie");
     List<SpokenLanguages> languages = (List<SpokenLanguages>) request.getAttribute("languages");
     List<SpokenLanguages> movieLanguages = (List<SpokenLanguages>) request.getAttribute("movieLanguages");
-    List<MovieCast> peopleCast = (List<MovieCast>) request.getAttribute("movieCast");
-    List<MovieCrew> peopleCrew = (List<MovieCrew>) request.getAttribute("movieCrew");
+    List<MovieCast> peopleCast = (List<MovieCast>) request.getAttribute("peopleCast");
+    List<MovieCrew> peopleCrew = (List<MovieCrew>) request.getAttribute("peopleCrew");
 
 %>
 <h1>Ficha de pelicula</h1>
@@ -1477,11 +1476,16 @@ spring.jpa.hibernate.ddl-auto=none
 </form>
     <div style="border: 1px solid black; margin: 10px; padding: 7px">
         <% for(MovieCast mc: peopleCast) {%>
-            <%=mc.getCharacterName()%> - <%=mc.getPersonId().getName()%>
+            <p>
+                <%=mc.getCharacterName()%> - <%=mc.getPersonId().getName()%>
+            </p>
+
         <%}%>
 
         <% for(MovieCrew mc: peopleCrew) {%>
-        <%=mc.getJob()%> - <%=mc.getPersonId().getName()%>
+            <p>
+                <%=mc.getJob()%> - <%=mc.getPersonId().getName()%>
+            </p>
         <%}%>
         <a href="/editarPelicula?id=<%=movie.getId()%>&filtro=reparto">Reparto</a>
         <a href="/editarPelicula?id=<%=movie.getId()%>&filtro=trabajadores">Trabajadores</a>

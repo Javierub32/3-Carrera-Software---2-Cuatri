@@ -1,0 +1,474 @@
+import pygame
+import pymunk
+import pymunk.pygame_util
+import math
+import os
+from pymunk import Vec2d
+import numpy as np
+
+################################# SIMULACIÓN GENERICA ##############################################
+class Tsim:
+	def __init__(self,width=1000,height=600,suelo=600,PX_M=1,gravedad=(0,-9.81),fondo=None):
+		self.width=width
+		self.height=height
+		self.PX_M=PX_M
+		self.M_PX=1.0/PX_M
+		self.suelo=	suelo
+		#inicia pygame
+		pygame.init()
+		self.screen = pygame.display.set_mode((self.width, self.height))
+		self.clock = pygame.time.Clock()
+		self.asset_dir = os.path.dirname(os.path.abspath(__file__))
+		#intenta poner el fondo
+		if fondo!=None: 
+			self.fondo=self.pone_fondo(fondo)
+		else:
+			self.fondo=None	
+		#crea el espacio	
+		self.space = pymunk.Space()
+		self.space.gravity = Vec2d(gravedad[0],-gravedad[1])* PX_M
+		self.space.iterations = 35 # Aumentamos iteraciones para mayor estabilidad	
+		
+		# Diccionario: {tecla: {'func': funcion, 'activo': bool}}
+		self._eventos_teclado = {}
+		self.running = True
+		
+	#-------- pone imagen de fondo ----------------------------------	
+	def resolver_asset_path(self, ruta):
+		if ruta is None:
+			return None
+		if os.path.isabs(ruta):
+			return ruta
+		return os.path.join(self.asset_dir, ruta)
+
+	def pone_fondo(self,imagen):
+		try:
+			fondo = pygame.image.load(self.resolver_asset_path(imagen)).convert()
+			fondo = pygame.transform.smoothscale(fondo, (self.width,self.height))
+		except:
+			fondo = None
+		self.fondo=fondo
+		return fondo	
+		
+	#----------------------------------------------------------------------	
+	def draw(self):
+		if self.fondo: self.screen.blit(self.fondo, (0, 0))
+		else: self.screen.fill((240, 240, 240))	
+		
+	############### eventos ############################################	
+	def add_evento_tecla(self, tecla, funcion, activo=True):
+		self._eventos_teclado[tecla] = {'func': funcion, 'activo': activo}
+
+	def set_estado_evento(self, tecla, estado):
+		if tecla in self._eventos_teclado:
+			self._eventos_teclado[tecla]['activo'] = estado
+
+	def actualizar_eventos(self):
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				self.running = False
+				return False
+			if event.type == pygame.KEYDOWN:
+				if event.key in self._eventos_teclado:
+					evento = self._eventos_teclado[event.key]
+					if evento['activo']:
+						evento['func']()							
+		return True
+
+###############################################################################################
+class Tobjeto:
+	def __init__(self, sim):
+		self.sim = sim
+
+	def _m_a_px(self, pos_m):
+		x_px = pos_m[0] * self.sim.PX_M
+		y_px = self.sim.suelo - (pos_m[1] * self.sim.PX_M)
+		return Vec2d(x_px, y_px)
+
+	def _px_a_m(self, pos_px):
+		x_m = pos_px[0] / self.sim.PX_M
+		y_m = (self.sim.suelo - pos_px[1]) / self.sim.PX_M
+		return Vec2d(x_m, y_m)
+
+	@property
+	def posicion(self):
+		return self._px_a_m(self.body.position)
+
+	@posicion.setter
+	def posicion(self, pos_m):
+		self.body.position = self._m_a_px(pos_m)
+
+	@property
+	def velocidad(self):
+		v = self.body.velocity / self.sim.PX_M
+		return Vec2d(v.x, -v.y)
+
+	@velocidad.setter
+	def velocidad(self, vel_m):
+		vx = vel_m[0] * self.sim.PX_M
+		vy = -vel_m[1] * self.sim.PX_M
+		self.body.velocity = (vx, vy)
+		
+	def aplicar_impulso(self, imp_m):
+		imp_px = Vec2d(imp_m[0], -imp_m[1]) * self.sim.PX_M	
+		self.body.apply_impulse_at_local_point(imp_px)	
+		
+	def draw(self):
+		pass
+		
+	def update(self):
+		pass
+
+#############################################################################################
+class Tsuelo(Tobjeto):
+	def __init__(self, sim, punto_a_m=None, punto_b_m=None, color=(0,0,0)):
+		super().__init__(sim)
+		self.color = color		
+		self.body = self.sim.space.static_body
+		
+		if punto_a_m is None: self.p1 = Vec2d(0, self.sim.suelo)
+		else: self.p1 = self._m_a_px(punto_a_m)
+			
+		if punto_b_m is None: self.p2 = Vec2d(self.sim.width, self.sim.suelo)
+		else: self.p2 = self._m_a_px(punto_b_m)
+
+		self.shape = pymunk.Segment(self.body, self.p1, self.p2, 5)
+		self.shape.elasticity = 0.8
+		self.shape.friction = 0.6
+		self.sim.space.add(self.shape)
+		
+	@Tobjeto.posicion.setter
+	def posicion(self, valor): print("Advertencia: Suelo estático.")
+
+	@Tobjeto.velocidad.setter
+	def velocidad(self, valor): print("Advertencia: Suelo estático.")
+
+	def draw(self):
+		pygame.draw.line(self.sim.screen, self.color, self.p1, self.p2, 5)
+
+###############################################################################################
+class Tbalon(Tobjeto):
+	def __init__(self, sim, pos_m, masa_kg=0.625, radio_m=0.119, img_path="balon_basket.png"):
+		super().__init__(sim)
+		self.masa = masa_kg
+		self.radio_m = radio_m
+		self.radio_px = radio_m * self.sim.PX_M
+		
+		# Física
+		moment = pymunk.moment_for_circle(masa_kg, 0, self.radio_px)
+		self.body = pymunk.Body(masa_kg, moment)
+		self.posicion = pos_m 
+		
+		self.shape = pymunk.Circle(self.body, self.radio_px)
+		self.shape.elasticity = 0.85
+		self.shape.friction = 0.5
+		self.sim.space.add(self.body, self.shape)
+		
+		# Rozamiento y efecto Magnus inyectados en la física
+		self.body.velocity_func = self.aplicar_aerodinamica
+		
+		# Imagen
+		self.img_base = self._preparar_imagen(img_path)
+
+	def aplicar_aerodinamica(self, body, gravity, damping, dt):
+		# REQUISITO 1/2 CORREGIDO: Evitar que el balón se caiga al arrancar la app.
+		if hasattr(self.sim, 'lanzado') and not self.sim.lanzado:
+			body.velocity = (0, 0)
+			body.angular_velocity = 0
+			return
+
+		# Llamada a la función original para procesar la gravedad
+		pymunk.Body.update_velocity(body, gravity, damping, dt)
+		
+		# Extraer velocidad en metros/segundo
+		v_px = body.velocity
+		v_m = Vec2d(v_px.x, -v_px.y) / self.sim.PX_M
+		v_mag = v_m.length
+
+		if v_mag > 0:
+			rho = 1.225 # Densidad del aire
+			A = math.pi * (self.radio_m ** 2) # Área transversal
+			Cd = 0.5    # Coeficiente de arrastre aprox
+			
+			# Fuerza de Drag (Rozamiento de frenado)
+			f_drag_m = -0.5 * rho * Cd * A * v_mag * v_m
+			
+			# Fuerza Magnus (Sustentación de la pelota girando)
+			omega = body.angular_velocity
+			
+			# Ajustado físicamente para que no haga espirales gigantes
+			k_magnus = 0.5 * rho * A * self.radio_m 
+			
+			# Vector Corregido: Si hay backspin (omega negativa), este vector apunta hacia 
+			# ARRIBA y genera lift, como corresponde.
+			f_magnus_m = Vec2d(omega * v_m.y, -omega * v_m.x) * k_magnus
+			
+			f_total_m = f_drag_m + f_magnus_m
+			aceleracion_m = f_total_m / self.masa
+			
+			# Convertir la aceleración a px/s^2 e inyectarla al cuerpo
+			acc_px = Vec2d(aceleracion_m.x, -aceleracion_m.y) * self.sim.PX_M
+			body.velocity += acc_px * dt
+
+	def _preparar_imagen(self, path):
+		diametro = int(self.radio_px * 2)
+		try:
+			img = pygame.image.load(self.sim.resolver_asset_path(path)).convert_alpha()
+			return pygame.transform.smoothscale(img, (diametro, diametro))
+		except:
+			surf = pygame.Surface((diametro, diametro), pygame.SRCALPHA)
+			pygame.draw.circle(surf, (200, 50, 50), (int(self.radio_px), int(self.radio_px)), int(self.radio_px))
+			pygame.draw.line(surf, (255, 255, 255), (int(self.radio_px), int(self.radio_px)), (diametro, int(self.radio_px)), 2)
+			return surf
+
+	def draw(self):
+		angulo_deg = math.degrees(-self.body.angle)
+		img_rotada = pygame.transform.rotate(self.img_base, angulo_deg)
+		pos = self.body.position
+		rect = img_rotada.get_rect(center=(int(pos.x), int(pos.y)))
+		self.sim.screen.blit(img_rotada, rect)
+
+	def lanzar(self, v_ms, angulo_deg, omega=0):  
+		rad = math.radians(angulo_deg)
+		vx_m = v_ms * math.cos(rad)
+		vy_m = v_ms * math.sin(rad)
+		
+		self.velocidad = (vx_m, vy_m)
+		self.body.angular_velocity = omega
+
+##############################################################################
+class Ttablero(Tobjeto):
+	def __init__(self, sim, x_tablero_m=7, color=(100, 100, 100)):
+		super().__init__(sim)
+		self.color = color
+		self.espesor = 0.05 * sim.PX_M
+		self.alto = 1.05 * sim.PX_M
+		
+		self.pos = self._m_a_px(Vec2d(x_tablero_m, 2.90))
+		p0 = Vec2d(self.pos.x, self.pos.y - self.alto)
+		p1 = Vec2d(self.pos.x + self.espesor, self.pos.y - self.alto)
+		p2 = Vec2d(self.pos.x + self.espesor, self.pos.y)
+		p3 = Vec2d(self.pos.x, self.pos.y)
+		self.body = self.sim.space.static_body
+		self.shape = pymunk.Poly(self.body, [p0, p1, p2, p3])
+		self.shape.elasticity = 0.6 
+		self.shape.friction = 0.6
+		self.sim.space.add(self.shape)
+		
+		# Aro Físico
+		_, self.aro_y = self._m_a_px(Vec2d(0, 3.05))
+		diametro_aro = 0.45 * sim.PX_M
+		self.x_aro_trasero = self.pos.x - (0.15 * sim.PX_M)
+		self.x_aro_delantero = self.x_aro_trasero - diametro_aro
+		
+		self.aro_part_w = 0.04 * sim.PX_M 
+		self.aro_part_h = 0.02 * sim.PX_M
+		self.x_aro_sop = self.x_aro_trasero + self.aro_part_w
+
+		# Aro Trasero y Delantero
+		self.body_trasero = pymunk.Body(body_type=pymunk.Body.STATIC)
+		self.body_trasero.position = (self.x_aro_trasero, self.aro_y)
+		self.aro_trasero_shape = pymunk.Poly.create_box(self.body_trasero, (self.aro_part_w, self.aro_part_h))
+		
+		self.body_delantero = pymunk.Body(body_type=pymunk.Body.STATIC)
+		self.body_delantero.position = (self.x_aro_delantero, self.aro_y)
+		self.aro_delantero_shape = pymunk.Poly.create_box(self.body_delantero, (self.aro_part_w, self.aro_part_h))
+		
+		self.body_sop = pymunk.Body(body_type=pymunk.Body.STATIC)
+		self.body_sop.position = (self.x_aro_sop, self.aro_y)
+		self.aro_sop_shape = pymunk.Poly.create_box(self.body_sop, (self.aro_part_w * 2, self.aro_part_h))
+		
+		for s in [self.aro_trasero_shape, self.aro_delantero_shape, self.aro_sop_shape]:
+			s.elasticity = 0.45
+			s.friction = 0.5
+			self.sim.space.add(s.body, s)
+
+		# Red debajo del tablero interactuando con el balón
+		self.cadenas_bolitas = []
+		self.radio_bolita = 0.025 * sim.PX_M
+		masa_bolita = 0.02
+		
+		for body_anclaje in [self.body_delantero, self.body_trasero]:
+			cadena_actual = []
+			cuerpo_padre = body_anclaje
+			distancias = [0.12 * sim.PX_M, 0.12 * sim.PX_M, 0.12 * sim.PX_M]
+			
+			for dist in distancias:
+				momento = pymunk.moment_for_circle(masa_bolita, 0, self.radio_bolita)
+				b_hijo = pymunk.Body(masa_bolita, momento)
+				b_hijo.position = (cuerpo_padre.position.x, cuerpo_padre.position.y + dist)
+				
+				s_hijo = pymunk.Circle(b_hijo, self.radio_bolita)
+				s_hijo.elasticity = 0.2
+				s_hijo.friction = 0.5
+				
+				union = pymunk.PinJoint(cuerpo_padre, b_hijo, (0,0), (0,0))
+				self.sim.space.add(b_hijo, s_hijo, union)
+				cadena_actual.append(b_hijo)
+				cuerpo_padre = b_hijo
+				
+			self.cadenas_bolitas.append({'anclaje': body_anclaje, 'bolitas': cadena_actual})
+
+		self.muelles = []
+		stiffness, damping = 50.0, 2.0
+		longitudes_muelles = [0.35 * sim.PX_M, 0.25 * sim.PX_M, 0.15 * sim.PX_M]
+
+		for i in range(3):
+			b_izq = self.cadenas_bolitas[0]['bolitas'][i]
+			b_der = self.cadenas_bolitas[1]['bolitas'][i]
+			muelle = pymunk.DampedSpring(b_izq, b_der, (0,0), (0,0), longitudes_muelles[i], stiffness, damping)
+			self.sim.space.add(muelle)
+			self.muelles.append(muelle)
+
+	def update(self):
+		bolas_izq = self.cadenas_bolitas[0]['bolitas']
+		bolas_der = self.cadenas_bolitas[1]['bolitas']
+		for b in bolas_izq + bolas_der:
+			b.velocity *= 0.9
+
+	def draw(self):
+		pygame.draw.rect(self.sim.screen, self.color, (self.pos.x, self.pos.y - self.alto, self.espesor, self.alto))	
+		color_sop = (255,150,150)
+		sopx = 0.10 * self.sim.PX_M
+		sopy = 0.40 * self.sim.PX_M
+		barrax = 0.05 * self.sim.PX_M
+		pygame.draw.rect(self.sim.screen, color_sop, (self.pos.x + self.espesor, self.pos.y - 0.6 * self.alto, sopx, sopy))	
+		pygame.draw.rect(self.sim.screen, color_sop, (self.pos.x + self.espesor + sopx, 0, barrax, self.pos.y - 0.4 * self.alto))	
+		
+		bolas_izq = self.cadenas_bolitas[0]['bolitas']
+		bolas_der = self.cadenas_bolitas[1]['bolitas']
+
+		for cadena in self.cadenas_bolitas:
+			padre_pos = cadena['anclaje'].position
+			for b_hijo in cadena['bolitas']:
+				hijo_pos = b_hijo.position
+				pygame.draw.line(self.sim.screen, (255, 255, 255), (int(padre_pos.x), int(padre_pos.y)), (int(hijo_pos.x), int(hijo_pos.y)), 1)
+				padre_pos = hijo_pos
+
+		pygame.draw.line(self.sim.screen, (255, 255, 255), (int(bolas_izq[0].position.x), int(bolas_izq[0].position.y)), (int(self.x_aro_trasero), int(self.aro_y)), 1)
+		pygame.draw.line(self.sim.screen, (255, 255, 255), (int(bolas_der[0].position.x), int(bolas_der[0].position.y)), (int(self.x_aro_delantero), int(self.aro_y)), 1)
+		pygame.draw.line(self.sim.screen, (255, 255, 255), (int(bolas_der[1].position.x), int(bolas_der[1].position.y)), (int(bolas_izq[0].position.x), int(bolas_izq[0].position.y)), 1)
+		pygame.draw.line(self.sim.screen, (255, 255, 255), (int(bolas_izq[1].position.x), int(bolas_izq[1].position.y)), (int(bolas_der[0].position.x), int(bolas_der[0].position.y)), 1)
+		pygame.draw.line(self.sim.screen, (255, 255, 255), (int(bolas_der[2].position.x), int(bolas_der[2].position.y)), (int(bolas_izq[1].position.x), int(bolas_izq[1].position.y)), 1)
+		pygame.draw.line(self.sim.screen, (255, 255, 255), (int(bolas_izq[2].position.x), int(bolas_izq[2].position.y)), (int(bolas_der[1].position.x), int(bolas_der[1].position.y)), 1)
+		pygame.draw.line(self.sim.screen, (255, 255, 255), (int(bolas_izq[2].position.x), int(bolas_izq[2].position.y)), (int(bolas_der[2].position.x), int(bolas_der[2].position.y)), 1)
+
+		for b in bolas_izq + bolas_der:
+			pygame.draw.circle(self.sim.screen, (255, 255, 255), (int(b.position.x), int(b.position.y)), int(self.radio_bolita))
+
+		color_aro_suave = (255, 150, 150)
+		pygame.draw.line(self.sim.screen, color_aro_suave, (int(self.x_aro_delantero), int(self.aro_y)), (int(self.x_aro_trasero), int(self.aro_y)), 3)
+
+		for b in [self.body_trasero, self.body_delantero]:
+			pygame.draw.rect(self.sim.screen, (200, 0, 0), (int(b.position.x - self.aro_part_w/2), int(b.position.y - self.aro_part_h/2), int(self.aro_part_w), int(self.aro_part_h)))
+		pygame.draw.rect(self.sim.screen, (200, 0, 0), (self.x_aro_sop, int(self.aro_y - self.aro_part_h/2), self.pos.x - self.x_aro_sop, int(self.aro_part_h)))
+
+##############################################################################
+class Tjugador(Tobjeto):
+	def __init__(self, sim, pos_m_x=2.0):
+		super().__init__(sim)
+		self.pos_x_m = pos_m_x
+		self.player_imgs = {}
+		alturas = [2.0, 2.2]
+		nombres = ["jugador01.png", "jugador02.png"]
+		
+		for name, h in zip(nombres, alturas):
+			try:
+				img = pygame.image.load(self.sim.resolver_asset_path(name)).convert_alpha()
+				ratio = img.get_width() / img.get_height()
+				p_height = int(h * self.sim.PX_M)
+				self.player_imgs[name] = pygame.transform.smoothscale(img, (int(p_height * ratio), p_height))
+			except:
+				self.player_imgs[name] = None
+				
+	def draw(self):
+		img_key = "jugador02.png" if self.sim.lanzado else "jugador01.png"
+		if self.player_imgs[img_key]:
+			x_px = int(self.pos_x_m * self.sim.PX_M)
+			y_px = int(self.sim.suelo)
+			rect = self.player_imgs[img_key].get_rect(midbottom=(x_px, y_px))
+			self.sim.screen.blit(self.player_imgs[img_key], rect)
+
+########## ESTA ES LA CLASE QUE LO CONTIENE TODO #############################
+class Tbasket(Tsim):
+	def __init__(self,x_tablero_m=7, pos_balon_m=(2, 2), **kwargs):
+		super().__init__(**kwargs)
+		self.pos_inicio_balon = pos_balon_m
+		self.lanzado = False 
+		
+		# Parámetros de lanzamiento por defecto
+		self.v_lanzamiento = 9.0    
+		self.ang_lanzamiento = 55.0  
+		self.w_lanzamiento = -15.0   
+		
+		self.objetos = []
+		
+		# Suelo
+		self.suelo_fisico = Tsuelo(self)	
+		self.objetos.append(self.suelo_fisico)
+
+		# Jugador
+		self.jugador = Tjugador(self, pos_m_x=self.pos_inicio_balon[0])
+		self.objetos.append(self.jugador)
+
+		# Canasta
+		self.tablero = Ttablero(self, x_tablero_m)
+		self.objetos.append(self.tablero)
+		
+		# Balón
+		self.balon = Tbalon(self, self.pos_inicio_balon)
+		self.objetos.append(self.balon)
+		
+		# Teclas
+		self.add_evento_tecla(pygame.K_SPACE, self.lanzar_triple)
+		self.add_evento_tecla(pygame.K_ESCAPE, self.resetear_posicion)
+
+	def lanzar_triple(self):
+		if not self.lanzado:
+			print(f"Lanzando a {self.v_lanzamiento} m/s con {self.ang_lanzamiento}º")
+			self.balon.lanzar(self.v_lanzamiento, self.ang_lanzamiento, self.w_lanzamiento)
+			self.lanzado = True
+			self.set_estado_evento(pygame.K_SPACE, False)
+
+	def configurar_tiro(self, v=None, ang=None, w=None):
+		if v is not None: self.v_lanzamiento = v
+		if ang is not None: self.ang_lanzamiento = ang
+		if w is not None: self.w_lanzamiento = w
+
+	def resetear_posicion(self):
+		self.lanzado = False
+		self.balon.posicion = self.pos_inicio_balon
+		self.balon.body.velocity = (0, 0)
+		self.balon.body.angular_velocity = 0
+		self.set_estado_evento(pygame.K_SPACE, True)
+
+	def draw(self):
+		super().draw() 
+		for obj in self.objetos:
+			obj.draw()
+			
+	def update(self):
+		for obj in self.objetos:
+			if hasattr(obj, 'update'):
+				obj.update()
+
+###############################################################################################
+bk = Tbasket(x_tablero_m=7.5, pos_balon_m=(2,2.2), PX_M=120, width=1200, height=700, suelo=600, gravedad=(0,-9.81), fondo='grada_baloncesto03.jpg')
+bk.configurar_tiro(8.15, 52, -20) 
+
+#########################################################################
+FPS = 60
+substeps = 30
+dt = 1.0 / FPS / substeps
+
+while bk.actualizar_eventos():
+	bk.update()
+
+	for _ in range(substeps):
+		bk.space.step(dt)
+		
+	bk.draw()
+	pygame.display.flip()
+	bk.clock.tick(FPS)
+
+pygame.quit()

@@ -1,0 +1,2736 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.github/badges/branches.svg
+.github/badges/jacoco.svg
+.github/workflows/ci.yml
+.gitignore
+.mvn/wrapper/maven-wrapper.properties
+database.mv.db
+mvnw
+mvnw.cmd
+pom.xml
+README.md
+src/main/java/com/uma/example/springuma/controller/ImagenController.java
+src/main/java/com/uma/example/springuma/controller/InformeController.java
+src/main/java/com/uma/example/springuma/controller/MedicoController.java
+src/main/java/com/uma/example/springuma/controller/PacienteController.java
+src/main/java/com/uma/example/springuma/model/Imagen.java
+src/main/java/com/uma/example/springuma/model/ImagenAPIPredictor.java
+src/main/java/com/uma/example/springuma/model/ImagenService.java
+src/main/java/com/uma/example/springuma/model/Informe.java
+src/main/java/com/uma/example/springuma/model/InformeService.java
+src/main/java/com/uma/example/springuma/model/Medico.java
+src/main/java/com/uma/example/springuma/model/MedicoService.java
+src/main/java/com/uma/example/springuma/model/Paciente.java
+src/main/java/com/uma/example/springuma/model/PacienteService.java
+src/main/java/com/uma/example/springuma/model/RepositoryImagen.java
+src/main/java/com/uma/example/springuma/model/RepositoryInforme.java
+src/main/java/com/uma/example/springuma/model/RepositoryMedico.java
+src/main/java/com/uma/example/springuma/model/RepositoryPaciente.java
+src/main/java/com/uma/example/springuma/ServletInitializer.java
+src/main/java/com/uma/example/springuma/SpringumaApplication.java
+src/main/java/com/uma/example/springuma/utils/ImageUtils.java
+src/main/resources/application.properties
+src/test/java/com/uma/example/springuma/integration/base/AbstractIntegration.java
+src/test/java/com/uma/example/springuma/integration/ImagenControllerWebTestClientIT.java
+src/test/java/com/uma/example/springuma/integration/InformeControllerWebTestClientIT.java
+src/test/java/com/uma/example/springuma/integration/MedicoControllerMockMvcIT.java
+src/test/java/com/uma/example/springuma/integration/PacienteControllerMockMvcIT.java
+src/test/java/com/uma/example/springuma/SpringumaApplicationTests.java
+src/test/resources/application.properties
+src/test/resources/healthy.png
+src/test/resources/no_healthty.png
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".github/badges/branches.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="106" height="20" role="img" aria-label="branches: 19.5%"><linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="r"><rect width="106" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#r)"><rect width="61" height="20" fill="#555"/><rect x="61" width="45" height="20" fill="#e05d44"/><rect width="106" height="20" fill="url(#s)"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="315" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="507">branches</text><text x="315" y="140" transform="scale(.1)" fill="#fff" textLength="507">branches</text><text aria-hidden="true" x="825" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="350">19.5%</text><text x="825" y="140" transform="scale(.1)" fill="#fff" textLength="350">19.5%</text></g></svg>
+</file>
+
+<file path=".github/badges/jacoco.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="106" height="20" role="img" aria-label="coverage: 52.7%"><linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="r"><rect width="106" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#r)"><rect width="61" height="20" fill="#555"/><rect x="61" width="45" height="20" fill="#e05d44"/><rect width="106" height="20" fill="url(#s)"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="315" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="510">coverage</text><text x="315" y="140" transform="scale(.1)" fill="#fff" textLength="510">coverage</text><text aria-hidden="true" x="825" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="350">52.7%</text><text x="825" y="140" transform="scale(.1)" fill="#fff" textLength="350">52.7%</text></g></svg>
+</file>
+
+<file path=".github/workflows/ci.yml">
+name: Mi primer CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      checks: write
+      pull-requests: write
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v4
+
+    - name: Configurar Java JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Dar permisos de ejecución al Wrapper de Maven
+      run: chmod +x mvnw
+
+    - name: Compilar el proyecto
+      run: ./mvnw compile --no-transfer-progress
+
+    - name: Ejecutar pruebas (Unitarias e Integración)
+      run: ./mvnw verify --no-transfer-progress
+
+    - name: Generar informe de resultados de tests en GitHub (Dorny)
+      uses: dorny/test-reporter@v1
+      if: always() # Se ejecuta aunque fallen algunos tests
+      with:
+        name: Resultados de Pruebas
+        path: target/surefire-reports/*.xml, target/failsafe-reports/*.xml
+        reporter: java-junit
+        fail-on-error: true
+
+    - name: Generar Badge de Cobertura con Jacoco
+      id: jacoco
+      uses: cicirello/jacoco-badge-generator@v2
+      with:
+        jacoco-csv-file: target/site/jacoco/jacoco.csv
+        badges-directory: .github/badges
+        generate-branches-badge: true
+
+    - name: Hacer Commit de los Badges Generados
+      if: github.event_name == 'push'
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add .github/badges/
+        git commit -m "Autogenerar badges de cobertura [skip ci]" || echo "No hay cambios para commitear"
+        git push
+</file>
+
+<file path=".gitignore">
+target/
+.DS_Store
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://maven.apache.org/tools/wrapper/#Usage_with_or_without_Binary_JAR
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+.vscode/
+</file>
+
+<file path=".mvn/wrapper/maven-wrapper.properties">
+wrapperVersion=3.3.4
+distributionType=only-script
+distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.11/apache-maven-3.9.11-bin.zip
+</file>
+
+<file path="mvnw">
+#!/bin/sh
+# ----------------------------------------------------------------------------
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
+# Apache Maven Wrapper startup batch script, version 3.3.4
+#
+# Optional ENV vars
+# -----------------
+#   JAVA_HOME - location of a JDK home dir, required when download maven via java source
+#   MVNW_REPOURL - repo url base for downloading maven distribution
+#   MVNW_USERNAME/MVNW_PASSWORD - user and password for downloading maven
+#   MVNW_VERBOSE - true: enable verbose log; debug: trace the mvnw script; others: silence the output
+# ----------------------------------------------------------------------------
+
+set -euf
+[ "${MVNW_VERBOSE-}" != debug ] || set -x
+
+# OS specific support.
+native_path() { printf %s\\n "$1"; }
+case "$(uname)" in
+CYGWIN* | MINGW*)
+  [ -z "${JAVA_HOME-}" ] || JAVA_HOME="$(cygpath --unix "$JAVA_HOME")"
+  native_path() { cygpath --path --windows "$1"; }
+  ;;
+esac
+
+# set JAVACMD and JAVACCMD
+set_java_home() {
+  # For Cygwin and MinGW, ensure paths are in Unix format before anything is touched
+  if [ -n "${JAVA_HOME-}" ]; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ]; then
+      # IBM's JDK on AIX uses strange locations for the executables
+      JAVACMD="$JAVA_HOME/jre/sh/java"
+      JAVACCMD="$JAVA_HOME/jre/sh/javac"
+    else
+      JAVACMD="$JAVA_HOME/bin/java"
+      JAVACCMD="$JAVA_HOME/bin/javac"
+
+      if [ ! -x "$JAVACMD" ] || [ ! -x "$JAVACCMD" ]; then
+        echo "The JAVA_HOME environment variable is not defined correctly, so mvnw cannot run." >&2
+        echo "JAVA_HOME is set to \"$JAVA_HOME\", but \"\$JAVA_HOME/bin/java\" or \"\$JAVA_HOME/bin/javac\" does not exist." >&2
+        return 1
+      fi
+    fi
+  else
+    JAVACMD="$(
+      'set' +e
+      'unset' -f command 2>/dev/null
+      'command' -v java
+    )" || :
+    JAVACCMD="$(
+      'set' +e
+      'unset' -f command 2>/dev/null
+      'command' -v javac
+    )" || :
+
+    if [ ! -x "${JAVACMD-}" ] || [ ! -x "${JAVACCMD-}" ]; then
+      echo "The java/javac command does not exist in PATH nor is JAVA_HOME set, so mvnw cannot run." >&2
+      return 1
+    fi
+  fi
+}
+
+# hash string like Java String::hashCode
+hash_string() {
+  str="${1:-}" h=0
+  while [ -n "$str" ]; do
+    char="${str%"${str#?}"}"
+    h=$(((h * 31 + $(LC_CTYPE=C printf %d "'$char")) % 4294967296))
+    str="${str#?}"
+  done
+  printf %x\\n $h
+}
+
+verbose() { :; }
+[ "${MVNW_VERBOSE-}" != true ] || verbose() { printf %s\\n "${1-}"; }
+
+die() {
+  printf %s\\n "$1" >&2
+  exit 1
+}
+
+trim() {
+  # MWRAPPER-139:
+  #   Trims trailing and leading whitespace, carriage returns, tabs, and linefeeds.
+  #   Needed for removing poorly interpreted newline sequences when running in more
+  #   exotic environments such as mingw bash on Windows.
+  printf "%s" "${1}" | tr -d '[:space:]'
+}
+
+scriptDir="$(dirname "$0")"
+scriptName="$(basename "$0")"
+
+# parse distributionUrl and optional distributionSha256Sum, requires .mvn/wrapper/maven-wrapper.properties
+while IFS="=" read -r key value; do
+  case "${key-}" in
+  distributionUrl) distributionUrl=$(trim "${value-}") ;;
+  distributionSha256Sum) distributionSha256Sum=$(trim "${value-}") ;;
+  esac
+done <"$scriptDir/.mvn/wrapper/maven-wrapper.properties"
+[ -n "${distributionUrl-}" ] || die "cannot read distributionUrl property in $scriptDir/.mvn/wrapper/maven-wrapper.properties"
+
+case "${distributionUrl##*/}" in
+maven-mvnd-*bin.*)
+  MVN_CMD=mvnd.sh _MVNW_REPO_PATTERN=/maven/mvnd/
+  case "${PROCESSOR_ARCHITECTURE-}${PROCESSOR_ARCHITEW6432-}:$(uname -a)" in
+  *AMD64:CYGWIN* | *AMD64:MINGW*) distributionPlatform=windows-amd64 ;;
+  :Darwin*x86_64) distributionPlatform=darwin-amd64 ;;
+  :Darwin*arm64) distributionPlatform=darwin-aarch64 ;;
+  :Linux*x86_64*) distributionPlatform=linux-amd64 ;;
+  *)
+    echo "Cannot detect native platform for mvnd on $(uname)-$(uname -m), use pure java version" >&2
+    distributionPlatform=linux-amd64
+    ;;
+  esac
+  distributionUrl="${distributionUrl%-bin.*}-$distributionPlatform.zip"
+  ;;
+maven-mvnd-*) MVN_CMD=mvnd.sh _MVNW_REPO_PATTERN=/maven/mvnd/ ;;
+*) MVN_CMD="mvn${scriptName#mvnw}" _MVNW_REPO_PATTERN=/org/apache/maven/ ;;
+esac
+
+# apply MVNW_REPOURL and calculate MAVEN_HOME
+# maven home pattern: ~/.m2/wrapper/dists/{apache-maven-<version>,maven-mvnd-<version>-<platform>}/<hash>
+[ -z "${MVNW_REPOURL-}" ] || distributionUrl="$MVNW_REPOURL$_MVNW_REPO_PATTERN${distributionUrl#*"$_MVNW_REPO_PATTERN"}"
+distributionUrlName="${distributionUrl##*/}"
+distributionUrlNameMain="${distributionUrlName%.*}"
+distributionUrlNameMain="${distributionUrlNameMain%-bin}"
+MAVEN_USER_HOME="${MAVEN_USER_HOME:-${HOME}/.m2}"
+MAVEN_HOME="${MAVEN_USER_HOME}/wrapper/dists/${distributionUrlNameMain-}/$(hash_string "$distributionUrl")"
+
+exec_maven() {
+  unset MVNW_VERBOSE MVNW_USERNAME MVNW_PASSWORD MVNW_REPOURL || :
+  exec "$MAVEN_HOME/bin/$MVN_CMD" "$@" || die "cannot exec $MAVEN_HOME/bin/$MVN_CMD"
+}
+
+if [ -d "$MAVEN_HOME" ]; then
+  verbose "found existing MAVEN_HOME at $MAVEN_HOME"
+  exec_maven "$@"
+fi
+
+case "${distributionUrl-}" in
+*?-bin.zip | *?maven-mvnd-?*-?*.zip) ;;
+*) die "distributionUrl is not valid, must match *-bin.zip or maven-mvnd-*.zip, but found '${distributionUrl-}'" ;;
+esac
+
+# prepare tmp dir
+if TMP_DOWNLOAD_DIR="$(mktemp -d)" && [ -d "$TMP_DOWNLOAD_DIR" ]; then
+  clean() { rm -rf -- "$TMP_DOWNLOAD_DIR"; }
+  trap clean HUP INT TERM EXIT
+else
+  die "cannot create temp dir"
+fi
+
+mkdir -p -- "${MAVEN_HOME%/*}"
+
+# Download and Install Apache Maven
+verbose "Couldn't find MAVEN_HOME, downloading and installing it ..."
+verbose "Downloading from: $distributionUrl"
+verbose "Downloading to: $TMP_DOWNLOAD_DIR/$distributionUrlName"
+
+# select .zip or .tar.gz
+if ! command -v unzip >/dev/null; then
+  distributionUrl="${distributionUrl%.zip}.tar.gz"
+  distributionUrlName="${distributionUrl##*/}"
+fi
+
+# verbose opt
+__MVNW_QUIET_WGET=--quiet __MVNW_QUIET_CURL=--silent __MVNW_QUIET_UNZIP=-q __MVNW_QUIET_TAR=''
+[ "${MVNW_VERBOSE-}" != true ] || __MVNW_QUIET_WGET='' __MVNW_QUIET_CURL='' __MVNW_QUIET_UNZIP='' __MVNW_QUIET_TAR=v
+
+# normalize http auth
+case "${MVNW_PASSWORD:+has-password}" in
+'') MVNW_USERNAME='' MVNW_PASSWORD='' ;;
+has-password) [ -n "${MVNW_USERNAME-}" ] || MVNW_USERNAME='' MVNW_PASSWORD='' ;;
+esac
+
+if [ -z "${MVNW_USERNAME-}" ] && command -v wget >/dev/null; then
+  verbose "Found wget ... using wget"
+  wget ${__MVNW_QUIET_WGET:+"$__MVNW_QUIET_WGET"} "$distributionUrl" -O "$TMP_DOWNLOAD_DIR/$distributionUrlName" || die "wget: Failed to fetch $distributionUrl"
+elif [ -z "${MVNW_USERNAME-}" ] && command -v curl >/dev/null; then
+  verbose "Found curl ... using curl"
+  curl ${__MVNW_QUIET_CURL:+"$__MVNW_QUIET_CURL"} -f -L -o "$TMP_DOWNLOAD_DIR/$distributionUrlName" "$distributionUrl" || die "curl: Failed to fetch $distributionUrl"
+elif set_java_home; then
+  verbose "Falling back to use Java to download"
+  javaSource="$TMP_DOWNLOAD_DIR/Downloader.java"
+  targetZip="$TMP_DOWNLOAD_DIR/$distributionUrlName"
+  cat >"$javaSource" <<-END
+	public class Downloader extends java.net.Authenticator
+	{
+	  protected java.net.PasswordAuthentication getPasswordAuthentication()
+	  {
+	    return new java.net.PasswordAuthentication( System.getenv( "MVNW_USERNAME" ), System.getenv( "MVNW_PASSWORD" ).toCharArray() );
+	  }
+	  public static void main( String[] args ) throws Exception
+	  {
+	    setDefault( new Downloader() );
+	    java.nio.file.Files.copy( java.net.URI.create( args[0] ).toURL().openStream(), java.nio.file.Paths.get( args[1] ).toAbsolutePath().normalize() );
+	  }
+	}
+	END
+  # For Cygwin/MinGW, switch paths to Windows format before running javac and java
+  verbose " - Compiling Downloader.java ..."
+  "$(native_path "$JAVACCMD")" "$(native_path "$javaSource")" || die "Failed to compile Downloader.java"
+  verbose " - Running Downloader.java ..."
+  "$(native_path "$JAVACMD")" -cp "$(native_path "$TMP_DOWNLOAD_DIR")" Downloader "$distributionUrl" "$(native_path "$targetZip")"
+fi
+
+# If specified, validate the SHA-256 sum of the Maven distribution zip file
+if [ -n "${distributionSha256Sum-}" ]; then
+  distributionSha256Result=false
+  if [ "$MVN_CMD" = mvnd.sh ]; then
+    echo "Checksum validation is not supported for maven-mvnd." >&2
+    echo "Please disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties." >&2
+    exit 1
+  elif command -v sha256sum >/dev/null; then
+    if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | sha256sum -c - >/dev/null 2>&1; then
+      distributionSha256Result=true
+    fi
+  elif command -v shasum >/dev/null; then
+    if echo "$distributionSha256Sum  $TMP_DOWNLOAD_DIR/$distributionUrlName" | shasum -a 256 -c >/dev/null 2>&1; then
+      distributionSha256Result=true
+    fi
+  else
+    echo "Checksum validation was requested but neither 'sha256sum' or 'shasum' are available." >&2
+    echo "Please install either command, or disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties." >&2
+    exit 1
+  fi
+  if [ $distributionSha256Result = false ]; then
+    echo "Error: Failed to validate Maven distribution SHA-256, your Maven distribution might be compromised." >&2
+    echo "If you updated your Maven version, you need to update the specified distributionSha256Sum property." >&2
+    exit 1
+  fi
+fi
+
+# unzip and move
+if command -v unzip >/dev/null; then
+  unzip ${__MVNW_QUIET_UNZIP:+"$__MVNW_QUIET_UNZIP"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -d "$TMP_DOWNLOAD_DIR" || die "failed to unzip"
+else
+  tar xzf${__MVNW_QUIET_TAR:+"$__MVNW_QUIET_TAR"} "$TMP_DOWNLOAD_DIR/$distributionUrlName" -C "$TMP_DOWNLOAD_DIR" || die "failed to untar"
+fi
+
+# Find the actual extracted directory name (handles snapshots where filename != directory name)
+actualDistributionDir=""
+
+# First try the expected directory name (for regular distributions)
+if [ -d "$TMP_DOWNLOAD_DIR/$distributionUrlNameMain" ]; then
+  if [ -f "$TMP_DOWNLOAD_DIR/$distributionUrlNameMain/bin/$MVN_CMD" ]; then
+    actualDistributionDir="$distributionUrlNameMain"
+  fi
+fi
+
+# If not found, search for any directory with the Maven executable (for snapshots)
+if [ -z "$actualDistributionDir" ]; then
+  # enable globbing to iterate over items
+  set +f
+  for dir in "$TMP_DOWNLOAD_DIR"/*; do
+    if [ -d "$dir" ]; then
+      if [ -f "$dir/bin/$MVN_CMD" ]; then
+        actualDistributionDir="$(basename "$dir")"
+        break
+      fi
+    fi
+  done
+  set -f
+fi
+
+if [ -z "$actualDistributionDir" ]; then
+  verbose "Contents of $TMP_DOWNLOAD_DIR:"
+  verbose "$(ls -la "$TMP_DOWNLOAD_DIR")"
+  die "Could not find Maven distribution directory in extracted archive"
+fi
+
+verbose "Found extracted Maven distribution directory: $actualDistributionDir"
+printf %s\\n "$distributionUrl" >"$TMP_DOWNLOAD_DIR/$actualDistributionDir/mvnw.url"
+mv -- "$TMP_DOWNLOAD_DIR/$actualDistributionDir" "$MAVEN_HOME" || [ -d "$MAVEN_HOME" ] || die "fail to move MAVEN_HOME"
+
+clean || :
+exec_maven "$@"
+</file>
+
+<file path="mvnw.cmd">
+<# : batch portion
+@REM ----------------------------------------------------------------------------
+@REM Licensed to the Apache Software Foundation (ASF) under one
+@REM or more contributor license agreements.  See the NOTICE file
+@REM distributed with this work for additional information
+@REM regarding copyright ownership.  The ASF licenses this file
+@REM to you under the Apache License, Version 2.0 (the
+@REM "License"); you may not use this file except in compliance
+@REM with the License.  You may obtain a copy of the License at
+@REM
+@REM    http://www.apache.org/licenses/LICENSE-2.0
+@REM
+@REM Unless required by applicable law or agreed to in writing,
+@REM software distributed under the License is distributed on an
+@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+@REM KIND, either express or implied.  See the License for the
+@REM specific language governing permissions and limitations
+@REM under the License.
+@REM ----------------------------------------------------------------------------
+
+@REM ----------------------------------------------------------------------------
+@REM Apache Maven Wrapper startup batch script, version 3.3.4
+@REM
+@REM Optional ENV vars
+@REM   MVNW_REPOURL - repo url base for downloading maven distribution
+@REM   MVNW_USERNAME/MVNW_PASSWORD - user and password for downloading maven
+@REM   MVNW_VERBOSE - true: enable verbose log; others: silence the output
+@REM ----------------------------------------------------------------------------
+
+@IF "%__MVNW_ARG0_NAME__%"=="" (SET __MVNW_ARG0_NAME__=%~nx0)
+@SET __MVNW_CMD__=
+@SET __MVNW_ERROR__=
+@SET __MVNW_PSMODULEP_SAVE=%PSModulePath%
+@SET PSModulePath=
+@FOR /F "usebackq tokens=1* delims==" %%A IN (`powershell -noprofile "& {$scriptDir='%~dp0'; $script='%__MVNW_ARG0_NAME__%'; icm -ScriptBlock ([Scriptblock]::Create((Get-Content -Raw '%~f0'))) -NoNewScope}"`) DO @(
+  IF "%%A"=="MVN_CMD" (set __MVNW_CMD__=%%B) ELSE IF "%%B"=="" (echo %%A) ELSE (echo %%A=%%B)
+)
+@SET PSModulePath=%__MVNW_PSMODULEP_SAVE%
+@SET __MVNW_PSMODULEP_SAVE=
+@SET __MVNW_ARG0_NAME__=
+@SET MVNW_USERNAME=
+@SET MVNW_PASSWORD=
+@IF NOT "%__MVNW_CMD__%"=="" ("%__MVNW_CMD__%" %*)
+@echo Cannot start maven from wrapper >&2 && exit /b 1
+@GOTO :EOF
+: end batch / begin powershell #>
+
+$ErrorActionPreference = "Stop"
+if ($env:MVNW_VERBOSE -eq "true") {
+  $VerbosePreference = "Continue"
+}
+
+# calculate distributionUrl, requires .mvn/wrapper/maven-wrapper.properties
+$distributionUrl = (Get-Content -Raw "$scriptDir/.mvn/wrapper/maven-wrapper.properties" | ConvertFrom-StringData).distributionUrl
+if (!$distributionUrl) {
+  Write-Error "cannot read distributionUrl property in $scriptDir/.mvn/wrapper/maven-wrapper.properties"
+}
+
+switch -wildcard -casesensitive ( $($distributionUrl -replace '^.*/','') ) {
+  "maven-mvnd-*" {
+    $USE_MVND = $true
+    $distributionUrl = $distributionUrl -replace '-bin\.[^.]*$',"-windows-amd64.zip"
+    $MVN_CMD = "mvnd.cmd"
+    break
+  }
+  default {
+    $USE_MVND = $false
+    $MVN_CMD = $script -replace '^mvnw','mvn'
+    break
+  }
+}
+
+# apply MVNW_REPOURL and calculate MAVEN_HOME
+# maven home pattern: ~/.m2/wrapper/dists/{apache-maven-<version>,maven-mvnd-<version>-<platform>}/<hash>
+if ($env:MVNW_REPOURL) {
+  $MVNW_REPO_PATTERN = if ($USE_MVND -eq $False) { "/org/apache/maven/" } else { "/maven/mvnd/" }
+  $distributionUrl = "$env:MVNW_REPOURL$MVNW_REPO_PATTERN$($distributionUrl -replace "^.*$MVNW_REPO_PATTERN",'')"
+}
+$distributionUrlName = $distributionUrl -replace '^.*/',''
+$distributionUrlNameMain = $distributionUrlName -replace '\.[^.]*$','' -replace '-bin$',''
+
+$MAVEN_M2_PATH = "$HOME/.m2"
+if ($env:MAVEN_USER_HOME) {
+  $MAVEN_M2_PATH = "$env:MAVEN_USER_HOME"
+}
+
+if (-not (Test-Path -Path $MAVEN_M2_PATH)) {
+    New-Item -Path $MAVEN_M2_PATH -ItemType Directory | Out-Null
+}
+
+$MAVEN_WRAPPER_DISTS = $null
+if ((Get-Item $MAVEN_M2_PATH).Target[0] -eq $null) {
+  $MAVEN_WRAPPER_DISTS = "$MAVEN_M2_PATH/wrapper/dists"
+} else {
+  $MAVEN_WRAPPER_DISTS = (Get-Item $MAVEN_M2_PATH).Target[0] + "/wrapper/dists"
+}
+
+$MAVEN_HOME_PARENT = "$MAVEN_WRAPPER_DISTS/$distributionUrlNameMain"
+$MAVEN_HOME_NAME = ([System.Security.Cryptography.SHA256]::Create().ComputeHash([byte[]][char[]]$distributionUrl) | ForEach-Object {$_.ToString("x2")}) -join ''
+$MAVEN_HOME = "$MAVEN_HOME_PARENT/$MAVEN_HOME_NAME"
+
+if (Test-Path -Path "$MAVEN_HOME" -PathType Container) {
+  Write-Verbose "found existing MAVEN_HOME at $MAVEN_HOME"
+  Write-Output "MVN_CMD=$MAVEN_HOME/bin/$MVN_CMD"
+  exit $?
+}
+
+if (! $distributionUrlNameMain -or ($distributionUrlName -eq $distributionUrlNameMain)) {
+  Write-Error "distributionUrl is not valid, must end with *-bin.zip, but found $distributionUrl"
+}
+
+# prepare tmp dir
+$TMP_DOWNLOAD_DIR_HOLDER = New-TemporaryFile
+$TMP_DOWNLOAD_DIR = New-Item -Itemtype Directory -Path "$TMP_DOWNLOAD_DIR_HOLDER.dir"
+$TMP_DOWNLOAD_DIR_HOLDER.Delete() | Out-Null
+trap {
+  if ($TMP_DOWNLOAD_DIR.Exists) {
+    try { Remove-Item $TMP_DOWNLOAD_DIR -Recurse -Force | Out-Null }
+    catch { Write-Warning "Cannot remove $TMP_DOWNLOAD_DIR" }
+  }
+}
+
+New-Item -Itemtype Directory -Path "$MAVEN_HOME_PARENT" -Force | Out-Null
+
+# Download and Install Apache Maven
+Write-Verbose "Couldn't find MAVEN_HOME, downloading and installing it ..."
+Write-Verbose "Downloading from: $distributionUrl"
+Write-Verbose "Downloading to: $TMP_DOWNLOAD_DIR/$distributionUrlName"
+
+$webclient = New-Object System.Net.WebClient
+if ($env:MVNW_USERNAME -and $env:MVNW_PASSWORD) {
+  $webclient.Credentials = New-Object System.Net.NetworkCredential($env:MVNW_USERNAME, $env:MVNW_PASSWORD)
+}
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$webclient.DownloadFile($distributionUrl, "$TMP_DOWNLOAD_DIR/$distributionUrlName") | Out-Null
+
+# If specified, validate the SHA-256 sum of the Maven distribution zip file
+$distributionSha256Sum = (Get-Content -Raw "$scriptDir/.mvn/wrapper/maven-wrapper.properties" | ConvertFrom-StringData).distributionSha256Sum
+if ($distributionSha256Sum) {
+  if ($USE_MVND) {
+    Write-Error "Checksum validation is not supported for maven-mvnd. `nPlease disable validation by removing 'distributionSha256Sum' from your maven-wrapper.properties."
+  }
+  Import-Module $PSHOME\Modules\Microsoft.PowerShell.Utility -Function Get-FileHash
+  if ((Get-FileHash "$TMP_DOWNLOAD_DIR/$distributionUrlName" -Algorithm SHA256).Hash.ToLower() -ne $distributionSha256Sum) {
+    Write-Error "Error: Failed to validate Maven distribution SHA-256, your Maven distribution might be compromised. If you updated your Maven version, you need to update the specified distributionSha256Sum property."
+  }
+}
+
+# unzip and move
+Expand-Archive "$TMP_DOWNLOAD_DIR/$distributionUrlName" -DestinationPath "$TMP_DOWNLOAD_DIR" | Out-Null
+
+# Find the actual extracted directory name (handles snapshots where filename != directory name)
+$actualDistributionDir = ""
+
+# First try the expected directory name (for regular distributions)
+$expectedPath = Join-Path "$TMP_DOWNLOAD_DIR" "$distributionUrlNameMain"
+$expectedMvnPath = Join-Path "$expectedPath" "bin/$MVN_CMD"
+if ((Test-Path -Path $expectedPath -PathType Container) -and (Test-Path -Path $expectedMvnPath -PathType Leaf)) {
+  $actualDistributionDir = $distributionUrlNameMain
+}
+
+# If not found, search for any directory with the Maven executable (for snapshots)
+if (!$actualDistributionDir) {
+  Get-ChildItem -Path "$TMP_DOWNLOAD_DIR" -Directory | ForEach-Object {
+    $testPath = Join-Path $_.FullName "bin/$MVN_CMD"
+    if (Test-Path -Path $testPath -PathType Leaf) {
+      $actualDistributionDir = $_.Name
+    }
+  }
+}
+
+if (!$actualDistributionDir) {
+  Write-Error "Could not find Maven distribution directory in extracted archive"
+}
+
+Write-Verbose "Found extracted Maven distribution directory: $actualDistributionDir"
+Rename-Item -Path "$TMP_DOWNLOAD_DIR/$actualDistributionDir" -NewName $MAVEN_HOME_NAME | Out-Null
+try {
+  Move-Item -Path "$TMP_DOWNLOAD_DIR/$MAVEN_HOME_NAME" -Destination $MAVEN_HOME_PARENT | Out-Null
+} catch {
+  if (! (Test-Path -Path "$MAVEN_HOME" -PathType Container)) {
+    Write-Error "fail to move MAVEN_HOME"
+  }
+} finally {
+  try { Remove-Item $TMP_DOWNLOAD_DIR -Recurse -Force | Out-Null }
+  catch { Write-Warning "Cannot remove $TMP_DOWNLOAD_DIR" }
+}
+
+Write-Output "MVN_CMD=$MAVEN_HOME/bin/$MVN_CMD"
+</file>
+
+<file path="pom.xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version> 
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.uma.example</groupId>
+    <artifactId>Practica6</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springuma</name>
+    <description>Practica 6 de CI/CDI with integrationtesting</description>
+    <properties>
+        <!--<java.version>21</java.version>-->
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.11</version> <executions>
+                <execution>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>report</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.2.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/controller/ImagenController.java">
+package com.uma.example.springuma.controller;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.uma.example.springuma.model.Imagen;
+import com.uma.example.springuma.model.ImagenService;
+import com.uma.example.springuma.model.Paciente;
+
+@RestController
+public class ImagenController {
+
+    @Autowired
+    private ImagenService imagenService;
+
+    @GetMapping("/imagen/{id}")
+    public ResponseEntity<?> downloadImage(@PathVariable long id) {
+        byte[] imageData = imagenService.downloadImage(id);
+        return ResponseEntity.ok()
+                .contentType(MediaType.valueOf(
+                        "image/png"
+                ))
+                .body(imageData);
+    }
+
+    @GetMapping("/imagen/info/{id}")
+    public Imagen getImagen(@PathVariable("id") Long id) {
+        return imagenService.getImagen(id);
+    }
+
+    @GetMapping("/imagen/predict/{id}")
+    public ResponseEntity<?> getImagenPrediction(@PathVariable("id") Long id) {
+        try {
+            return ResponseEntity.ok(imagenService.getNewPrediccion(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("Error al realizar la prediccion" + e.getMessage());
+        }
+
+    }
+
+    @PostMapping(value = "/imagen", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> uploadImage(@RequestPart("image") MultipartFile file,
+            @RequestPart("paciente") Paciente paciente) throws IOException {
+        String uploadImage = imagenService.uploadImage(file, paciente);
+        return ResponseEntity.ok(uploadImage);
+    }
+
+    @GetMapping("/imagen/paciente/{id}")
+    public List<Imagen> getImagenes(@PathVariable("id") Long id) {
+        return imagenService.getImagenesPaciente(id);
+    }
+
+    @DeleteMapping("/imagen/{id}")
+    public ResponseEntity<?> deleteCuenta(@PathVariable("id") Long id) {
+        try {
+            imagenService.removeImagenByID(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("Error al eliminar la imagen");
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/controller/InformeController.java">
+package com.uma.example.springuma.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.uma.example.springuma.model.Informe;
+import com.uma.example.springuma.model.InformeService;
+
+@RestController
+public class InformeController {
+
+    @Autowired
+    private InformeService informeService;
+
+    @GetMapping("/informe/{id}")
+    public Informe getInforme(@PathVariable("id") Long id) {
+        return informeService.getInforme(id);
+    }
+
+    @GetMapping("informe/imagen/{id}")
+    public List<Informe> getInformes(@PathVariable("id") Long id) {
+        return informeService.getInformesImagen(id);
+    }
+
+    @PostMapping(value = "/informe", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> saveInforme(@RequestBody Informe informe) {
+        try {
+            informeService.addInforme(informe);
+            return ResponseEntity.status(201).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("El informe ya existe");
+        }
+    }
+
+    @DeleteMapping("/informe/{id}")
+    public ResponseEntity<?> deleteInforme(@PathVariable("id") Long id) {
+        try {
+            informeService.removeInformeByID(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("Error al eliminar el informe");
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/controller/MedicoController.java">
+package com.uma.example.springuma.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.uma.example.springuma.model.Medico;
+import com.uma.example.springuma.model.MedicoService;
+
+@RestController
+public class MedicoController {
+
+    @Autowired
+    private MedicoService medicoService;
+
+    @GetMapping("/medico/{id}")
+    public Medico getMedico(@PathVariable("id") Long id) {
+        return medicoService.getMedico(id);
+    }
+
+    @PostMapping(value = "/medico", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> saveMedico(@RequestBody Medico medico) {
+        try {
+            medicoService.addMedico(medico);
+            return ResponseEntity.status(201).build();
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("El medico ya existe");
+        }
+    }
+
+    @PutMapping(value = "/medico", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> updateMedico(@RequestBody Medico medico) {
+        try {
+            medicoService.updateMedico(medico);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("Error al actualizar el medico");
+        }
+    }
+
+    @DeleteMapping("/medico/{id}")
+    public ResponseEntity<?> deleteMedico(@PathVariable("id") Long id) {
+        try {
+            Medico medico = medicoService.getMedico(id);
+            System.out.println(medico);
+            if (medico != null) {
+                medicoService.removeMedicoID(id);
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.internalServerError().build();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("Error al eliminar el medico");
+        }
+    }
+
+    // Buscar un medico por su dni
+    @GetMapping("/medico/dni/{dni}")
+    public ResponseEntity<Medico> getMedicoByDni(@PathVariable("dni") String dni) {
+        Medico medico = medicoService.getMedicoByDni(dni);
+        if (medico != null) {
+            return ResponseEntity.ok(medico);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/controller/PacienteController.java">
+package com.uma.example.springuma.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.uma.example.springuma.model.Paciente;
+import com.uma.example.springuma.model.PacienteService;
+
+@RestController
+public class PacienteController {
+
+    @Autowired
+    private PacienteService pacienteService;
+
+    @GetMapping("/paciente/{id}")
+    public Paciente getPaciente(@PathVariable("id") Long id) {
+        return pacienteService.getPaciente(id);
+    }
+
+    @GetMapping("/paciente/medico/{id}")
+    public List<Paciente> getPacientes(@PathVariable("id") Long id) {
+        return pacienteService.getPacientesMedico(id);
+    }
+
+    @PostMapping(value = "/paciente", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> savePaciente(@RequestBody Paciente paciente) {
+        try {
+            pacienteService.addPaciente(paciente);
+            return ResponseEntity.status(201).build();
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("El paciente ya existe");
+        }
+    }
+
+    @PutMapping(value = "/paciente", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<?> updateCuenta(@RequestBody Paciente paciente) {
+        try {
+            pacienteService.updatePaciente(paciente);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("Error al actualizar el paciente ");
+        }
+    }
+
+    @DeleteMapping("/paciente/{id}")
+    public ResponseEntity<?> deleteCuenta(@PathVariable("id") Long id) {
+        try {
+            Paciente paciente = pacienteService.getPaciente(id);
+            System.out.println(paciente);
+            if (paciente != null) {
+                pacienteService.removePaciente(paciente);
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.internalServerError().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/Imagen.java">
+package com.uma.example.springuma.model;
+
+import java.util.Calendar;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.*;
+
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // para ignorar el serializador al devolver un objeto cuenta
+public class Imagen {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "fecha")
+    private Calendar fecha;
+
+    public Calendar getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Calendar fecha) {
+        this.fecha = fecha;
+    }
+    // Relación con Paciente (muchas imágenes pueden pertenecer a un paciente)
+    @ManyToOne()
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "paciente_id")
+    private Paciente paciente;
+
+    @Lob
+    @Column(name = "file_content")
+    private byte[] file_content;
+
+    public byte[] getFile_content() {
+        return file_content;
+    }
+
+    public void setFile_content(byte[] file_content) {
+        this.file_content = file_content;
+    }
+
+    // Constructor vacío
+    public Imagen() {
+    }
+
+    // Getters y Setters
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Imagen)) {
+            return false;
+        }
+        return id != 0 && id == (((Imagen) o).getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return this.nombre.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "Imagen{"
+                + "id=" + id
+                + ", nombre='" + nombre + '\''
+                + ", paciente=" + paciente
+                + '}';
+    }
+
+    public Imagen(byte[] file_content, Paciente paciente) {
+        this.file_content = file_content;
+        this.paciente = paciente;
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/ImagenAPIPredictor.java">
+package com.uma.example.springuma.model;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class ImagenAPIPredictor {
+    //Class that is responsible for creating API call to external API service which will predict imagage.
+    //Call in this version is based on the path of the image, but i checked if it works from our spring project
+
+    private static final String API_URL = "https://api-inference.huggingface.co/models/MUmairAB/Breast_Cancer_Detector";
+    // @TODO: replace USE_TOKEN_HERE with your token
+    private static final String TOKEN = "Bearer USE_TOKEN_HERE";
+
+    public static Map<String, Double> query(byte[] file_data) throws IOException, Exception {
+
+        byte[] data = file_data;
+        try (CloseableHttpClient client = HttpClients.createDefault()) {
+            HttpPost request = new HttpPost(API_URL);
+            request.setHeader("Authorization", TOKEN);
+            request.setEntity(new ByteArrayEntity(data));
+
+            HttpResponse response = client.execute(request);
+            String jsonResponse = EntityUtils.toString(response.getEntity());
+            return processResponse(jsonResponse);
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    private static Map<String, Double> processResponse(String jsonResponse) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        if (jsonResponse.trim().startsWith("[")) {
+            List<Map<String, Object>> responseList = mapper.readValue(jsonResponse, new TypeReference<List<Map<String, Object>>>() {
+            });
+            Map<String, Double> resultMap = new HashMap<>();
+            for (Map<String, Object> entry : responseList) {
+                resultMap.put((String) entry.get("label"), (Double) entry.get("score"));
+
+            }
+            return resultMap;
+        } else {
+            Map<String, Object> responseMap = mapper.readValue(jsonResponse, new TypeReference<Map<String, Object>>() {
+            });
+            if (responseMap.containsKey("error")) {
+                throw new Exception("Error from API: " + responseMap.get("error"));
+            } else {
+                throw new Exception("Unexpected response format: " + jsonResponse);
+            }
+        }
+    }
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/ImagenService.java">
+package com.uma.example.springuma.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.uma.example.springuma.utils.ImageUtils;
+
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.List;
+
+@Service
+public class ImagenService {
+
+    @Autowired
+    private RepositoryImagen repositoryImagen;
+
+    public List<Imagen> getAllImagenes() {
+        return repositoryImagen.findAll();
+    }
+
+    public Imagen getImagen(Long id) {
+        return repositoryImagen.getReferenceById(id);
+    }
+
+    public String getNewPrediccion(Long id) throws IOException, Exception {
+        /* API Deprecated
+        Map<String, Double> response = 
+        ImagenAPIPredictor.query(ImageUtils.decompressImage(repositoryImagen.getReferenceById(id).getFile_content()));
+        System.out.println("resp");
+        System.out.println( response);
+        double score_0 = response.get("LABEL_0");
+        double score_1 = response.get("LABEL_1");
+        System.out.println("resp");
+        System.out.println( response);*/
+        double score_0 = Math.random();
+        double score_1 = Math.random();
+        String resulString;
+        if (score_0 > score_1) {
+            resulString = "{'status': 'Not cancer',  'score': " + score_0 + "}";
+        } else {
+            resulString = "{'status': 'Cancer',  'score': " + score_1 + "}";
+        }
+        return resulString;
+    }
+
+    public Imagen addImagen(Imagen imagen) {
+        return repositoryImagen.saveAndFlush(imagen);
+    }
+
+    public void updateImagen(Imagen imagen) {
+        repositoryImagen.save(imagen);
+    }
+
+    public void removeImagen(Imagen imagen) {
+        repositoryImagen.delete(imagen);
+    }
+
+    public void removeImagenByID(Long id) {
+        repositoryImagen.deleteById(id);
+    }
+
+    public List<Imagen> getImagenesPaciente(Long id) {
+        return repositoryImagen.getByPacienteId(id);
+    }
+
+    public String uploadImage(MultipartFile file, Paciente paciente) throws IOException {
+        Imagen imagen = new Imagen();
+        imagen.setNombre(file.getOriginalFilename());
+        imagen.setFile_content(ImageUtils.compressImage(file.getBytes()));
+        imagen.setPaciente(paciente);
+        imagen.setFecha(Calendar.getInstance());
+        imagen = repositoryImagen.saveAndFlush(imagen);
+        if (imagen != null) {
+            return "{\"response\" : \"file uploaded successfully : " + file.getOriginalFilename() + "\"}";
+        }
+        return null;
+    }
+
+    public byte[] downloadImage(long id) {
+        Imagen dbImageData = repositoryImagen.getReferenceById(id);
+        byte[] images = ImageUtils.decompressImage(dbImageData.getFile_content());
+        return images;
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/Informe.java">
+package com.uma.example.springuma.model;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Informe {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "prediccion")
+    private String prediccion;
+
+    @Column(name = "contenido", columnDefinition = "TEXT")
+    private String contenido;
+
+    // Relación con imagen (muchas imágenes pueden pertenecer a un informe)
+    @ManyToOne()
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "imagen_id")
+    private Imagen imagen;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Imagen getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Imagen id) {
+        this.imagen = id;
+    }
+
+    public String getPrediccion() {
+        return prediccion;
+    }
+
+    public void setPrediccion(String prediccion) {
+        this.prediccion = prediccion;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public Informe() {
+        // Constructor vacío necesario para JPA
+    }
+
+    public Informe(String prediccion, String contenido, Imagen imagen) {
+        this.prediccion = prediccion;
+        this.contenido = contenido;
+        this.imagen = imagen;
+    }
+
+    public boolean equals(Object obj) {
+        return (obj instanceof Informe) && ((Informe) obj).getContenido() == this.contenido;
+    }
+
+    public int hashCode() {
+        return this.contenido.hashCode();
+    }
+
+    public String toString() {
+        return "Predicción = " + this.prediccion + "; " + " Contenido = " + this.contenido + " imagen = " + this.imagen;
+    }
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/InformeService.java">
+package com.uma.example.springuma.model;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+
+@Service
+public class InformeService {
+
+    @Autowired
+    private RepositoryInforme repositoryInforme;
+
+    public List<Informe> getAllInformes() {
+        return repositoryInforme.findAll();
+    }
+
+    public Informe getInforme(Long id) {
+        return repositoryInforme.findById(id).orElse(null);
+    }
+
+    public Informe addInforme(Informe informe) throws IOException, Exception {
+        String neew_pred = getNewPrediccion(informe);
+        //double neew_pred = Math.random();
+        System.out.println(neew_pred);
+        informe.setPrediccion(((neew_pred)));
+
+        return repositoryInforme.saveAndFlush(informe);
+    }
+
+    public void updateInforme(Informe informe) throws IOException, Exception {
+        // Puedes implementar la lógica de actualización según tus necesidades
+        // Aquí se muestra un ejemplo básico:
+        Informe existingInforme = repositoryInforme.findById(informe.getId()).orElse(null);
+        if (existingInforme != null) {
+            existingInforme.setPrediccion(getNewPrediccion(existingInforme));
+            existingInforme.setContenido(informe.getContenido());
+            repositoryInforme.save(existingInforme);
+        }
+    }
+
+    public void removeInforme(Informe informe) {
+        repositoryInforme.delete(informe);
+    }
+
+    public void removeInformeByID(Long id) {
+        repositoryInforme.deleteById(id);
+    }
+
+    public List<Informe> getInformesImagen(Long id) {
+        return repositoryInforme.findByImagenId(id);
+    }
+
+    public String getNewPrediccion(Informe informe) throws IOException, Exception {
+        /*Map<String, Double> response =  ImagenAPIPredictor
+        .query(ImageUtils.decompressImage(repositoryImage.getReferenceById(informe.getImagen().getId())
+        .getFile_content()));
+        //informe.setPrediccion((String)response.get("0"));
+        System.out.println("resp");
+        System.out.println( response);
+        double score_0 = response.get("LABEL_0");
+        double score_1 = response.get("LABEL_1");*/
+
+        double score_0 = Math.random();
+        double score_1 = Math.random();
+        String resulString;
+        if (score_0 > score_1) {
+            resulString = "{\"status\": \"Not cancer\",  \"score\": " + score_0 + "}";
+        } else {
+            resulString = "{\"status\": \"Cancer\",  \"score\": " + score_1 + "}";
+        }
+        return resulString;
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/Medico.java">
+package com.uma.example.springuma.model;
+
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // para ignorar el serializador al devolver un objeto cuenta
+public class Medico implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @Column(unique = true)
+    private String dni;
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    @Column(name = "nombre")
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Column(name = "especialidad")
+    private String especialidad;
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public Medico() {
+
+    }
+
+    public Medico(String dni, String nombre, String especialidad) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.especialidad = especialidad;
+    }
+
+    public boolean equals(Object obj) {
+        return (obj instanceof Medico) && ((Medico) obj).getDni() == this.dni;
+    }
+
+    public int hashCode() {
+        return this.dni.hashCode();
+    }
+
+    public String toString() {
+        return "DNI " + this.dni + ": " + "nombre = " + this.nombre + ", especialidad = " + this.especialidad;
+    }
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/MedicoService.java">
+package com.uma.example.springuma.model;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MedicoService {
+
+    @Autowired
+    RepositoryMedico repositoryMedico;
+
+    public List<Medico> getAllMedicos() {
+        return repositoryMedico.findAll();
+    }
+
+    public Medico getMedico(Long id) {
+        return repositoryMedico.getReferenceById(id);
+    }
+
+    public Medico addMedico(Medico m) {
+        return repositoryMedico.saveAndFlush(m);
+    }
+
+    public void updateMedico(Medico m) {
+        repositoryMedico.save(m);
+    }
+
+    public void removeMedico(Medico m) {
+        repositoryMedico.delete(m);
+    }
+
+    public void removeMedicoID(Long id) {
+        repositoryMedico.deleteById(id);
+    }
+
+    public Medico getMedicoByDni(String dni) {
+        return repositoryMedico.getMedicoByDni(dni);
+    }
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/Paciente.java">
+package com.uma.example.springuma.model;
+
+import java.io.Serializable;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.*;
+
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // para ignorar el serializador al devolver un objeto cuenta
+public class Paciente implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "edad")
+    private int edad;
+
+    @Column(name = "cita")
+    private String cita; // Esto podría ser un tipo de fecha si es necesario
+
+    @Column(name = "dni", unique = true)
+    private String dni;
+
+    @ManyToOne()
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Medico medico;
+
+    // Constructor vacío
+    public Paciente() {
+    }
+
+    // Constructor con todos los campos
+    public Paciente(String nombre, int edad, String cita, String dni, Medico medico) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.cita = cita;
+        this.dni = dni;
+        this.medico = medico;
+    }
+
+    // Getters y setters
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public String getCita() {
+        return cita;
+    }
+
+    public void setCita(String cita) {
+        this.cita = cita;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Paciente) && ((Paciente) obj).getDni().equals(this.dni);
+    }
+
+    @Override
+    public int hashCode() {
+        return dni != null ? dni.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{"
+                + "id=" + id
+                + ", nombre='" + nombre + '\''
+                + ", edad=" + edad
+                + ", cita='" + cita + '\''
+                + ", dni='" + dni + '\''
+                + ", medico=" + medico
+                + '}';
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/PacienteService.java">
+package com.uma.example.springuma.model;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class PacienteService {
+
+    @Autowired
+    RepositoryPaciente repositoryPaciente; 
+
+    public List<Paciente> getAllPacientes() {
+        return repositoryPaciente.findAll(); 
+    }
+
+    public Paciente getPaciente(Long id) {
+        return repositoryPaciente.getReferenceById(id); 
+    }
+
+    public Paciente addPaciente(Paciente p) {
+        return repositoryPaciente.saveAndFlush(p); 
+    }
+
+    public void updatePaciente(Paciente p) {
+        /*Paciente paciente = repositoryPaciente.getReferenceById(p.getId());
+        // Aquí podrías actualizar los campos específicos del paciente
+        paciente.setNombre(p.getNombre());
+        paciente.setEdad(p.getEdad());
+        paciente.setCita(p.getCita());
+        paciente.setDni(p.getDni());
+        paciente.setMedico(p.getMedico());*/
+        repositoryPaciente.save(p); // Guardamos el paciente actualizado
+    }
+
+    public void removePaciente(Paciente p) {
+        repositoryPaciente.delete(p); 
+    }
+
+    public void removePacienteID(Long id) {
+        repositoryPaciente.deleteById(id);
+    }
+
+    public List<Paciente> getPacientesMedico(Long id) {
+        return repositoryPaciente.findByMedicoId(id);
+    }
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/RepositoryImagen.java">
+package com.uma.example.springuma.model;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryImagen extends JpaRepository<Imagen, Long> {
+
+    List<Imagen> getByPacienteId(Long id);
+
+    // Aquí puedes añadir métodos personalizados si es necesario.
+    // Por ejemplo, si quieres buscar imágenes por una propiedad específica:
+    // List<Imagen> findByPropiedad(String propiedad);
+    // Si no necesitas métodos personalizados, la interfaz puede quedar vacía,
+    // ya que hereda todos los métodos necesarios de JpaRepository.
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/RepositoryInforme.java">
+package com.uma.example.springuma.model;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryInforme extends JpaRepository<Informe, Long> {
+
+    List<Informe> findByImagenId(Long id);
+
+    // https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.query-creation
+    // Además de los metodos de consulta basicos, especifico un metodo que busque una cuenta por el CCC
+    // A través del nombre del metodo, spring sabe que tiene que hacer una consulta y devolver la cuenta con el ccc especificado
+    // Utilizamos el nombre del metodo findBy"propiedad"  propiedad debe existir en la clase Cuenta
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/RepositoryMedico.java">
+package com.uma.example.springuma.model;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryMedico extends JpaRepository<Medico, Long> {
+
+    Medico getMedicoByDni(String dni);
+
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/model/RepositoryPaciente.java">
+package com.uma.example.springuma.model;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryPaciente extends JpaRepository<Paciente, Long> {
+
+    Paciente findByDni(String dni);
+
+    List<Paciente> findByMedicoId(Long id);
+
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/ServletInitializer.java">
+package com.uma.example.springuma;
+
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+public class ServletInitializer extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SpringumaApplication.class);
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/SpringumaApplication.java">
+package com.uma.example.springuma;
+
+import java.util.Arrays;
+import java.util.Collections;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
+@SpringBootApplication
+public class SpringumaApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringumaApplication.class, args);
+    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        final CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(false);
+        // Don't do this in production, use a proper list  of allowed origins
+        config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+        config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept"));
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
+    }
+
+}
+</file>
+
+<file path="src/main/java/com/uma/example/springuma/utils/ImageUtils.java">
+package com.uma.example.springuma.utils;
+
+import java.io.ByteArrayOutputStream;
+import java.util.zip.Deflater;
+import java.util.zip.Inflater;
+
+public class ImageUtils {
+
+    public static byte[] compressImage(byte[] data) {
+        Deflater deflater = new Deflater();
+        deflater.setLevel(Deflater.BEST_COMPRESSION);
+        deflater.setInput(data);
+        deflater.finish();
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
+        byte[] tmp = new byte[4 * 1024];
+        while (!deflater.finished()) {
+            int size = deflater.deflate(tmp);
+            outputStream.write(tmp, 0, size);
+        }
+        try {
+            outputStream.close();
+        } catch (Exception ignored) {
+        }
+        return outputStream.toByteArray();
+    }
+
+    public static byte[] decompressImage(byte[] data) {
+        Inflater inflater = new Inflater();
+        inflater.setInput(data);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
+        byte[] tmp = new byte[4 * 1024];
+        try {
+            while (!inflater.finished()) {
+                int count = inflater.inflate(tmp);
+                outputStream.write(tmp, 0, count);
+            }
+            outputStream.close();
+        } catch (Exception ignored) {
+        }
+        return outputStream.toByteArray();
+    }
+
+}
+</file>
+
+<file path="src/main/resources/application.properties">
+###
+#   Database Settings
+###
+spring.datasource.url=jdbc:h2:file:./database
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+
+###
+#   H2 Settings
+###
+# Para poder administrar la base de datos desde la url especificada en "spring.h2.console.path"
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+spring.h2.console.settings.trace=false
+spring.h2.console.settings.web-allow-others=false
+
+###
+#   Hibernate Settings
+###
+spring.jpa.hibernate.ddl-auto = update
+spring.jpa.properties.hibernate.show_sql=false
+spring.jpa.properties.hibernate.use_sql_comments=false
+spring.jpa.properties.hibernate.format_sql=false
+
+# para usar metodos delete, put en thymeleaf
+spring.mvc.hiddenmethod.filter.enabled=true
+
+spring.http.multipart.max-file-size=10MB
+spring.http.multipart.max-request-size=11MB
+</file>
+
+<file path="src/test/java/com/uma/example/springuma/integration/base/AbstractIntegration.java">
+package com.uma.example.springuma.integration.base;
+
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+
+// Esta anotación especifica cómo deben crearse las instancias de prueba. El valor Lifecycle.PER_CLASS garantiza que se cree una instancia de prueba por cada clase de prueba.
+@TestInstance(Lifecycle.PER_CLASS)
+// Esta anotacion permite la configuración automática de MockMvc en las pruebas MVC de Spring. 
+@AutoConfigureMockMvc
+//Esta anotación habilita las propiedades de configuración de la aplicación. 
+@EnableConfigurationProperties
+// Esta anotación limpia el contexto de Spring después de cada método de prueba. Esto garantiza la independencia entre las pruebas.
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+//  Esta anotación inicia la aplicación Spring Boot en un entorno de pruebas. 
+// El parámetro webEnvironment especifica el entorno web a probar, y el valor RANDOM_PORT asegura la selección de un número de puerto aleatorio
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public abstract class AbstractIntegration {
+}
+</file>
+
+<file path="src/test/java/com/uma/example/springuma/SpringumaApplicationTests.java">
+package com.uma.example.springuma;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class SpringumaApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
+</file>
+
+<file path="src/test/resources/application.properties">
+spring.datasource.url=jdbc:h2:mem:test_db
+spring.datasource.username=test
+spring.datasource.password=test
+spring.datasource.driver-class-name=org.h2.Driver
+spring.jpa.hibernate.ddl-auto=create-drop
+
+spring.http.multipart.max-file-size=10MB
+spring.http.multipart.max-request-size=11MB
+</file>
+
+<file path="src/test/java/com/uma/example/springuma/integration/ImagenControllerWebTestClientIT.java">
+package com.uma.example.springuma.integration;
+
+import java.nio.file.Paths;
+import java.time.Duration;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.MultipartBodyBuilder;
+import org.springframework.test.web.reactive.server.FluxExchangeResult;
+import org.springframework.test.web.reactive.server.WebTestClient;
+
+import com.uma.example.springuma.model.Imagen;
+import com.uma.example.springuma.model.Medico;
+import com.uma.example.springuma.model.Paciente;
+import com.uma.example.springuma.integration.base.AbstractIntegration;
+
+import jakarta.annotation.PostConstruct;
+import reactor.core.publisher.Mono;
+
+import org.springframework.web.reactive.function.BodyInserters;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class ImagenControllerWebTestClientIT extends AbstractIntegration {
+
+    @LocalServerPort
+    private Integer port;
+
+    private WebTestClient testClient;
+
+    private Paciente paciente;
+    private Medico medico;
+
+    @PostConstruct
+    public void init() {
+        testClient = WebTestClient.bindToServer().baseUrl("http://localhost:" + port)
+                .responseTimeout(Duration.ofMillis(300000)).build();
+    }
+
+    @BeforeEach
+    void setUp() {
+
+        medico = new Medico();
+        medico.setNombre("Miguel");
+        medico.setId(1L);
+        medico.setDni("835");
+        medico.setEspecialidad("Ginecologo");
+
+        paciente = new Paciente();
+        paciente.setId(1L);
+        paciente.setNombre("Maria");
+        paciente.setDni("888");
+        paciente.setEdad(20);
+        paciente.setCita("Ginecologia");
+        paciente.setMedico(medico);
+
+        // Crea médico
+        testClient.post().uri("/medico")
+                .body(Mono.just(medico), Medico.class)
+                .exchange()
+                .expectStatus().isCreated();
+
+        // Crea paciente
+        testClient.post().uri("/paciente")
+                .body(Mono.just(paciente), Paciente.class)
+                .exchange()
+                .expectStatus().isCreated();
+    }
+
+    private void subirImagen(String nombreArchivo) {
+        try {
+            MultipartBodyBuilder builder = new MultipartBodyBuilder();
+            builder.part("image", new FileSystemResource(Paths.get("src/test/resources/" + nombreArchivo).toFile()));
+            builder.part("paciente", paciente);
+
+            testClient.post().uri("/imagen")
+                    .contentType(MediaType.MULTIPART_FORM_DATA)
+                    .body(BodyInserters.fromMultipartData(builder.build()))
+                    .exchange()
+                    .expectStatus().isOk();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    @DisplayName("Subir imagen y confirmar su existencia en el listado del paciente")
+    void subirImagen_correctamente() {
+        subirImagen("healthy.png");
+
+        testClient.get().uri("/imagen/paciente/" + paciente.getId())
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Imagen.class)
+                .hasSize(1)
+                .consumeWith(response -> {
+                    Imagen img = response.getResponseBody().get(0);
+                    assertTrue("healthy.png".equals(img.getNombre()));
+                });
+    }
+
+    @Test
+    @DisplayName("Realizar predicción IA de una imagen subida")
+    void realizarPrediccion_Imagen() {
+        subirImagen("healthy.png");
+
+        Imagen img = testClient.get().uri("/imagen/paciente/" + paciente.getId())
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Imagen.class)
+                .returnResult().getResponseBody().get(0);
+
+        testClient.get().uri("/imagen/predict/" + img.getId())
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(String.class)
+                .consumeWith(response -> {
+                    String body = response.getResponseBody();
+                    assertTrue(body != null);
+                    assertTrue(body.contains("score")); // Confirmar que nos da el resultado aleatorio
+                });
+    }
+
+    @Test
+    @DisplayName("Eliminar una imagen")
+    void eliminarImagen() {
+        subirImagen("healthy.png");
+
+        Imagen img = testClient.get().uri("/imagen/paciente/" + paciente.getId())
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Imagen.class)
+                .returnResult().getResponseBody().get(0);
+
+        testClient.delete().uri("/imagen/" + img.getId())
+                .exchange()
+                .expectStatus().isNoContent();
+    }
+
+   }
+</file>
+
+<file path="src/test/java/com/uma/example/springuma/integration/InformeControllerWebTestClientIT.java">
+package com.uma.example.springuma.integration;
+
+import java.nio.file.Paths;
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.MultipartBodyBuilder;
+import org.springframework.test.web.reactive.server.FluxExchangeResult;
+import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.web.reactive.function.BodyInserters;
+
+import com.uma.example.springuma.integration.base.AbstractIntegration;
+import com.uma.example.springuma.model.Imagen;
+import com.uma.example.springuma.model.Informe;
+import com.uma.example.springuma.model.Medico;
+import com.uma.example.springuma.model.Paciente;
+
+import jakarta.annotation.PostConstruct;
+import reactor.core.publisher.Mono;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class InformeControllerWebTestClientIT extends AbstractIntegration {
+
+    @LocalServerPort
+    private Integer port;
+
+    private WebTestClient testClient;
+
+    private Medico medico;
+    private Paciente paciente;
+    private Imagen imagen;
+    private Informe informe;
+
+    @PostConstruct
+    public void init() {
+        testClient = WebTestClient.bindToServer().baseUrl("http://localhost:" + port)
+                .responseTimeout(Duration.ofMillis(300000)).build();
+    }
+
+    @BeforeEach
+    void setUp() {
+
+        medico = new Medico();
+        medico.setNombre("Miguel");
+        medico.setId(1L);
+        medico.setDni("835");
+        medico.setEspecialidad("Ginecologo");
+
+        paciente = new Paciente();
+        paciente.setId(1L);
+        paciente.setNombre("Maria");
+        paciente.setDni("888");
+        paciente.setEdad(20);
+        paciente.setCita("Ginecologia");
+        paciente.setMedico(medico);
+
+        imagen = new Imagen();
+        imagen.setId(1L);
+        imagen.setPaciente(paciente);
+
+        // Crea médico
+        testClient.post().uri("/medico")
+                .body(Mono.just(medico), Medico.class)
+                .exchange()
+                .expectStatus().isCreated();
+
+        // Crea paciente
+        testClient.post().uri("/paciente")
+                .body(Mono.just(paciente), Paciente.class)
+                .exchange()
+                .expectStatus().isCreated();
+
+        // Crea imagen
+        MultipartBodyBuilder builder = new MultipartBodyBuilder();
+        builder.part("image", new FileSystemResource(Paths.get("src/test/resources/healthy.png").toFile()));
+        builder.part("paciente", paciente);
+
+        testClient.post().uri("/imagen")
+                .contentType(MediaType.MULTIPART_FORM_DATA)
+                .body(BodyInserters.fromMultipartData(builder.build()))
+                .exchange()
+                .expectStatus().isOk();
+
+    }
+
+    @Test
+    @DisplayName("Crear informe y obtenerlo por ID de la imagen asociada")
+    void crearInforme_obtenerPorImagen() {
+        // Recuperamos la imagen que subimos en el setUp()
+        Imagen uploadedImage = testClient.get().uri("/imagen/paciente/" + paciente.getId())
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Imagen.class)
+                .returnResult().getResponseBody().get(0);
+
+        Informe nuevoInforme = new Informe();
+        nuevoInforme.setContenido("No se aprecian anomalías claras en la mamografía.");
+        nuevoInforme.setImagen(uploadedImage);
+
+        // Crear informe
+        testClient.post().uri("/informe")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(nuevoInforme), Informe.class)
+                .exchange()
+                .expectStatus().isCreated();
+
+        // Obtener informes de la imagen
+        testClient.get().uri("/informe/imagen/" + uploadedImage.getId())
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Informe.class)
+                .hasSize(1)
+                .consumeWith(response -> {
+                    Informe informeResult = response.getResponseBody().get(0);
+                    assertTrue("No se aprecian anomalías claras en la mamografía.".equals(informeResult.getContenido()));
+                    assertTrue(informeResult.getPrediccion() != null); // Comprobar que le ha asignado la predicción
+                });
+    }
+
+    @Test
+    @DisplayName("Eliminar un informe")
+    void eliminarInforme() {
+        Imagen uploadedImage = testClient.get().uri("/imagen/paciente/" + paciente.getId())
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Imagen.class)
+                .returnResult().getResponseBody().get(0);
+
+        Informe nuevoInforme = new Informe();
+        nuevoInforme.setContenido("Informe listo para eliminar");
+        nuevoInforme.setImagen(uploadedImage);
+
+        testClient.post().uri("/informe")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Mono.just(nuevoInforme), Informe.class)
+                .exchange()
+                .expectStatus().isCreated();
+
+        Informe informeCreado = testClient.get().uri("/informe/imagen/" + uploadedImage.getId())
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(Informe.class)
+                .returnResult().getResponseBody().get(0);
+
+        testClient.delete().uri("/informe/" + informeCreado.getId())
+                .exchange()
+                .expectStatus().isNoContent();
+    }
+}
+</file>
+
+<file path="src/test/java/com/uma/example/springuma/integration/MedicoControllerMockMvcIT.java">
+package com.uma.example.springuma.integration;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.uma.example.springuma.integration.base.AbstractIntegration;
+import com.uma.example.springuma.model.Medico;
+
+public class MedicoControllerMockMvcIT extends AbstractIntegration {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    private Medico medico;
+
+    @BeforeEach
+    void setUp() {
+        medico = new Medico();
+        medico.setId(1L);
+        medico.setDni("835");
+        medico.setNombre("Miguel");
+        medico.setEspecialidad("Ginecologia");
+    }
+
+    private void crearMedico(Medico medico) throws Exception {
+        this.mockMvc.perform(post("/medico")
+                .contentType("application/json")
+                .content(objectMapper.writeValueAsString(medico)))
+                .andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("Crear médico y recuperarlo por ID pasado por parámetro")
+    void saveMedico_RecuperaMedicoPorId() throws Exception {
+        crearMedico(medico);
+
+        mockMvc.perform(get("/medico/" + medico.getId()))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$.dni").value(medico.getDni()))
+                .andExpect(jsonPath("$.nombre").value(medico.getNombre()));
+    }
+
+    @Test
+    @DisplayName("Actualizar médico y verificar cambios por DNI")
+    void saveMedico_UpdateMedico_GetByDni() throws Exception {
+        crearMedico(medico);
+
+        // Modificamos el nombre
+        medico.setNombre("Miguel Angel");
+        mockMvc.perform(put("/medico")
+                        .contentType("application/json")
+                        .content(objectMapper.writeValueAsString(medico)))
+                .andExpect(status().isNoContent());
+
+        // Recuperamos el médico actualizado
+        mockMvc.perform(get("/medico/dni/" + medico.getDni()))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.nombre").value("Miguel Angel"));
+    }
+
+    @Test
+    @DisplayName("Eliminar médico del sistema")
+    void saveMedico_DeleteMedico() throws Exception {
+        crearMedico(medico);
+
+        // Lo borramos
+        mockMvc.perform(delete("/medico/" + medico.getId()))
+                .andExpect(status().isOk());
+    }
+
+}
+</file>
+
+<file path="src/test/java/com/uma/example/springuma/integration/PacienteControllerMockMvcIT.java">
+package com.uma.example.springuma.integration;
+
+import static org.hamcrest.Matchers.hasSize;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.uma.example.springuma.integration.base.AbstractIntegration;
+import com.uma.example.springuma.model.Medico;
+import com.uma.example.springuma.model.MedicoService;
+import com.uma.example.springuma.model.Paciente;
+
+public class PacienteControllerMockMvcIT extends AbstractIntegration {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @Autowired
+    private MedicoService medicoService;
+
+    Paciente paciente;
+    Medico medico;
+
+    @BeforeEach
+    void setUp() {
+        medico = new Medico();
+        medico.setNombre("Miguel");
+        medico.setId(1L);
+        medico.setDni("835");
+        medico.setEspecialidad("Ginecologo");
+
+        paciente = new Paciente();
+        paciente.setId(1L);
+        paciente.setNombre("Maria");
+        paciente.setDni("888");
+        paciente.setEdad(20);
+        paciente.setCita("Ginecologia");
+        paciente.setMedico(this.medico);
+    }
+    private void crearMedico(Medico medico) throws Exception {
+        this.mockMvc.perform(post("/medico")
+                .contentType("application/json")
+                .content(objectMapper.writeValueAsString(medico)))
+                .andExpect(status().isCreated());
+    }
+    private void crearPaciente(Paciente paciente) throws Exception {
+        mockMvc.perform(post("/paciente")
+                .contentType("application/json")
+                .content(objectMapper.writeValueAsString(paciente)))
+                .andExpect(status().isCreated());
+    }
+
+    private void getPacienteById(Long id, Paciente expected) throws Exception {
+        mockMvc.perform(get("/paciente/" + id))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(jsonPath("$").exists())
+                .andExpect(jsonPath("$").value(expected));
+    }
+
+    @Test
+    @DisplayName("Crear paciente y recuperarlo por ID pasado por parametro")
+    void savePaciente_RecuperaPacientePorId() throws Exception {
+        crearMedico(medico);
+        crearPaciente(paciente);
+
+        //Obtener paciente por ID
+        mockMvc.perform(get("/paciente/" + paciente.getId()))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$.nombre").value(paciente.getNombre()))
+                .andExpect(jsonPath("$.dni").value(paciente.getDni()));
+    }
+
+    @Test
+    @DisplayName("Editar paciente en el sistema")
+    void updatePaciente() throws Exception {
+        crearMedico(medico);
+        crearPaciente(paciente);
+
+        paciente.setNombre("Pepito");
+        mockMvc.perform(put("/paciente")
+                .contentType("application/json")
+                .content(objectMapper.writeValueAsString(paciente)))
+                .andExpect(status().isNoContent());
+
+        mockMvc.perform(get("/paciente/" + paciente.getId()))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(jsonPath("$.nombre").value("Pepito"))
+                .andExpect(jsonPath("$.dni").value(paciente.getDni()));
+    }
+
+    @Test
+    @DisplayName("Obtener lista de pacientes de un médico")
+    void getPacientesByMedico() throws Exception {
+        crearMedico(medico);
+        crearPaciente(paciente);
+
+        mockMvc.perform(get("/paciente/medico/" + medico.getId()))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].nombre").value(paciente.getNombre()));
+    }
+
+    @Test
+    @DisplayName("Eliminar paciente")
+    void deletePaciente() throws Exception {
+        crearMedico(medico);
+        crearPaciente(paciente);
+
+        mockMvc.perform(delete("/paciente/" + paciente.getId()))
+                .andExpect(status().isOk());
+    }
+
+}
+</file>
+
+<file path="README.md">
+# SpringUMA — Medical Records System
+
+[![Estado del Build y Tests](https://github.com/Javierub32/Pr06---Infraestructuras.git/actions/workflows/ci.yml/badge.svg)](https://github.com/Javierub32/Pr06---Infraestructuras.git/actions/workflows/ci.yml)
+[![Cobertura (Jacoco)](https://raw.githubusercontent.com/Javierub32/Pr06---Infraestructuras.git/main/.github/badges/jacoco.svg)](https://github.com/Javierub32/Pr06---Infraestructuras.git/actions)
+[![Ramas Probadas](https://raw.githubusercontent.com/Javierub32/Pr06---Infraestructuras.git/main/.github/badges/branches.svg)](https://github.com/Javierub32/Pr06---Infraestructuras.git/actions)
+
+A Spring Boot REST API that models a small medical records system. Built as a practice project for the **Software Maintenance and Testing** course at the University of Málaga.
+
+---
+
+## Domain Model
+
+| Entity    | Description                                                             |
+|-----------|-------------------------------------------------------------------------|
+| `Medico`  | Medical doctor with `id`, `nombre`, `dni`, `especialidad`               |
+| `Paciente`| Patient with `id`, `nombre`, `dni`, `edad`, `cita`, assigned doctor     |
+| `Imagen`  | Medical image (binary, compressed) linked to a patient                  |
+| `Informe` | AI-generated prediction report linked to an image                       |
+
+Relationships: `Medico` ←1:N→ `Paciente` ←1:N→ `Imagen` ←1:N→ `Informe`
+
+---
+
+## Project Structure
+
+```
+src/
+├── main/java/com/uma/example/springuma/
+│   ├── controller/
+│   │   ├── MedicoController.java
+│   │   ├── PacienteController.java
+│   │   ├── ImagenController.java
+│   │   └── InformeController.java
+│   ├── model/               # JPA entities, services and repositories
+│   └── utils/
+│       └── ImageUtils.java  # Compress / decompress helpers
+└── test/java/com/uma/example/springuma/
+    └── integration/
+        ├── base/AbstractIntegration.java              # Shared Spring Boot test config
+        ├── MedicoControllerMockMvcIT.java             # Doctor CRUD via MockMvc
+        ├── PacienteControllerMockMvcIT.java           # Patient CRUD via MockMvc
+        ├── ImagenControllerWebTestClientIT.java       # Image upload/download via WebTestClient
+        └── InformeControllerWebTestClientIT.java      # Report lifecycle via WebTestClient
+```
+
+---
+
+## Requirements
+
+| Tool  | Min version |
+|-------|-------------|
+| Java  | 21          |
+| Maven | 3.8+        |
+
+No external database required — H2 in-memory is used for tests.
+
+---
+
+## Running the application
+
+```bash
+./mvnw spring-boot:run
+```
+
+API available at `http://localhost:8080`.  
+Swagger UI: `http://localhost:8080/swagger-ui.html`
+
+### Main endpoints
+
+| Method | Path                      | Description                          |
+|--------|---------------------------|--------------------------------------|
+| GET    | `/medico/{id}`            | Get doctor by ID                     |
+| GET    | `/medico/dni/{dni}`       | Get doctor by DNI                    |
+| POST   | `/medico`                 | Create doctor                        |
+| PUT    | `/medico`                 | Update doctor                        |
+| DELETE | `/medico/{id}`            | Delete doctor                        |
+| GET    | `/paciente/{id}`          | Get patient by ID                    |
+| GET    | `/paciente/medico/{id}`   | List patients by doctor              |
+| POST   | `/paciente`               | Create patient                       |
+| PUT    | `/paciente`               | Update patient                       |
+| DELETE | `/paciente/{id}`          | Delete patient                       |
+| POST   | `/imagen`                 | Upload image (multipart)             |
+| GET    | `/imagen/{id}`            | Download image bytes                 |
+| GET    | `/imagen/info/{id}`       | Get image metadata                   |
+| GET    | `/imagen/predict/{id}`    | Get AI prediction for image          |
+| GET    | `/imagen/paciente/{id}`   | List images for a patient            |
+| DELETE | `/imagen/{id}`            | Delete image                         |
+| GET    | `/informe/{id}`           | Get report by ID                     |
+| GET    | `/informe/imagen/{id}`    | List reports for an image            |
+| POST   | `/informe`                | Create report                        |
+| DELETE | `/informe/{id}`           | Delete report                        |
+
+---
+
+## Running tests
+
+```bash
+# Unit tests only
+./mvnw test
+
+# All tests (unit + integration)
+./mvnw verify
+```
+
+---
+
+## CI/CD — GitHub Actions
+
+The workflow in `.github/workflows/ci.yml` triggers on every **push** and **pull request** and:
+
+1. Compiles the project with JDK 21.
+2. Runs unit tests (`maven-surefire-plugin`).
+3. Runs integration tests (`maven-failsafe-plugin`, classes ending in `IT`).
+4. Publishes a test report to the GitHub **Checks** tab via `dorny/test-reporter`.
+5. Uploads XML reports as a downloadable artifact (retained 7 days).
+
+---
+
+## Technology Stack
+
+- Java 21 · Spring Boot 3.2
+- Spring Data JPA + H2
+- JUnit 5 · MockMvc · WebTestClient
+- SpringDoc OpenAPI (Swagger UI)
+- Maven · GitHub Actions
+</file>
+
+</files>
