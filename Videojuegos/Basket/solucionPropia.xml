@@ -1,3 +1,56 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+balon_basket.png
+grada_baloncesto03.jpg
+jugador01.png
+jugador02.png
+main.py
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="main.py">
 import pygame
 import pymunk
 import pymunk.pygame_util
@@ -5,6 +58,8 @@ import math
 import os
 from pymunk import Vec2d
 import numpy as np
+
+################################# SIMULACIÓN GENERICA ##############################################
 class Tsim:
 	def __init__(self,width=1000,height=600,suelo=600,PX_M=1,gravedad=(0,-9.81),fondo=None):
 		self.width=width
@@ -25,8 +80,9 @@ class Tsim:
 		#crea el espacio	
 		self.space = pymunk.Space()
 		self.space.gravity = Vec2d(gravedad[0],-gravedad[1])* PX_M
-		self.space.iterations = 35 # Aumentamos iteraciones para mayor estabilidad
+		self.space.iterations = 35 # Aumentamos iteraciones para mayor estabilidad	
 		
+		# Diccionario: {tecla: {'func': funcion, 'activo': bool}}
 		self._eventos_teclado = {}
 		self.running = True
 		
@@ -193,8 +249,11 @@ class Tbalon(Tobjeto):
 			# Fuerza Magnus (Sustentación de la pelota girando)
 			omega = body.angular_velocity
 			
+			# Ajustado físicamente para que no haga espirales gigantes
 			k_magnus = 0.5 * rho * A * self.radio_m 
 			
+			# Vector Corregido: Si hay backspin (omega negativa), este vector apunta hacia 
+			# ARRIBA y genera lift, como corresponde.
 			f_magnus_m = Vec2d(omega * v_m.y, -omega * v_m.x) * k_magnus
 			
 			f_total_m = f_drag_m + f_magnus_m
@@ -383,6 +442,7 @@ class Tjugador(Tobjeto):
 			rect = self.player_imgs[img_key].get_rect(midbottom=(x_px, y_px))
 			self.sim.screen.blit(self.player_imgs[img_key], rect)
 
+########## ESTA ES LA CLASE QUE LO CONTIENE TODO #############################
 class Tbasket(Tsim):
 	def __init__(self,x_tablero_m=7, pos_balon_m=(2, 2), **kwargs):
 		super().__init__(**kwargs)
@@ -465,3 +525,6 @@ while bk.actualizar_eventos():
 	bk.clock.tick(FPS)
 
 pygame.quit()
+</file>
+
+</files>
