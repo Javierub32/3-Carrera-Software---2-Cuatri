@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editando especie</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Edicion de especie</h1>
+
+	<form method="post" action="/guardarEspecie">
+		<input type="hidden" name="id" value="<%=especie.especie_id%>">
+		<div>
+			<label>Nombre: <%= especie.especie%></label>
+		</div>
+		<div>
+			<label for="peso">Peso medio: </label>
+			<input type="number" name="peso" id="peso" value="<%= especie.peso_medio %>"> 
+		</div>
+		<div>
+			<label for="esperanza">Esperanza de vida: </label>
+			<input type="number" name="esperanza" id="esperanza" value="<%= especie.esperanza_vida %>"> 
+		</div>
+		<div>
+			<label for="familia">Familia: </label>
+			<select name="familia" id="familia">
+				<%familias.forEach((f) => { %>
+					<option value="<%=f.familia_id%>" <%= f.familia_id == especie.clasificacion ? "selected" : ""%>><%=f.familia%></option>
+				<%})%>
+			</select>
+		</div>
+		<button type="submit">Guardar</button>
+	</form>
+	<div>
+		<h2>Personajes de la especie: </h2>
+		<ul>
+			<%personajes.forEach((p) => {
+				if (p.especie == especie.especie_id) {%>
+					<p><%=p.nombre%> <%=p.especie%></p>
+				<%}%>
+			<%})%>
+		</ul>
+	</div>
+  </body>
+</html>

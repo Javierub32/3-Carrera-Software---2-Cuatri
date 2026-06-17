@@ -1,0 +1,192 @@
+.main-page {
+    padding: 25px;
+    box-sizing: border-box;
+    min-height: calc(100vh - 80px);
+}
+
+.form-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-header h2 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.form-header p {
+    margin: 6px 0 0 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.form-card {
+    padding: 25px;
+}
+
+.colaborador-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-row {
+    display: flex;
+    gap: 18px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: white;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group select:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(68, 114, 196, 0.12);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-color);
+}
+
+.form-actions a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-danger-outline {
+    background-color: white;
+    color: var(--status-red);
+    border: 1px solid var(--status-red);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+table {
+    align-self: center;
+    width: 90%;
+    border-radius: 6px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    text-align: left;
+}
+
+thead {
+    background-color: var(--primary-blue);
+    border-radius: 6px;
+    color: white;
+    top: 0;
+}
+
+th, td {
+    padding: 14px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+tbody tr:hover {
+    background-color: var(--bg-main);
+}
+
+td input[type="radio"] {
+    cursor: pointer;
+    align-self: center;
+}
+
+table a {
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-main);
+    border-radius: 6px;
+    color: var(--text-dark);
+    padding: 5px 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.columna-centrada {
+    text-align: center;
+    justify-content: space-between;
+}
+
+.columna-centrada a:first-child {
+    margin-right: 6px;
+}
+
+.anadir-contacto {
+    border: 0;
+    background-color: var(--bg-white);
+}
+
+.anadir-contacto a {
+    text-decoration: none;
+    border: 0;
+    background-color: var(--bg-white);
+    color: var(--text-muted);
+}

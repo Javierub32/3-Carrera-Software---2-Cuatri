@@ -1,0 +1,686 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+app.js
+bd.sqlite
+bin/www
+config/config.json
+config/database.js
+controllers/planeta.js
+models/Especie.js
+models/Familia_Especie.js
+models/Genero.js
+models/init-models.js
+models/Personaje.js
+models/Planeta.js
+package.json
+pnpm-workspace.yaml
+public/stylesheets/style.css
+routes/index.js
+views/formEspecie.ejs
+views/index.ejs
+views/planeta.ejs
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="app.js">
+// IMPORTACIÓN DE MÓDULOS  /////////////////////////////////////////////////////////////////////////////////////////////
+const express = require("express");
+const morgan = require("morgan");
+const sequelize = require("sequelize");
+const bodyParser = require("body-parser");
+const path = require("path");
+const routes = require('./routes/index');
+
+
+
+// APP y RENDERS  //////////////////////////////////////////////////////////////////////////////////////////////////////
+const app = express();
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.use(morgan("dev"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.use("/", routes);
+
+app.use((req, res, next) => {
+  const err = new Error(`${req.url} not found in this server`);
+  err.status = 404;
+  next(err);
+});
+// setting another error program
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).json({ error: err.message });
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// export app
+module.exports = app;
+</file>
+
+<file path="bin/www">
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('parcialexpress2024:server');
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+</file>
+
+<file path="config/config.json">
+{
+  "dialect": "sqlite",
+  "storage": "bd.sqlite"
+}
+</file>
+
+<file path="config/database.js">
+const Sequelize = require("sequelize");
+const SQLite = require("sqlite3")
+
+const config = require('./config.json');
+
+const db = new Sequelize('database', 'username', 'password', {
+    dialect: config.dialect,
+    storage: config.storage, // or ':memory:'
+    dialectOptions: {
+        // Your sqlite3 options here
+        // for instance, this is how you can configure the database opening mode:
+        mode: SQLite.OPEN_READWRITE | SQLite.OPEN_CREATE | SQLite.OPEN_FULLMUTEX,
+    },
+});
+
+module.exports = db;
+</file>
+
+<file path="controllers/planeta.js">
+const initModels = require("../models/init-models");
+const sequelize = require("sequelize");
+const models = initModels(sequelize);
+
+const controller = {};
+
+controller.listarPlanetas = async function (req, res, next) {
+    try {
+		const planetas = await models.Planeta.findAll();
+		const especies = await models.Especie.findAll();
+		res.render("planeta", {planetas: planetas, especies: especies});
+    } catch (error) {
+        res.send("Se ha producido un error " + error);
+    }
+};
+
+controller.editarEspecie = async function (req, res, next) {
+	try {
+		const id = req.params.id;
+		const especie = await models.Especie.findOne({
+			where: { especie_id: id }
+		})
+		const familias = await models.Familia_Especie.findAll();
+		res.render("formEspecie", {especie: especie, familias: familias});
+	} catch (error) {
+		res.send("Se ha producido un error " + error);
+	}
+}
+
+controller.guardarEspecie = async function (req, res, next) {
+	try {
+		const id = req.body.id;
+		const especie = await models.Especie.findOne({
+			where: { especie_id: id }
+		})
+		
+		if (especie) {
+			await especie.update({
+				peso_medio: req.body.peso,
+				esperanza_vida: req.body.esperanza,
+				clasificacion: req.body.familia
+			});
+		}
+		
+        res.redirect('/');
+	} catch (error) {
+		res.send("Se ha producido un error " + error);
+	}
+}
+
+module.exports = controller;
+</file>
+
+<file path="models/Especie.js">
+const Sequelize = require('sequelize');
+const db = require("../config/database");
+module.exports = function(sequelize, DataTypes) {
+  return db.define('Especie', {
+    especie_id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      primaryKey: true
+    },
+    especie: {
+      type: DataTypes.STRING(20),
+      allowNull: false
+    },
+    clasificacion: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Familia_Especie',
+        key: 'familia_id'
+      }
+    },
+    peso_medio: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    esperanza_vida: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    idioma: {
+      type: DataTypes.STRING(25),
+      allowNull: true
+    },
+    planeta: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'Planeta',
+        key: 'planeta_id'
+      }
+    }
+  }, {
+    sequelize,
+    tableName: 'Especie',
+    timestamps: false
+  });
+};
+</file>
+
+<file path="models/Familia_Especie.js">
+const Sequelize = require('sequelize');
+const db = require("../config/database");
+module.exports = function(sequelize, DataTypes) {
+  return db.define('Familia_Especie', {
+    familia_id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      primaryKey: true
+    },
+    familia: {
+      type: DataTypes.STRING(10),
+      allowNull: false
+    }
+  }, {
+    sequelize,
+    tableName: 'Familia_Especie',
+    timestamps: false
+  });
+};
+</file>
+
+<file path="models/Genero.js">
+const Sequelize = require('sequelize');
+const db = require("../config/database");
+module.exports = function(sequelize, DataTypes) {
+  return db.define('Genero', {
+    genero_id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      primaryKey: true
+    },
+    genero: {
+      type: DataTypes.STRING(15),
+      allowNull: false
+    }
+  }, {
+    sequelize,
+    tableName: 'Genero',
+    timestamps: false
+  });
+};
+</file>
+
+<file path="models/init-models.js">
+var DataTypes = require("sequelize").DataTypes;
+var _Especie = require("./Especie");
+var _Familia_Especie = require("./Familia_Especie");
+var _Genero = require("./Genero");
+var _Personaje = require("./Personaje");
+var _Planeta = require("./Planeta");
+
+function initModels(sequelize) {
+  var Especie = _Especie(sequelize, DataTypes);
+  var Familia_Especie = _Familia_Especie(sequelize, DataTypes);
+  var Genero = _Genero(sequelize, DataTypes);
+  var Personaje = _Personaje(sequelize, DataTypes);
+  var Planeta = _Planeta(sequelize, DataTypes);
+
+  Personaje.belongsTo(Especie, { as: "especie_Especie", foreignKey: "especie"});
+  Especie.hasMany(Personaje, { as: "Personajes", foreignKey: "especie"});
+  Especie.belongsTo(Familia_Especie, { as: "clasificacion_Familia_Especie", foreignKey: "clasificacion"});
+  Familia_Especie.hasMany(Especie, { as: "Especies", foreignKey: "clasificacion"});
+  Personaje.belongsTo(Genero, { as: "genero_Genero", foreignKey: "genero"});
+  Genero.hasMany(Personaje, { as: "Personajes", foreignKey: "genero"});
+  Especie.belongsTo(Planeta, { as: "planeta_Planetum", foreignKey: "planeta"});
+  Planeta.hasMany(Especie, { as: "Especies", foreignKey: "planeta"});
+  Personaje.belongsTo(Planeta, { as: "planeta_Planetum", foreignKey: "planeta"});
+  Planeta.hasMany(Personaje, { as: "Personajes", foreignKey: "planeta"});
+
+  return {
+    Especie,
+    Familia_Especie,
+    Genero,
+    Personaje,
+    Planeta,
+  };
+}
+module.exports = initModels;
+module.exports.initModels = initModels;
+module.exports.default = initModels;
+</file>
+
+<file path="models/Personaje.js">
+const Sequelize = require('sequelize');
+const db = require("../config/database");
+module.exports = function(sequelize, DataTypes) {
+  return db.define('Personaje', {
+    personaje_id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      primaryKey: true
+    },
+    nombre: {
+      type: DataTypes.STRING(30),
+      allowNull: true
+    },
+    color_pelo: {
+      type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    color_piel: {
+      type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    color_ojos: {
+      type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    anyo_nacimiento: {
+      type: DataTypes.STRING(10),
+      allowNull: true
+    },
+    genero: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'Genero',
+        key: 'genero_id'
+      }
+    },
+    planeta: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'Planeta',
+        key: 'planeta_id'
+      }
+    },
+    especie: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Especie',
+        key: 'especie_id'
+      }
+    }
+  }, {
+    sequelize,
+    tableName: 'Personaje',
+    timestamps: false
+  });
+};
+</file>
+
+<file path="models/Planeta.js">
+const Sequelize = require('sequelize');
+const db = require("../config/database");
+module.exports = function(sequelize, DataTypes) {
+  return db.define('Planeta', {
+    planeta_id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      primaryKey: true
+    },
+    nombre: {
+      type: DataTypes.STRING(25),
+      allowNull: true
+    },
+    diametro: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    clima: {
+      type: DataTypes.STRING(25),
+      allowNull: true
+    },
+    gravedad: {
+      type: DataTypes.FLOAT,
+      allowNull: true
+    },
+    terreno: {
+      type: DataTypes.STRING(150),
+      allowNull: true
+    },
+    porcentaje_agua: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    }
+  }, {
+    sequelize,
+    tableName: 'Planeta',
+    timestamps: false
+  });
+};
+</file>
+
+<file path="package.json">
+{
+  "name": "parcialexpress2025_2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "sequelize": "^6.37.3",
+    "sequelize-auto": "^0.8.8",
+    "sqlite3": "^5.1.7"
+  }
+}
+</file>
+
+<file path="pnpm-workspace.yaml">
+onlyBuiltDependencies:
+  - sqlite3
+</file>
+
+<file path="public/stylesheets/style.css">
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+</file>
+
+<file path="routes/index.js">
+const express = require("express");
+const router = express.Router();
+
+const clientesController = require('../controllers/planeta');
+
+router.get("/", clientesController.listarPlanetas);
+router.get("/especie/:id", clientesController.editarEspecie);
+router.post("/guardarEspecie", clientesController.guardarEspecie);
+
+module.exports = router;
+</file>
+
+<file path="views/formEspecie.ejs">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Editando especie</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Edicion de especie</h1>
+
+	<form method="post" action="/guardarEspecie">
+		<input type="hidden" name="id" value="<%=especie.especie_id%>">
+		<div>
+			<label>Nombre: <%= especie.especie%></label>
+		</div>
+		<div>
+			<label for="peso">Peso medio: </label>
+			<input type="number" name="peso" id="peso" value="<%= especie.peso_medio %>"> 
+		</div>
+		<div>
+			<label for="esperanza">Esperanza de vida: </label>
+			<input type="number" name="esperanza" id="esperanza" value="<%= especie.esperanza_vida %>"> 
+		</div>
+		<div>
+			<label for="familia">Familia: </label>
+			<select name="familia" id="familia">
+				<%familias.forEach((f) => { %>
+					<option <%= f.familia_id == especie.clasificacion ? "selected" : ""%>><%=f.familia%></option>
+				<%})%>
+			</select>
+		</div>
+		<button type="submit">Guardar</button>
+	</form>
+  </body>
+</html>
+</file>
+
+<file path="views/index.ejs">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Lista de planetas</h1>
+
+	
+	<table>
+		<thead>
+			<th>Nombre</th>
+			<th>Diametro</th>
+			<th>Clima</th>
+			<th>Terreno</th>
+			<th>Especies</th>
+		</thead>
+		<tbody>
+			<% planetas.forEach((p) => { %>
+				<tr>
+					<td><%= p.nombre %></td>
+					<td><%= p.diametro %></td>
+					<td><%= p.clima %></td>
+					<td><%= p.terreno %></td>
+					<td><%= "hola" %></td>
+				</tr>
+			<% }) %>
+		</tbody>
+	</table>
+  </body>
+</html>
+</file>
+
+<file path="views/planeta.ejs">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de planetas</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Lista de planetas</h1>
+
+	
+	<table>
+		<thead>
+			<th>Nombre</th>
+			<th>Diametro</th>
+			<th>Clima</th>
+			<th>Terreno</th>
+			<th>Especies</th>
+		</thead>
+		<tbody>
+			<% planetas.forEach((p) => { %>
+				<tr>
+					<td><%= p.nombre %></td>
+					<td><%= p.diametro %></td>
+					<td><%= p.clima %></td>
+					<td><%= p.terreno %></td>
+					<td>
+						<% especies.forEach((e) => { %>
+							<% if(e.planeta == p.planeta_id){ %>
+								<a href="/especie/<%= e.especie_id %>"><%= e.especie %></a>
+							<% } %>
+						<% }) %>
+					</td>
+				</tr>
+			<% }) %>
+		</tbody>
+	</table>
+  </body>
+</html>
+</file>
+
+</files>

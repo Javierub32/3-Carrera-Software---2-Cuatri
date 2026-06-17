@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&display=swap');
+
+/* Reset básico para la página de login */
+body.auth-page {
+    margin: 0;
+    padding: 0;
+    font-family: 'Public Sans', sans-serif;
+    background-color: #f3f4f6; /* Fondo gris muy clarito para contrastar con la tarjeta */
+}
+
+/* Contenedor que centra la tarjeta en la pantalla */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Tarjeta principal blanca */
+.login-card {
+    width: 100%;
+    max-width: 380px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+/* Título */
+.login-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+/* Formulario */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espacio entre los grupos del formulario */
+}
+
+/* Grupo de Label + Input */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #000000;
+    box-shadow: 0 0 0 1px #000000;
+}
+
+/* Botón de Entrar */
+.btn-login {
+    width: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-login:hover {
+    background-color: #333333;
+}
+
+/* Footer de la tarjeta (enlaces) */
+.login-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.login-link {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.login-link:hover {
+    color: #000000;
+}
+
+/* Mensaje de error */
+.error-message {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    font-size: 0.85rem;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 16px;
+    border: 1px solid #f87171;
+}

@@ -1,0 +1,209 @@
+.page-wrapper {
+    display: flex;
+    padding: 25px;
+    min-height: calc(100vh - 80px);
+    box-sizing: border-box;
+}
+
+.header-principal h1,
+.header-principal h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--primary-blue, #123c69);
+}
+
+.left-column {
+    flex: 1; /* ocupa el espacio entero */
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+
+/* encabezado de la tabla */
+.header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+/* Contenedor de la tabla de tiendas */
+.tiendas-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Tabla tiendas ajustes */
+.modernTable td .status-pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* FILTRADO */
+
+#filtrado-tiendas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px 25px;
+    width: 100%;
+    align-items: end;
+    margin-top: 10px;
+}
+
+/* Estructura vertical de cada bloque de filtro */
+.filtro-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Espacio entre el texto del label y el selector */
+}
+
+.filtro-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.filtro-group select {
+    padding: 8px 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* boton */
+.boton-container {
+    justify-self: end; /* lo pego a la derecha*/
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.label-spacer {
+    height: 1.2rem; /* lo alineo */
+}
+
+.btn-filtrar {
+    padding: 8px 24px;
+    font-size: 0.9rem;
+    font-weight: 700; /* Letra un poco más gordita para que destaque */
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--primary-blue, #1e3a8a);
+
+    border: 2px solid var(--primary-blue, #1e3a8a);
+    border-radius: 6px;
+
+    transition: all 0.2s ease;
+}
+
+.btn-filtrar:hover {
+    background-color: rgba(30, 58, 138, 0.05);
+    transform: translateY(-1px);
+}
+
+.header-principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1fr 1fr;
+}
+
+.btn-header-principal a{
+    text-decoration: none;
+}
+
+/* Botón INTERACTUAR tienda */
+.interact-tienda-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+
+
+}
+
+/* Efecto de elevación  */
+.interact-tienda-btn:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+/* Al hacer clic */
+.interact-tienda-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+/* AZUL */
+.editar-btn {
+    background-color: #eaf2ff;
+    color: #123c69;
+    border: 1px solid #c7dbf5;
+}
+
+.editar-btn:hover {
+    background-color: #d9eaff;
+    color: #0b2d52;
+    box-shadow: 0 4px 10px rgba(18, 60, 105, 0.15);
+}
+
+/* VERDE */
+.ver-btn {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.ver-btn:hover {
+    background-color: #bbf7d0;
+    color: #14532d;
+    box-shadow: 0 4px 10px rgba(22, 101, 52, 0.15);
+}
+
+/* ROJO */
+.eliminar-btn {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.eliminar-btn:hover {
+    background-color: #fecaca;
+    color: #7f1d1d;
+    box-shadow: 0 4px 10px rgba(153, 27, 27, 0.15);
+}
+
+.eliminar-btn{
+    background-color: #fecaca;
+}
+
+.eliminar-btn:hover{
+    background-color: #fecaca;
+}
+
+
+.asignacion-btn {
+    background-color: #c4dbfb;
+    color: #001832;
+    border: 1px solid #c7dbf5;
+    text-wrap: nowrap;
+}
+
+.asignacion-btn:hover {
+    box-shadow: 0 4px 10px rgba(18, 60, 105, 0.15);
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dinosaurios</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Dinosaurios</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tamaño</th>
+                <th>Peso</th>
+                <th>Dieta</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%dinosaurios.forEach((d) => {
+                if (idEditando == null || (d.id != idEditando)){ %>
+                <tr>
+                    <td><%=d.nombre%></td>
+                    <td><%=d.tamaño_metros%></td>
+                    <td><%=d.peso_toneladas%></td>
+                    <td><%=d.dietum.tipo%></td>
+                    <td><a href="/editarDinosaurio?id=<%=d.id%>">Editar</a></td>
+                </tr>
+            <%} else { %>
+                <tr>
+                    <form action="/guardarDino">
+                        <td><input type="text" name="nombre" value="<%=d.nombre%>"></td>
+                        <td><%=d.tamaño_metros%></td>
+                        <td><%=d.peso_toneladas%></td>
+                        <td>
+                            <%dietas.forEach((dieta) => {%>
+                                <p>
+                                    <input type="radio" value="<%=dieta.id%>" <%=dieta.id == d.dieta_id ? "checked" : ""%>><%=dieta.tipo%>
+                                </p>
+                            <%})%>
+                        </td>
+                        <td><button type="submit">Guardar</button></td>
+                    </form>
+                </tr>
+            <%}})%>
+        </tbody>
+    </table>
+</body>
+</html>
+
+<style>
+    td, th {
+       border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+</style>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> title </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1> Servicios seleccionados </h1>
+<table>
+    <thead>
+        <tr>
+            <th>IDServicio</th>
+            <th>Fecha</th>
+            <th>IdVehiculo</th>
+            <th>Marca</th>
+            <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% servicios.forEach((s) => { %>
+            <tr>
+                <td><%=s.id_servicio%></td>
+                <td><%=s.fecha%></td>
+                <td><a href="/verVehiculo?id=<%=s.id_vehiculo%>"><%=s.id_vehiculo%></a></td>
+                <td><a href="/verMarca?id=<%=marca%>">Ver</a></td>
+                <td><%=s.descripcion%></td>
+            </tr>
+        <%})%>
+    </tbody>
+</table>
+
+
+</body>
+</html>

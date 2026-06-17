@@ -1,0 +1,26 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Hola, este es un acertijo creado para aprender a usar distintos programas vistos en clase.
+
+Este mensaje está firmado con mi clave pública, necesaria para verificar la autenticidad de los futuros mensajes: 
+
+https://www.mediafire.com/file/kwkpgcs8xj38wh2/clavePublica_Javierub.asc/file
+
+Pista: 47
+
+9EEADi^^:>8FC]4@>^2^?:$t)Hd
+
+4:36CD68FC:525
+
+- ---
+
+Javierub
+-----BEGIN PGP SIGNATURE-----
+
+iJEEARYKADkWIQRGodyCZ3OUbr7u8cegcwVI9iMA1QUCagHpdhsUgAAAAAAEAA5t
+YW51MiwyLjUrMS4xMiwyLDEACgkQoHMFSPYjANWaOwEAtcSc06hDL1tZt7SVUzk+
+tWjv+vh4xLhZ+PyI/PQ45EYA/21h+bghL9jbEUNKTv7gVOMIV3XSLXZy6TWDqdcg
+WSgH
+=fQlr
+-----END PGP SIGNATURE-----

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de planetas</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Lista de planetas</h1>
+
+	
+	<table>
+		<thead>
+			<th>Nombre</th>
+			<th>Diametro</th>
+			<th>Clima</th>
+			<th>Terreno</th>
+			<th>Especies</th>
+		</thead>
+		<tbody>
+			<% planetas.forEach((p) => { %>
+				<tr>
+					<td><%= p.nombre %></td>
+					<td><%= p.diametro %></td>
+					<td><%= p.clima %></td>
+					<td><%= p.terreno %></td>
+					<td>
+						<% especies.forEach((e) => { %>
+							<% if(e.planeta == p.planeta_id){ %>
+								<a href="/especie/<%= e.especie_id %>"><%= e.especie %></a>
+							<% } %>
+						<% }) %>
+					</td>
+				</tr>
+			<% }) %>
+		</tbody>
+	</table>
+  </body>
+</html>

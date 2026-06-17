@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Selecciona la marca</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Selecciona: </h1>
+    <form method="post" action="/buscarServicios">
+      <label for="marca">Marca: </label>
+      <% marcas.forEach((m) =>{ %>
+        <p>
+        <input type="radio" name="marca" id="marca" value="<%=m.id_marca%>" <%=marcaSeleccionada == m.id_marca ? "checked": ""%>> <%=m.nombre%>
+        </p>
+      <%})%>
+
+      <% if (coches != null) {
+        coches.forEach((c) =>{ %>
+        <input type="checkbox" name="coches" id="marca" value="<%=c.id_vehiculo%>" > <%=c.modelo%>
+      <%})}%>
+      <br>
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>

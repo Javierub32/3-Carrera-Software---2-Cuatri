@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>s</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Información sobre el vehículo:</h1>
+<form action="/guardarVehiculo" method="post">
+    <input type="hidden" value="<%=coche.id_vehiculo%>" name="id">
+
+    <label for="modelo">Modelo: </label>
+    <input type="text" id="modelo" name="modelo" value="<%=coche.modelo%>">
+
+    <br> <br>
+
+    <label for="anyo">Año: </label>
+    <input type="number" id="anyo" name="anyo" value="<%=coche.anio%>">
+
+    <br> <br>
+
+    <label for="propietarios">Propietarios: </label>
+    <select name="propietarios" id="propietarios" multiple>
+        <%propietarios.forEach((p) => { %>
+            <%
+            let selected = "";
+            propietariosSelec.forEach((ps) => {
+                if (ps.id_propietario_propietario.id_propietario == p.id_propietario ) {
+                    selected = "selected";
+                }
+            })
+            %>
+            <option value="<%=p.id_propietario%>" <%=selected%>>
+                <%=p.nombre%>
+            </option>
+        <%})%>
+    </select>
+    <br> <br>
+
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>

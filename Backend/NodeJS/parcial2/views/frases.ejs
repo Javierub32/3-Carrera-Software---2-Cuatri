@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inicio</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Frases célebres de <%=pelicula.titulo%></h1>
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Frase</th>
+        <th>Personaje</th>
+    </thead>
+    <tbody>
+    <%pelicula.Frase_Celebres.forEach((f) => { %>
+    <tr>
+        <td><%=f.frase_id%></td>
+        <td><%=f.frase%></td>
+        <td><%=f.personaje_Personaje.nombre%></td>
+    </tr>
+    <%})%>
+    </tbody>
+</table>
+    <a href="/nuevaFrase/<%=pelicula.pelicula_id%>">Nueva frase...</a>
+
+</body>
+</html>

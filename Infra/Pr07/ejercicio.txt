@@ -1,0 +1,98 @@
+X. Hacemos el despliegue local en Kubernetes:
+
+1. Creamos el secret para el acceso a DockerHub:
+
+kubectl create secret docker-registry mi-registro-secreto \
+  --docker-server=https://index.docker.io/v1/ \
+  --docker-username=javierub \
+  --docker-password=bBMltwYYoUEsdfsdf\
+  --docker-email=javierub38@gmail.com \
+  --namespace=ips
+
+2. Creamos el deployment:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app
+  namespace: ips
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mi-app
+  template:
+    metadata:
+      labels:
+        app: mi-app
+    spec:
+      imagePullSecrets:
+        - name: mi-registro-secreto
+      containers:
+      - name: backend-app
+        image: javierub/pr07_infra:latest 
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+
+3. Creamos el servicio:
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mi-app-service
+  namespace: ips
+spec:
+  type: NodePort
+  selector:
+    app: mi-app
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30007
+
+4. Aplicamos los yaml:
+	kubectl apply -f deployment.yaml
+	kubectl apply -f service.yaml
+
+5. Creamos el Token de GitHub para el runner:
+   token: ksdhjgjsdhgbdjsg
+
+6. Instalamos Helm en el namespace: 
+	NAMESPACE="ips"
+	helm install arc \
+		--namespace "${NAMESPACE}" \
+		--create-namespace \
+		oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
+
+7. Creamos el RunnerSet:
+	# 1. Definir variables (Estilo PowerShell)
+	$INSTALLATION_NAME = "self-hosted"
+	$NAMESPACE = "ips"
+	$GITHUB_CONFIG_URL = "https://github.com/Javierub32/Pr07_Infra"
+	$GITHUB_PAT = "ksdhjgjsdhgbdjsg"
+
+	# 2. Ejecutar Helm (Usando ` para multilínea)
+	helm install $INSTALLATION_NAME `
+	--namespace $NAMESPACE `
+	--create-namespace `
+	--set githubConfigUrl=$GITHUB_CONFIG_URL `
+	--set githubConfigSecret.github_token=$GITHUB_PAT `
+	oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set
+
+
+8. Aplicamos el siguiente yaml para darle permisos al runner:
+	apiVersion: rbac.authorization.k8s.io/v1
+	kind: Role
+	metadata:
+	namespace: ips
+	name: gha-runner-role
+	rules:
+	- apiGroups: ["apps"]
+		resources: ["deployments", "replicasets"]
+		verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+	- apiGroups: [""]
+		resources: ["pods", "services"]
+		verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+	kubectl apply -f runner-permissions.yml

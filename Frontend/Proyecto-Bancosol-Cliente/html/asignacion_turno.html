@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignación</title>
+
+    <link rel="stylesheet" href="../css/asignacion_turno.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/asignacion_turno.js" defer></script>
+</head>
+<body>
+    <include-html src="./components/navbar.html"></include-html>
+
+    <div class="page-wrapper">
+        <div class="left-column">
+            <div class="table-container card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tienda</th>
+                            <th>Domicilio</th>
+                            <th>Localidad</th>
+                            <th>Capitán</th>
+                            <th>Viernes M.</th>
+                            <th>Viernes T.</th>
+                            <th>Sábado M.</th>
+                            <th>Sábado T.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div id="info-container" class="card side-panel">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

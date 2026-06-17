@@ -1,0 +1,29 @@
+### --- JAVA / MAVEN ---
+target/
+!.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+### --- INTELLIJ IDEA ---
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### --- VS CODE ---
+.vscode/
+*.code-workspace
+
+### --- SISTEMA OPERATIVO ---
+.DS_Store
+Thumbs.db
+desktop.ini
+src/main/resources/application.properties
+repomix-output.xml
+
+temp/
+tmp/

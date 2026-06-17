@@ -1,0 +1,89 @@
+/*
+Javier Urbaneja Benítez: 70%
+IA: 30%
+
+Documentación JWT: https://www.geeksforgeeks.org/springboot/spring-boot-3-0-jwt-authentication-with-spring-security-using-mysql-database/
+*/
+
+package com.leftjoiners.bancosol.proyectobackend.security;
+
+import jakarta.servlet.DispatcherType;
+import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.Arrays;
+import java.util.List;
+
+@Configuration
+@EnableWebSecurity
+@RequiredArgsConstructor
+public class SecurityConfig {
+
+    private final JwtAuthFilter jwtAuthFilter;
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
+                        .requestMatchers("/", "/auth", "/login", "/api/auth/**", "/css/**", "/images/**").permitAll()
+                        .requestMatchers("/campanyas", "/campanyas/**").hasRole("ADMIN")
+                        .requestMatchers("/turnos/crearTurno").hasAnyRole("ADMIN", "COORD")
+                        .requestMatchers("/turnos/guardarTurno").hasAnyRole("ADMIN", "COORD")
+                        .requestMatchers("/coordinadores/**").hasRole("ADMIN")
+                        .requestMatchers("/tiendas/crearTienda", "/tiendas/guardarTienda", "/tiendas/eliminarTienda", "/tiendas/asignarParticipacion", "/tiendas/guardarParticipacion").hasRole("ADMIN")
+                        .requestMatchers("/colaboradores", "/colaboradores/**").hasAnyRole("ADMIN", "COORD")
+                        .anyRequest().authenticated()
+                )
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            if (request.getRequestURI().startsWith("/api/")) {
+                                response.sendError(401, "No autorizado");
+                            } else {
+                                response.sendRedirect("/");
+                            }
+                        })
+                )
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+                .logout(logout -> logout
+                        .logoutUrl("/logout") // Escucha esta ruta
+                        .deleteCookies("jwtToken") // Borra mágicamente nuestra "pulsera"
+                        .logoutSuccessUrl("/") // Nos devuelve al inicio
+                )
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOriginPatterns(List.of("*"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With", "Accept"));
+        configuration.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inicio</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Nueva frase...</h1>
+    <form action="/guardarFrase" method="post">
+        <input type="hidden" value="<%=id%>" name="id">
+        <div>
+            <label for="frase">Frase: </label>
+            <textarea name="frase" id="frase" cols="100" rows="2"></textarea>
+        </div>
+
+        <div>
+            <label for="personaje">Personaje: </label>
+            <select name="personaje" id="personaje">
+                <%personajes.forEach((p) =>{%>
+                    <option value="<%=p.personaje_id%>"><%=p.nombre%></option>
+                <%})%>
+            </select>
+        </div>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

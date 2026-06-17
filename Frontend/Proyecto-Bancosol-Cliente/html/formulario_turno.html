@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignación de Turno</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/formularioTurno.css" />
+    <script src="../js/components.js" defer></script>
+    <script src="../js/formulario_turno.js" defer></script>
+</head>
+<body class="formulario-turno-page">
+
+    <include-html src="./components/navbar.html"></include-html>
+
+    <div style="display: flex; flex-direction: row">
+        <div class="form-turno">
+            <div class="turno-info" id="header-info">
+            </div>
+
+            <form id="turno-form">
+                <input type="hidden" id="turno_id" name="id">
+                <input type="hidden" id="tiendaCampanyaId" name="tiendaCampanyaId">
+                <input type="hidden" id="tipoTurnoId" name="tipoTurnoId">
+                <input type="hidden" id="lineal" name="lineal">
+
+                <div class="form-group">
+                    <label for="input_colaboradores">Colaborador:</label>
+                    <select id="input_colaboradores" name="idColaborador">
+                        <option value="0">Seleccione un colaborador...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="input_num_voluntarios">Número de voluntarios:</label>
+                    <input id="input_num_voluntarios" type="number" name="numVoluntarios">
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="input_hora_inicio">Hora Inicio:</label>
+                        <input id="input_hora_inicio" type="time" name="horaInicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="input_hora_fin">Hora Fin:</label>
+                        <input id="input_hora_fin" type="time" name="horaFin">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="input_observaciones">Observaciones:</label>
+                    <textarea id="input_observaciones" name="observaciones" rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Guardar Turno</button>
+            </form>
+        </div>
+        <div id="colaborador_container" class="card panel-colaborador">
+            <div class="empty-colaborador-msg">
+                Seleccione un colaborador para ver su información
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: ips
+  name: gha-runner-role
+rules:
+  - apiGroups: ["apps"]
+    resources: ["deployments", "replicasets"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: [""]
+    resources: ["pods", "services"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: gha-runner-role-binding
+  namespace: ips
+subjects:
+  - kind: ServiceAccount
+    name: self-hosted-gha-rs-no-permission   # Esta es la cuenta de servicio que genera el Runner
+    namespace: ips
+roleRef:
+  kind: Role
+  name: gha-runner-role
+  apiGroup: rbac.authorization.k8s.io

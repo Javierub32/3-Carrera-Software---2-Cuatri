@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inicio</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>hace mucho tiempo en una galaxia muy, muy lejana...</h1>
+    <table>
+        <thead>
+            <th><a href="/ordenar?by=titulo">Titulo</a></th>
+            <th><a href="/ordenar?by=anyo">Año</a></th>
+            <th>Texto apertura</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <%peliculas.forEach((p) => { %>
+                <tr>
+                    <td><%=p.titulo%></td>
+                    <td><%=p.anyo%></td>
+                    <td><%=p.texto_apertura%></td>
+                    <td><a href="/frases/<%=p.pelicula_id%>">Frases</a></td>
+                </tr>
+            <%})%>
+        </tbody>
+    </table>
+</body>
+</html>

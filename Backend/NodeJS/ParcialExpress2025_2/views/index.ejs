@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Lista de planetas</h1>
+
+	
+	<table>
+		<thead>
+			<th>Nombre</th>
+			<th>Diametro</th>
+			<th>Clima</th>
+			<th>Terreno</th>
+			<th>Especies</th>
+		</thead>
+		<tbody>
+			<% planetas.forEach((p) => { %>
+				<tr>
+					<td><%= p.nombre %></td>
+					<td><%= p.diametro %></td>
+					<td><%= p.clima %></td>
+					<td><%= p.terreno %></td>
+					<td><%= "hola" %></td>
+				</tr>
+			<% }) %>
+		</tbody>
+	</table>
+  </body>
+</html>
