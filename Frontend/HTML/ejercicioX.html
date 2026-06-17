@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título de tu página</title>
+</head>
+<body>
+
+
+	<select name="select1" id="select1">
+		<option value="1">Opcion 1</option>
+		<option value="2">Opcion 2</option>
+		<option value="3">Opcion 3</option>
+	</select>
+
+	<select name="select2" id="select2">
+		<option value="11">Te gustan las  1?</option>
+		<option value="21">Te gustan las  2?</option>
+		<option value="31">Te gustan las  3?</option>
+	</select>
+</body>
+
+	<script>
+	const select1 = document.getElementById("select1");
+	const select2 = document.getElementById("select2");
+
+	document.getElementById("select1").addEventListener("change", () => {
+		const selectedValue = select1.value;
+		select2.value = select1.value + 1;
+		console.log("Valor seleccionado en select1:", selectedValue);
+		console.log("Valor actualizado en select2:", select1.value + 1);
+	})
+
+	
+</script>
+</html>
