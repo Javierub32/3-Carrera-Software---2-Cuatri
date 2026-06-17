@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:                             # Variables de entorno
+  settings.ini: |                           # Archivo de configuración (montado como volumen)
+    [app]
+    title = Mi App de Examen
+    author = Javier Urbaneja Benítez

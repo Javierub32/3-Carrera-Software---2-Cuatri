@@ -1,0 +1,28 @@
+services:
+  web:
+    image: webapp:latest               # Usar imagen existente
+    container_name: webapp            # Nombre personalizado del contenedor
+    environment:
+      APP_ENV: development                      # Variable de entorno directa
+    volumes:
+      - ./logs:/app/logs  # Bind mount de solo lectura
+    networks:
+      - appnet                    # Conectar a una red concreta
+    restart: always                     # Política de reinicio
+
+  proxy:
+    image: nginx:alpine               # Usar imagen existente
+    container_name: proxy            # Nombre personalizado del contenedor
+    ports:
+      - "80:80"           # Mapeo de puertos
+    depends_on:
+      - web                      # Esperar a que ese servicio inicie
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro  # Bind mount de solo lectura
+    networks:
+      - appnet                    # Conectar a una red concreta
+    restart: always                # Política de reinicio
+
+
+networks:
+  appnet:                      

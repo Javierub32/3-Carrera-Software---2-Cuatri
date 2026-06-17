@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='amarillo.css') }}">
+</head>
+<body>
+
+    <div id="top-bar">
+
+        <div class="top-left">
+            <img src="{{ url_for('static', filename='yusuf.png') }}" alt="Corona">
+        </div>
+
+        <div class="top-right">
+            <div class="item">
+                <span>Aplicación:</span>
+                <strong>{{ title }}</strong>
+            </div>
+
+            <div class="item">
+                <span>Autor:</span>
+                <strong>{{ author }}</strong>
+            </div>
+
+            <div class="item">
+                <span>Entorno:</span>
+                <span class="badge {{ env }}">{{ env }}</span>
+            </div>
+        </div>
+
+    </div>
+
+    <header>
+        <p>Emires y sultanes nazaríes de Granada</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Historia de España</a></li>
+            <li><a href="#">Casas reales de España</a></li>
+            <li><a href="#">Casas reales de Granada</a></li>
+        </ul>
+    </nav>
+
+    <div id="zona-central">
+
+        <main>
+
+            <div class="contprinccab">
+                Emires y sultanes más destacados
+            </div>
+
+            <section>
+                <h3>Yusuf I de Granada</h3>
+                <p>Yusuf I fue un sultán del Reino nazarí de Granada (Granada, 29 de junio de 1318 – 19 de octubre de 1354), séptimo soberano de la dinastía nazarí que ocupó el poder entre 1333 y 1354.</p>
+                <p>Estableció la paz con Alfonso XI de Castilla, pero tras finalizar los cuatro años de paz pactados, se alió con el Sultanato benimerín y presentó batalla a los castellanos, siendo derrotado en la batalla del Salado el 30 de octubre de 1340.</p>
+            </section>
+
+            <section>
+                <h3>Mohamed V de Granada</h3>
+                <p>Muhammed V de Granada (Granada, 4 de enero de 1339, 16 de enero de 1391) fue el octavo soberano nazarí de Granada entre 1354 y 1359, hasta que fue derrocado por los partidarios de su hermano Ismaíl II.</p>
+                <p>Su reinado se caracteriza por haber sido uno de los más fructíferos del Reino nazarí, en el que se realizaron grandes obras en la Alhambra como el palacio y patio de los Leones.</p>
+            </section>
+
+            <section>
+                <h3>Ismaíl II de Granada</h3>
+                <p>Ismaíl II (1339 – Granada, 28 de junio de 1360), fue el segundo hijo de Yusuf I y el noveno soberano nazarí de Granada, que reinó de agosto de 1359 hasta el 28 de junio de 1360.</p>
+                <p>El reinado de Ismaíl II fue breve, apenas diez meses. Él y su hermano Qays fueron asesinados en una prisión de la Alhambra por orden de su cuñado Muhámmed VI.</p>
+            </section>
+
+            <section>
+                <h3>Yusuf II de Granada</h3>
+                <p>Abu Al-Haŷŷaŷ Yusuf ibn Muhámmad o Yusuf II fue un rey nazarí de Granada (¿? - 1392), undécimo soberano de la dinastía nazarí. Hijo y sucesor de Muhammed V en 1391.</p>
+                <p>Su corto reinado se caracterizó por la dependencia hacia los benimerines. Fue un monarca pacífico, favorecedor de las artes y las ciencias.</p>
+            </section>
+
+            <section>
+                <h3>Muhammed VII de Granada</h3>
+                <p>Muhammed VII de Granada (1370-1408), fue el decimotercer soberano nazarí de Granada que reinó entre 1392 y 1408.</p>
+                <p>Tras la muerte por envenenamiento del sultán Yusuf II, Muhammed VII accedió al trono de forma violenta, despojando del mismo a su hermano Yusuf III, el heredero legítimo.</p>
+            </section>
+
+            <section>
+                <h3>Yusuf III de Granada</h3>
+                <p>Yusuf III (1376-1417) fue el decimocuarto soberano de la dinastía del Reino nazarí de Granada que sucedió a su hermano Muhammed VII y ocupó el trono entre 1408 y 1417.</p>
+                <p>La estabilidad de su reinado se vio turbada por la campaña castellana iniciada en 1406 por Enrique III y continuada por el regente el infante Fernando de Antequera.</p>
+            </section>
+
+            <section>
+                <h3>Muhammed VIII de Granada</h3>
+                <p>Era hijo y sucesor de Yusuf III; accedió al trono de jure siendo niño, pero el poder de facto estuvo en manos del antiguo visir de su padre.</p>
+                <p>En 1419 una conspiración urdida por los Abencerrajes le expulsó del trono, colocando en su lugar a Muhammed IX, un nieto de Muhammed V.</p>
+            </section>
+
+        </main>
+
+        <aside>
+
+            <div>
+                <ul>
+                    <li><a href="https://www.alhambra-patronato.es/elemento-del-mes/el-origen-del-reino-nazari-y-de-la-alhambra">El origen del Reino nazarí y de la Alhambra</a></li>
+                    <li><a href="https://www.despertaferro-ediciones.com/revistas/numero/arqueologia-historia-reino-emirato-nazari-de-granada-48/">La Granada nazarí. Desperta Ferro Arqueología e Historia, nº 48</a></li>
+                    <li><a href="https://www.alandalusylahistoria.com/?p=4666">Mustajlaṣ: el patrimonio particular de los emires nazaríes</a></li>
+                    <li><a href="https://mezquitacordobesa.blogspot.com/2014/12/sultanes-nazaries.html">Al-Andalus. Vida cotidiana: Musulmanes y cristianos. Sultanes nazaríes.</a></li>
+                </ul>
+            </div>
+
+            <h2>Más información</h2>
+
+        </aside>
+
+    </div>
+
+    <footer>
+        Toda la información contenida en la página ha sido recopilada con fines educativos de la Wikipedia
+        (<a href="https://es.wikipedia.org/wiki/Anexo:Emires_y_sultanes_nazaríes_de_Granada" target="_blank">
+            Anexo:Emires y sultanes nazaríes de Granada
+        </a>).
+        La imagen del busto de Muhammad ibn Yusuf ibn Nasr Alhamar ha sido tomada por Luis Rogelio HM.
+    </footer>
+
+</body>
+</html>

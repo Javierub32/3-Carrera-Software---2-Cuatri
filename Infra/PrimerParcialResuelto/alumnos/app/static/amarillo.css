@@ -1,0 +1,152 @@
+body {
+    background-color: #FFFDE7;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: #3E2723;
+}
+
+#top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* antes space-between */
+    gap: 30px; /* separación entre imagen y texto */
+    background-color: #FFF59D;
+    border-bottom: 3px solid #FBC02D;
+    padding: 10px 20px;
+}
+
+.top-left img {
+    height: 120px; /* imagen más grande */
+    width: auto;
+}
+
+.top-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.3em;
+}
+
+.top-right .item span {
+    color: #5D4037;
+    margin-right: 5px;
+}
+
+.top-right .item strong {
+    color: #3E2723;
+    font-size: 1.2em;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.3em 0.8em;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.production  { background: #FFF176; color: #5D4037; }
+.development { background: #FFD54F; color: #6D4C41; }
+
+header {
+    background-color: #FFE082;
+}
+
+header p {
+    text-align: center;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0.4em 0;
+}
+
+nav {
+    background-color: #FFF59D;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 1em 0;
+}
+
+nav li::before {
+    content: "/";
+    padding: 0 10px;
+}
+
+#zona-central {
+    display: flex;
+}
+
+aside {
+    flex: 1;
+    background-color: #FFF8E1;
+    display: flex;
+}
+
+aside h2 {
+    writing-mode: vertical-rl;
+    background-color: #FFD54F;
+    margin: 0;
+    padding: 1em 0.5em;
+}
+
+aside ul {
+    list-style: none;
+    padding: 1em;
+}
+
+aside ul li {
+    margin-top: 1.5em;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 400px;
+    overflow: scroll;
+    flex: 4;
+}
+
+.contprinccab {
+    grid-column: 1/4;
+    text-align: center;
+    font-size: 2em;
+    background-color: #FFD54F;
+    position: sticky;
+    top: 0;
+    padding: 0.2em 0;
+}
+
+main section {
+    background-color: #FFF9C4;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10%;
+    border: 1px solid #FBC02D;
+}
+
+footer {
+    text-align: center;
+    background-color: #FFF59D;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0.4em 0;
+    font-size: 0.85em;
+}
+
+a {
+    color: #BF360C;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #E65100;
+}

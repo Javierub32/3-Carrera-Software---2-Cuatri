@@ -1,0 +1,475 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+app/app.py
+app/requirements.txt
+app/static/amarillo.css
+app/static/yusuf.png
+app/templates/index.html
+deployment.yml
+docker-compose.yml
+Dockerfile
+nginx/nginx.conf
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="app/app.py">
+import os
+import configparser
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+def load_config():
+    config = configparser.ConfigParser()
+    config_path = "/config/settings.ini"
+    if os.path.exists(config_path):
+        config.read(config_path)
+        title  = config.get("app", "title",  fallback="App sin configurar")
+        author = config.get("app", "author", fallback="Desconocido")
+    else:
+        title  = "App sin configurar"
+        author = "Desconocido"
+    return title, author
+
+@app.route("/")
+def index():
+    title, author = load_config()
+    env = os.environ.get("APP_ENV", "development")
+    return render_template("index.html", title=title, author=author, env=env)
+
+@app.route("/health")
+def health():
+    return {"status": "ok"}, 200
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+</file>
+
+<file path="app/requirements.txt">
+flask==3.0.3
+</file>
+
+<file path="app/static/amarillo.css">
+body {
+    background-color: #FFFDE7;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: #3E2723;
+}
+
+#top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* antes space-between */
+    gap: 30px; /* separación entre imagen y texto */
+    background-color: #FFF59D;
+    border-bottom: 3px solid #FBC02D;
+    padding: 10px 20px;
+}
+
+.top-left img {
+    height: 120px; /* imagen más grande */
+    width: auto;
+}
+
+.top-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.3em;
+}
+
+.top-right .item span {
+    color: #5D4037;
+    margin-right: 5px;
+}
+
+.top-right .item strong {
+    color: #3E2723;
+    font-size: 1.2em;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.3em 0.8em;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.production  { background: #FFF176; color: #5D4037; }
+.development { background: #FFD54F; color: #6D4C41; }
+
+header {
+    background-color: #FFE082;
+}
+
+header p {
+    text-align: center;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0.4em 0;
+}
+
+nav {
+    background-color: #FFF59D;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 1em 0;
+}
+
+nav li::before {
+    content: "/";
+    padding: 0 10px;
+}
+
+#zona-central {
+    display: flex;
+}
+
+aside {
+    flex: 1;
+    background-color: #FFF8E1;
+    display: flex;
+}
+
+aside h2 {
+    writing-mode: vertical-rl;
+    background-color: #FFD54F;
+    margin: 0;
+    padding: 1em 0.5em;
+}
+
+aside ul {
+    list-style: none;
+    padding: 1em;
+}
+
+aside ul li {
+    margin-top: 1.5em;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 400px;
+    overflow: scroll;
+    flex: 4;
+}
+
+.contprinccab {
+    grid-column: 1/4;
+    text-align: center;
+    font-size: 2em;
+    background-color: #FFD54F;
+    position: sticky;
+    top: 0;
+    padding: 0.2em 0;
+}
+
+main section {
+    background-color: #FFF9C4;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10%;
+    border: 1px solid #FBC02D;
+}
+
+footer {
+    text-align: center;
+    background-color: #FFF59D;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0.4em 0;
+    font-size: 0.85em;
+}
+
+a {
+    color: #BF360C;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #E65100;
+}
+</file>
+
+<file path="app/templates/index.html">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='amarillo.css') }}">
+</head>
+<body>
+
+    <div id="top-bar">
+
+        <div class="top-left">
+            <img src="{{ url_for('static', filename='yusuf.png') }}" alt="Corona">
+        </div>
+
+        <div class="top-right">
+            <div class="item">
+                <span>Aplicación:</span>
+                <strong>{{ title }}</strong>
+            </div>
+
+            <div class="item">
+                <span>Autor:</span>
+                <strong>{{ author }}</strong>
+            </div>
+
+            <div class="item">
+                <span>Entorno:</span>
+                <span class="badge {{ env }}">{{ env }}</span>
+            </div>
+        </div>
+
+    </div>
+
+    <header>
+        <p>Emires y sultanes nazaríes de Granada</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Historia de España</a></li>
+            <li><a href="#">Casas reales de España</a></li>
+            <li><a href="#">Casas reales de Granada</a></li>
+        </ul>
+    </nav>
+
+    <div id="zona-central">
+
+        <main>
+
+            <div class="contprinccab">
+                Emires y sultanes más destacados
+            </div>
+
+            <section>
+                <h3>Yusuf I de Granada</h3>
+                <p>Yusuf I fue un sultán del Reino nazarí de Granada (Granada, 29 de junio de 1318 – 19 de octubre de 1354), séptimo soberano de la dinastía nazarí que ocupó el poder entre 1333 y 1354.</p>
+                <p>Estableció la paz con Alfonso XI de Castilla, pero tras finalizar los cuatro años de paz pactados, se alió con el Sultanato benimerín y presentó batalla a los castellanos, siendo derrotado en la batalla del Salado el 30 de octubre de 1340.</p>
+            </section>
+
+            <section>
+                <h3>Mohamed V de Granada</h3>
+                <p>Muhammed V de Granada (Granada, 4 de enero de 1339, 16 de enero de 1391) fue el octavo soberano nazarí de Granada entre 1354 y 1359, hasta que fue derrocado por los partidarios de su hermano Ismaíl II.</p>
+                <p>Su reinado se caracteriza por haber sido uno de los más fructíferos del Reino nazarí, en el que se realizaron grandes obras en la Alhambra como el palacio y patio de los Leones.</p>
+            </section>
+
+            <section>
+                <h3>Ismaíl II de Granada</h3>
+                <p>Ismaíl II (1339 – Granada, 28 de junio de 1360), fue el segundo hijo de Yusuf I y el noveno soberano nazarí de Granada, que reinó de agosto de 1359 hasta el 28 de junio de 1360.</p>
+                <p>El reinado de Ismaíl II fue breve, apenas diez meses. Él y su hermano Qays fueron asesinados en una prisión de la Alhambra por orden de su cuñado Muhámmed VI.</p>
+            </section>
+
+            <section>
+                <h3>Yusuf II de Granada</h3>
+                <p>Abu Al-Haŷŷaŷ Yusuf ibn Muhámmad o Yusuf II fue un rey nazarí de Granada (¿? - 1392), undécimo soberano de la dinastía nazarí. Hijo y sucesor de Muhammed V en 1391.</p>
+                <p>Su corto reinado se caracterizó por la dependencia hacia los benimerines. Fue un monarca pacífico, favorecedor de las artes y las ciencias.</p>
+            </section>
+
+            <section>
+                <h3>Muhammed VII de Granada</h3>
+                <p>Muhammed VII de Granada (1370-1408), fue el decimotercer soberano nazarí de Granada que reinó entre 1392 y 1408.</p>
+                <p>Tras la muerte por envenenamiento del sultán Yusuf II, Muhammed VII accedió al trono de forma violenta, despojando del mismo a su hermano Yusuf III, el heredero legítimo.</p>
+            </section>
+
+            <section>
+                <h3>Yusuf III de Granada</h3>
+                <p>Yusuf III (1376-1417) fue el decimocuarto soberano de la dinastía del Reino nazarí de Granada que sucedió a su hermano Muhammed VII y ocupó el trono entre 1408 y 1417.</p>
+                <p>La estabilidad de su reinado se vio turbada por la campaña castellana iniciada en 1406 por Enrique III y continuada por el regente el infante Fernando de Antequera.</p>
+            </section>
+
+            <section>
+                <h3>Muhammed VIII de Granada</h3>
+                <p>Era hijo y sucesor de Yusuf III; accedió al trono de jure siendo niño, pero el poder de facto estuvo en manos del antiguo visir de su padre.</p>
+                <p>En 1419 una conspiración urdida por los Abencerrajes le expulsó del trono, colocando en su lugar a Muhammed IX, un nieto de Muhammed V.</p>
+            </section>
+
+        </main>
+
+        <aside>
+
+            <div>
+                <ul>
+                    <li><a href="https://www.alhambra-patronato.es/elemento-del-mes/el-origen-del-reino-nazari-y-de-la-alhambra">El origen del Reino nazarí y de la Alhambra</a></li>
+                    <li><a href="https://www.despertaferro-ediciones.com/revistas/numero/arqueologia-historia-reino-emirato-nazari-de-granada-48/">La Granada nazarí. Desperta Ferro Arqueología e Historia, nº 48</a></li>
+                    <li><a href="https://www.alandalusylahistoria.com/?p=4666">Mustajlaṣ: el patrimonio particular de los emires nazaríes</a></li>
+                    <li><a href="https://mezquitacordobesa.blogspot.com/2014/12/sultanes-nazaries.html">Al-Andalus. Vida cotidiana: Musulmanes y cristianos. Sultanes nazaríes.</a></li>
+                </ul>
+            </div>
+
+            <h2>Más información</h2>
+
+        </aside>
+
+    </div>
+
+    <footer>
+        Toda la información contenida en la página ha sido recopilada con fines educativos de la Wikipedia
+        (<a href="https://es.wikipedia.org/wiki/Anexo:Emires_y_sultanes_nazaríes_de_Granada" target="_blank">
+            Anexo:Emires y sultanes nazaríes de Granada
+        </a>).
+        La imagen del busto de Muhammad ibn Yusuf ibn Nasr Alhamar ha sido tomada por Luis Rogelio HM.
+    </footer>
+
+</body>
+</html>
+</file>
+
+<file path="deployment.yml">
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: webapp:latest
+        imagePullPolicy: Never            
+        env:                                
+        - name: APP_ENV
+          value: "production"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  selector:
+    app: webapp
+  ports:
+  - port: 80                                # Puerto del Service dentro del clúster
+    targetPort: 5000                         # Puerto del contenedor
+    nodePort: 30080                         # Solo para NodePort (rango 30000-32767)
+  type: NodePort                           # ClusterIP | NodePort | LoadBalancer
+</file>
+
+<file path="docker-compose.yml">
+services:
+  web:
+    image: webapp:latest               # Usar imagen existente
+    container_name: webapp            # Nombre personalizado del contenedor
+    environment:
+      APP_ENV: development                      # Variable de entorno directa
+    volumes:
+      - ./logs:/app/logs  # Bind mount de solo lectura
+    networks:
+      - appnet                    # Conectar a una red concreta
+    restart: always                     # Política de reinicio
+
+  proxy:
+    image: nginx:alpine               # Usar imagen existente
+    container_name: proxy            # Nombre personalizado del contenedor
+    ports:
+      - "80:80"           # Mapeo de puertos
+    depends_on:
+      - web                      # Esperar a que ese servicio inicie
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro  # Bind mount de solo lectura
+    networks:
+      - appnet                    # Conectar a una red concreta
+    restart: always                # Política de reinicio
+
+
+networks:
+  appnet:
+</file>
+
+<file path="Dockerfile">
+FROM webapp-base:latest
+
+WORKDIR /app
+
+COPY ./app/requirements.txt .
+
+RUN pip install -r requirements.txt
+
+COPY ./app .
+
+EXPOSE 5000
+
+CMD ["flask", "run",  "--host=0.0.0.0",  "--port=5000"]
+</file>
+
+<file path="nginx/nginx.conf">
+server {
+    listen 80;
+    location / {
+        proxy_pass       http://web:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+</file>
+
+</files>

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: webapp:latest
+        imagePullPolicy: Never            
+        env:
+        - name: APP_ENV
+          value: "production"
+        volumeMounts:
+        - name: config-volume
+          mountPath: /config
+        - name: logs-volume
+          mountPath: /app/logs
+      volumes:
+      - name: config-volume
+        configMap:
+          name: app-config
+      - name: logs-volume
+        persistentVolumeClaim:
+          claimName: app-logs-pvc
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  selector:
+    app: webapp
+  ports:
+  - port: 80                                # Puerto del Service dentro del clúster
+    targetPort: 5000                         # Puerto del contenedor
+    nodePort: 30080                         # Solo para NodePort (rango 30000-32767)
+  type: NodePort                           # ClusterIP | NodePort | LoadBalancer
